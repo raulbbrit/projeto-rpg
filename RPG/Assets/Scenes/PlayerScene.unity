@@ -340,8 +340,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 649747513}
   - {fileID: 1835548417}
+  - {fileID: 649747513}
   - {fileID: 191214081}
   m_Father: {fileID: 1191295338}
   m_RootOrder: 0
@@ -422,9 +422,9 @@ GameObject:
   - component: {fileID: 649747513}
   - component: {fileID: 649747515}
   - component: {fileID: 649747514}
-  - component: {fileID: 649747516}
+  - component: {fileID: 649747517}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: MenuSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,13 +443,13 @@ RectTransform:
   m_Children:
   - {fileID: 2137811260}
   m_Father: {fileID: 620472261}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -728.9, y: 0}
-  m_SizeDelta: {x: -590.2, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 433.80005, y: 768}
+  m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!114 &649747514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,25 +486,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649747512}
   m_CullTransparentMesh: 0
---- !u!95 &649747516
-Animator:
-  serializedVersion: 3
+--- !u!114 &649747517
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649747512}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1f2fbadaa67a0414bba7a6e751414028, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aa57d40ef438642af17a29e5b25f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuIsShowing: 0
 --- !u!1 &1176326400
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +679,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 620472261}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -741,7 +735,7 @@ GameObject:
   - component: {fileID: 2137811262}
   - component: {fileID: 2137811261}
   m_Layer: 5
-  m_Name: StatsButton
+  m_Name: MenuSliderButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 15.93, y: -10.14}
+  m_AnchoredPosition: {x: 15.929993, y: -10.140015}
   m_SizeDelta: {x: 82.98, y: 69.33}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!114 &2137811261
@@ -809,7 +803,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2137811262}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 649747517}
+        m_MethodName: MenuSliderController
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2137811262
 MonoBehaviour:
   m_ObjectHideFlags: 0

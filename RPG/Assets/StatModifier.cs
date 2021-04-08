@@ -20,10 +20,10 @@ public class StatModifier
         Source = source;
     }
 
-    public StatModifier(float value, StatModType type) : this (value, type, (int) type, null) { }
+    public StatModifier(float value, StatModType type) : this(value, type, (int)type, null) { }
 
-    public StatModifier(float value, StatModType type, int order) : this (value, type, order, null) { }
+    public StatModifier(float value, StatModType type, int order) : this(value, type, order, null) { }
 
-    public StatModifier(float value, StatModType type, object source) : this (value, type, (int) type, source) { }
-    
+    public StatModifier(float value, StatModType type, object source) : this(value, type, (int)type, source) { }
+
 }

@@ -43,7 +43,7 @@ void Start()
             }
         }
         maxTile = Tiles[new Point(mapX-1,mapY-1)].transform.position;
-        cameraMovement.SetLimits(new Vector3(maxTile.x + TileSize,maxTile.y- TileSize));
+      //  cameraMovement.SetLimits(new Vector3(maxTile.x + TileSize,maxTile.y- TileSize));
     
     }
     private void PlaceTile(int x,int y, Vector3 worldStartPosition)

@@ -43,10 +43,12 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e18a35e6136c1a45a05e1a9a4f01162, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3b6860dda9a20448b5ffed12d3a5f7c, type: 3}
   m_Color: {r: 1, g: 0.9858491, b: 0.9858491, a: 1}
   m_FlipX: 0
   m_FlipY: 0

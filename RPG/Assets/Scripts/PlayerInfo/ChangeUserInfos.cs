@@ -8,7 +8,7 @@ public class ChangeUserInfos : MonoBehaviour
 {
     public RawImage staticRawImage;
     public RawImage rawImage;
-    public InputField input;
+    public InputField input;  
 
     void Start()
     {

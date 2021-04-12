@@ -1904,7 +1904,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 602977766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98765d6753253594f844bbca99697cc9, type: 3}
+  m_Script: {fileID: 11500000, guid: f93da74dafa53c14da0c77fbd887abbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mWidth: 0
@@ -3485,7 +3485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDisplayText: Open menu
 --- !u!114 &988197268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3551,7 +3550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDisplayText: Close menu
 --- !u!114 &1002338661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4260,7 +4258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDisplayText: You can join your friends here
 --- !u!114 &1042250686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4724,7 +4721,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081730366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e9984410eb20ba48950209d7c415c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mDisplayText: About the game
@@ -6146,7 +6143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1618468761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e9984410eb20ba48950209d7c415c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mDisplayText: Go to options
@@ -6734,7 +6731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDisplayText: When hosting a game you will be automatically a Game Master
 --- !u!114 &1684805338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7678,7 +7674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61514afb141e1df4eaff319c2c80ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDisplayText: Close game
 --- !u!114 &2068468115
 MonoBehaviour:
   m_ObjectHideFlags: 0

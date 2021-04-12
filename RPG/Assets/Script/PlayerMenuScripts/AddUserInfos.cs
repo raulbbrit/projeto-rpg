@@ -31,7 +31,7 @@ public class AddUserInfos : MonoBehaviour
                 Debug.Log("IEnumeraotr deu certo");
                 var uwrTexture = DownloadHandlerTexture.GetContent(uwr);
                 image.texture = uwrTexture;
-                //UserInfos.SaveChanges();
+
             }
         }
     }

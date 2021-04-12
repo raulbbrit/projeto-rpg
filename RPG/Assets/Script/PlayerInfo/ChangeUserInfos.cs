@@ -57,9 +57,10 @@ public class ChangeUserInfos : MonoBehaviour
         }
     }
 
-    public void ResetInfos()
+    public void ResetInfos(RawImage resetImage)
     {
         PlayerPrefs.SetString("path", "");
+        staticRawImage.texture = resetImage.texture;
         PlayerPrefs.SetString("userName", null);
     }
 

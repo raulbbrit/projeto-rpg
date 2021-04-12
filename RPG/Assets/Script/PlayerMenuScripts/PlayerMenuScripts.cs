@@ -17,7 +17,7 @@ public class PlayerMenuScripts : MonoBehaviour
 
     public void HostGame()
     {
-        SceneManager.LoadScene("DiceTest");
+        SceneManager.LoadScene("PlayerScene");
     }
 
     public void PlayerInfo()

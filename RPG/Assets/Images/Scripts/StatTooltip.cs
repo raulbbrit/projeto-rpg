@@ -12,7 +12,10 @@ public class StatTooltip : MonoBehaviour
 
     public void ShowTooltip(CharacterStat stat, string statName)
     {
-        StatNameText.text = GetStartTopText(stat, statName);
+
+        StatNameText.text = GetStatTopText(stat, statName);
+        StatModifiersText.text = GetStatModifiersText(stat);
+
         gameObject.SetActive(true);
     }
 
@@ -21,21 +24,43 @@ public class StatTooltip : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private string GetStartTopText(CharacterStat stat, string statName)
+    private string GetStatTopText(CharacterStat stat, string statName)
     {
         sb.Length = 0;
-        sb.Append(statName);
 
-        return sb.ToString();
+        return statName.ToUpper();
     }
-    private string GetStatModifiersText(CharacterStat stat, string statName)
+    private string GetStatModifiersText(CharacterStat stat)
     {
         
         foreach  (StatModifier mod in stat.StatModifiers)
         {
+           
+            if(sb.Length > 0)
+            {
+                sb.AppendLine();
+            }
 
+            if(mod.Value > 0)
+            {
+                sb.Append("+");
+            }
+
+            sb.Append(mod.Value);
+
+            EquippableItem item = mod.Source as EquippableItem;
+
+            if(item != null)
+            {
+                sb.Append(" ");
+                sb.Append(item.ItemName);
+            } else
+            {
+                Debug.Log("Modifier is not an EquippableItem!");
+            }
+           
         }
-
         return sb.ToString();
+        
     }
 }

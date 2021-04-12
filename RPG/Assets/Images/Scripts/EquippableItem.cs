@@ -45,23 +45,6 @@ public class EquippableItem : Item
         {
             c.Vitality.AddModifier(new StatModifier(VitalityBonus, StatModType.Flat, this));
         }
-
-        if (StrengthBonus != 0)
-        {
-            c.Strenght.AddModifier(new StatModifier(StrengthBonus, StatModType.PercentMult, this));
-        }
-        if (AgilityBonus != 0)
-        {
-            c.Agility.AddModifier(new StatModifier(AgilityBonus, StatModType.PercentMult, this));
-        }
-        if (IntelligenceBonus != 0)
-        {
-            c.Intelligence.AddModifier(new StatModifier(IntelligenceBonus, StatModType.PercentMult, this));
-        }
-        if (VitalityBonus != 0)
-        {
-            c.Vitality.AddModifier(new StatModifier(VitalityBonus, StatModType.PercentMult, this));
-        }
     }
     public void Unequip(Character c)
     {

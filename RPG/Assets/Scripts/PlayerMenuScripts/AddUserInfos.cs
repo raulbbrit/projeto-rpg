@@ -13,21 +13,7 @@ public class AddUserInfos : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetString("userName") != null && PlayerPrefs.GetString("path") != null) {
-           StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
-           name.text = PlayerPrefs.GetString("userName");
-           Debug.Log("Entrou If");          
-        }
-        else
-        {
-            name.text = "Guest";
-        }
-    }
-
-    void Update()
-    {
-        StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
-        name.text = PlayerPrefs.GetString("userName");
+        RefreshUser();
     }
 
     IEnumerator LoadImage(string path)
@@ -49,4 +35,11 @@ public class AddUserInfos : MonoBehaviour
             }
         }
     }
+
+    public void RefreshUser()
+    {
+        name.text = PlayerPrefs.GetString("userName");
+        StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
+    }
+
 }

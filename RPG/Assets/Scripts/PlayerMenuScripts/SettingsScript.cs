@@ -8,12 +8,22 @@ public class SettingsScript : MonoBehaviour
 {
     public Dropdown resolutionDropdown;
     public AudioMixer audioMixer;
+    public Toggle isFullScreen;
     public Text label;
 
     Resolution[] resolutions;
 
     private void Start()
     {
+        if (Screen.fullScreen == true)
+        {
+            isFullScreen.isOn = true;
+        }
+        else
+        {
+            isFullScreen.isOn = false;
+        }
+
         int CurrentResolutionIndex = 0;
         resolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60).ToArray();
 
@@ -29,6 +39,7 @@ public class SettingsScript : MonoBehaviour
             if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height)
             {
+                Debug.Log("Entrou nesse if do screen");
                 CurrentResolutionIndex = i;
             }
         }
@@ -36,6 +47,7 @@ public class SettingsScript : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = CurrentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+        //Screen.SetResolution();
     }
 
     public void SetResolution(int resolutionIndex)

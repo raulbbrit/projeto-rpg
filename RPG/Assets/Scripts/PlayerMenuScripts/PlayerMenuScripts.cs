@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerMenuScripts : MonoBehaviour
 {
-    private int holdSec = 0;
+    private void Awake()
+    {
+        Screen.fullScreen = true;
+    }
 
     void JoinGame()
     {
@@ -23,9 +25,8 @@ public class PlayerMenuScripts : MonoBehaviour
         SceneManager.LoadScene("UserSettings");
     }
 
-    public void ExitGame(AudioClip audio)
+    public void ExitGame()
     {
-        Debug.Log("Saiu");
         Application.Quit();
     }
 }

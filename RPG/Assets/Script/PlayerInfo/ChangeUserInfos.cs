@@ -1,18 +1,22 @@
 ﻿using AnotherFileBrowser.Windows;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 public class ChangeUserInfos : MonoBehaviour
 {
-    public RawImage staticRawImage;
+   
     public RawImage rawImage;
-    public InputField input;  
+    public InputField input;
 
     void Start()
     {
-        RefreshUser();
+     RefreshUser();
+   
     }
 
     public void OpenFileBrowser()
@@ -24,29 +28,61 @@ public class ChangeUserInfos : MonoBehaviour
         new FileBrowser().OpenFileBrowser(bp, path =>
         {
             //Load image from local path with UWR
-            StartCoroutine(LoadImage(path));
+        
+                StartCoroutine(LoadImage(path));
         });
     }
 
     IEnumerator LoadImage(string path)
     {
-        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(path))
-        {
-            yield return uwr.SendWebRequest();
+        //Debug.Log("Entrou no IEnumerator");
+       using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(path))
+       {
+                yield return uwr.SendWebRequest();
 
             if (uwr.isNetworkError || uwr.isHttpError)
             {
-                Debug.Log(uwr.error);
+    
+                Debug.Log("Error " + uwr.error);
             }
-            else
+            else  /*Não toque! 
+            Quando eu fiz, estava junto com o Raul e Deus. Agora só Deus sabe como a gente arrumou isso*/
             {
-                var uwrTexture = DownloadHandlerTexture.GetContent(uwr);
-                rawImage.texture = uwrTexture;
-                staticRawImage.texture = uwrTexture;
-                UserInfos.path = path;
-                PlayerPrefs.SetString("path", path);
+
+                 var uwrTexture = DownloadHandlerTexture.GetContent(uwr);
+                 rawImage.texture = uwrTexture;
+
+                 if (uwrTexture.height > 2000 && uwrTexture.width > 2000 &&
+                   (rawImage.transform.rotation.z >= -1 || rawImage.transform.rotation.z <= 1))
+                 {
+
+                    rawImage.transform.Rotate(new Vector3(0, 0, -100));
+                    rawImage.transform.rotation = Quaternion.Euler(0, 0, -100);
+                    /*
+                    Debug.Log("Entrou no vector3 h (CHANG) " + uwrTexture.height.ToString());
+                    Debug.Log("Entrou no vector3 w (CHANG) " + uwrTexture.width.ToString());
+                    Debug.Log("Entrou no vector3 r (CHANG) " + rawImage.transform.rotation.z.ToString());
+                    */
+
+                 }
+                if (uwrTexture.height < 2000 && uwrTexture.width < 2000 &&
+                    (rawImage.transform.rotation.z >= 99 || rawImage.transform.rotation.z <= 101))
+                {
+                    rawImage.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    /*
+                    Debug.Log("Entrou no vector3 h else (CHANG) " + uwrTexture.height.ToString());
+                    Debug.Log("Entrou no vector3 w else (CHANG) " + uwrTexture.width.ToString());
+                    */
+                    rawImage.transform.Rotate(new Vector3(0, 0, 0f));
+
+                }
+
             }
-        }
+
+            UserInfos.path = path;
+            //Debug.Log("IEnumeator : " + path);
+            PlayerPrefs.SetString("path", path);
+       }
     }
 
     public void ChangeUsername(Text newUsername)
@@ -54,19 +90,33 @@ public class ChangeUserInfos : MonoBehaviour
         if (!newUsername.text.Equals(""))
         {
             PlayerPrefs.SetString("userName", newUsername.text);
+           // Debug.Log($"ChangeUsername: newUsername.text = {newUsername.text}");
         }
     }
 
-    public void ResetInfos(RawImage resetImage)
+    public void ResetInfos()
     {
+        int rnd = 0;
+        rnd = Random.Range(1000, 10001);
+
         PlayerPrefs.SetString("path", "");
-        staticRawImage.texture = resetImage.texture;
-        PlayerPrefs.SetString("userName", null);
+        rawImage.texture = null;
+        PlayerPrefs.SetString("userName", "Guest" + rnd);
+
+        /*Debug.Log($"ResetInfos:" +
+            $"\nuserName = {PlayerPrefs.GetString("userName")}" +
+            $"\nPath: {PlayerPrefs.GetString("path")}" +
+            $"\nResetInfos: ID = {rnd}");*/
     }
 
-    void RefreshUser()
+    public void RefreshUser()
     {
-        input.text = PlayerPrefs.GetString("userName");
+        //Debug.Log(PlayerPrefs.GetString("path").GetType());
         StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
+        input.text = PlayerPrefs.GetString("userName");
+
+        /*Debug.Log($"RefreshUser:\n" +
+            $"\nuserName = {PlayerPrefs.GetString("userName")}" +
+            $"\nPath: {PlayerPrefs.GetString("path")}");*/
     }
 }

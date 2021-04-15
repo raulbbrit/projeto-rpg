@@ -11,6 +11,8 @@ public class AddUserInfos : MonoBehaviour
     public RawImage image;
     public Text name;
 
+  
+
     void Start()
     {
         RefreshUser();
@@ -18,28 +20,61 @@ public class AddUserInfos : MonoBehaviour
 
     IEnumerator LoadImage(string path)
     {
-        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(path))
-        {
-            yield return uwr.SendWebRequest();
+        
+            using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(path))
 
-            if (uwr.isNetworkError || uwr.isHttpError)
             {
-                Debug.Log(uwr.error);
-            }
-            else
-            {
-                Debug.Log("IEnumeraotr deu certo");
-                var uwrTexture = DownloadHandlerTexture.GetContent(uwr);
-                image.texture = uwrTexture;
+                yield return uwr.SendWebRequest();
 
+                if (uwr.isNetworkError || uwr.isHttpError)
+                {
+                    Debug.Log(uwr.error);
+                }
+                else
+                {
+                    Debug.Log("IEnumeraotr deu certo");
+                    var uwrTexture = DownloadHandlerTexture.GetContent(uwr);
+                    image.texture = uwrTexture;
+
+                    if (uwrTexture.height > 2000 && uwrTexture.width > 2000 &&
+                    (image.transform.rotation.z >= -1 || image.transform.rotation.z <= 1))
+                    {
+                        
+                     image.transform.Rotate(new Vector3(0, 0, -100));
+                    image.transform.rotation = Quaternion.Euler(0, 0, -100);
+                    /*
+                    Debug.Log("Entrou no vector3 h (ADD) " + uwrTexture.height.ToString());
+                    Debug.Log("Entrou no vector3 w (ADD) " + uwrTexture.width.ToString());
+                    Debug.Log("Entrou no vector3 r (ADD) " + image.transform.rotation.z.ToString());
+                    */
+                }
+                    if (uwrTexture.height < 2000 && uwrTexture.width < 2000 &&
+                    (image.transform.rotation.z >= 99 || image.transform.rotation.z <= 101))
+                    {
+                    image.transform.Rotate(new Vector3(0, 0, 0));
+                    image.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    /*
+                    Debug.Log("Entrou no vector3 h (ADD) " + uwrTexture.height.ToString());
+                    Debug.Log("Entrou no vector3 w (ADD) " + uwrTexture.width.ToString());
+                    Debug.Log("Entrou no vector3 r (ADD) " + image.transform.rotation.z.ToString());
+                    */
+                }
+
+                }
             }
-        }
+        
     }
 
     public void RefreshUser()
     {
         name.text = PlayerPrefs.GetString("userName");
-        StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
-    }
+        if (!PlayerPrefs.GetString("path").Equals("")) {
+            StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
+        }
+        else
+        {
+            image.texture = null;
+        }
+        }
 
 }

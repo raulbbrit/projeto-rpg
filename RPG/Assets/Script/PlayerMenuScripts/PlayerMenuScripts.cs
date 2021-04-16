@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMenuScripts : MonoBehaviour
 {
-    private void Awake()
-    {
-        Screen.fullScreen = true;
-    }
-
     void JoinGame()
     {
 

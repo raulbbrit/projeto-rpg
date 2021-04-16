@@ -20,13 +20,12 @@ public class AddUserInfos : MonoBehaviour
 
     IEnumerator LoadImage(string path)
     {
-        
             using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(path))
 
             {
                 yield return uwr.SendWebRequest();
 
-                if (uwr.isNetworkError || uwr.isHttpError)
+                if (uwr.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.Log(uwr.error);
                 }
@@ -68,13 +67,15 @@ public class AddUserInfos : MonoBehaviour
     public void RefreshUser()
     {
         name.text = PlayerPrefs.GetString("userName");
+
         if (!PlayerPrefs.GetString("path").Equals("")) {
             StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
         }
+
         else
         {
             image.texture = null;
         }
-        }
+    }
 
 }

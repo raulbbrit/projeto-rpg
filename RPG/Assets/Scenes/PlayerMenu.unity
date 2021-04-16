@@ -605,7 +605,6 @@ GameObject:
   - component: {fileID: 281937496}
   - component: {fileID: 281937498}
   - component: {fileID: 281937497}
-  - component: {fileID: 281937499}
   m_Layer: 5
   m_Name: UserNameText
   m_TagString: Untagged
@@ -674,19 +673,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281937495}
   m_CullTransparentMesh: 0
---- !u!114 &281937499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281937495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3720ea3ec16fe544a4e8e4cf65e3ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: {fileID: 281937497}
 --- !u!1 &288280419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,6 +3421,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &988197265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4114,6 +4112,7 @@ GameObject:
   - component: {fileID: 1042250683}
   - component: {fileID: 1042250682}
   - component: {fileID: 1042250686}
+  - component: {fileID: 1042250685}
   m_Layer: 5
   m_Name: JoinButton
   m_TagString: Untagged
@@ -4247,6 +4246,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042250680}
   m_CullTransparentMesh: 0
+--- !u!114 &1042250685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042250680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9984410eb20ba48950209d7c415c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDisplayText: Enter a game
 --- !u!114 &1042250686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5966,7 +5978,7 @@ GameObject:
   - component: {fileID: 1618468767}
   - component: {fileID: 1618468766}
   m_Layer: 5
-  m_Name: GoOptionsBtn
+  m_Name: OptionsBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6071,19 +6083,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1983756124}
-        m_TargetAssemblyTypeName: MenuSliderMainMenu, Assembly-CSharp
-        m_MethodName: MenuSliderController
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1618468764
 MonoBehaviour:
@@ -6586,6 +6586,7 @@ GameObject:
   - component: {fileID: 1684805335}
   - component: {fileID: 1684805334}
   - component: {fileID: 1684805338}
+  - component: {fileID: 1684805337}
   m_Layer: 5
   m_Name: HostButton
   m_TagString: Untagged
@@ -6707,6 +6708,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684805332}
   m_CullTransparentMesh: 0
+--- !u!114 &1684805337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684805332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9984410eb20ba48950209d7c415c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mDisplayText: Start a game as a Game Master
 --- !u!114 &1684805338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7400,7 +7414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 203, y: -6}
+  m_AnchoredPosition: {x: 200, y: -6}
   m_SizeDelta: {x: 400, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983756122
@@ -7453,6 +7467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d958bca5c0e20f4cb77232faf954ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionBtn: {fileID: 1618468761}
+  exitBtn: {fileID: 2068468109}
+  aboutBtn: {fileID: 1081730366}
   menuIsShowing: 0
 --- !u!1 &2025513021
 GameObject:
@@ -7505,7 +7522,7 @@ GameObject:
   - component: {fileID: 2068468115}
   - component: {fileID: 2068468114}
   m_Layer: 5
-  m_Name: ExitGame
+  m_Name: ExitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

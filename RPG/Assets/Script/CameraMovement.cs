@@ -49,7 +49,7 @@ public class CameraMovement : MonoBehaviour
       //  pos.x =Mathf.Clamp(transform.position.x, 0, xMax);
        // pos.y = Mathf.Clamp(transform.position.y, yMin,0);
        // transform.position = pos;
-         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -10, 10), Mathf.Clamp(transform.position.y, -10,10 ), 0);
+         transform.position = new Vector3(Mathf.Clamp(transform.position.x, (float)-3.5, 10), Mathf.Clamp(transform.position.y, -10,(float) 3.5 ), 0);
 
     }
 

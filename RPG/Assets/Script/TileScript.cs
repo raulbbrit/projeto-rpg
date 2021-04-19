@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TileScript : MonoBehaviour
 {
@@ -31,5 +32,26 @@ public class TileScript : MonoBehaviour
         transform.position = worldPos;
         transform.SetParent(parent);
         MapManager.Instance.Tiles.Add(gridPos, this);
+    }
+    private void OnMouseOver()
+    {
+        if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                PlaceObject();
+            }
+
+        }
+    }
+    //Posiciona o objeto vindo do GamManager
+    private void PlaceObject()
+    {
+        // Debug.Log("Placing a pin at "+GridPosition.X+","+GridPosition.Y); Pegar posição do click no quadriculado
+     
+        GameObject _object = (GameObject)Instantiate(GameManager.Instance.SelectedObject.ObjectPrefab, new Vector3(transform.position.x, transform.position.y, 9), Quaternion.identity);
+        _object.transform.SetParent(transform);
+        GameManager.Instance.ObjectReleased();
+
     }
 }

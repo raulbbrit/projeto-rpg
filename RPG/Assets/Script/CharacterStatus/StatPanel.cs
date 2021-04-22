@@ -49,5 +49,4 @@ public class StatPanel : MonoBehaviour
             statDisplays[i].Name = statName[i];
         }
     }
-
 }

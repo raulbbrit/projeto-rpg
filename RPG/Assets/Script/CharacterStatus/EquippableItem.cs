@@ -12,7 +12,7 @@ public enum EquipmentType
     Accessory2,
 }
 
-[CreateAssetMenu]
+
 public class EquippableItem : Item
 {
     public int StrengthBonus;
@@ -27,6 +27,7 @@ public class EquippableItem : Item
     [Space]
     public EquipmentType EquipamentType;
 
+    //Verifica qual status é modificado no personagem
     public void Equip(Character c)
     {
         if(StrengthBonus != 0)

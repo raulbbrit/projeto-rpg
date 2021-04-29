@@ -20,6 +20,7 @@ public class Character : MonoBehaviour
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
     }
 
+
     private void EquipFromInventory(Item item)
     {
         if (item is EquippableItem)

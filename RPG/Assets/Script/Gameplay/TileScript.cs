@@ -49,7 +49,9 @@ public class TileScript : MonoBehaviour
     {
         // Debug.Log("Placing a pin at "+GridPosition.X+","+GridPosition.Y); Pegar posição do click no quadriculado
      
-        GameObject _object = (GameObject)Instantiate(GameManager.Instance.SelectedObject.ObjectPrefab, new Vector3(transform.position.x, transform.position.y, 9), Quaternion.identity);
+        GameObject _object = (GameObject)Instantiate(GameManager.Instance.SelectedObject.ObjectPrefab,
+            new Vector3(transform.position.x, transform.position.y, 9), Quaternion.identity);
+
         _object.transform.SetParent(transform);
         GameManager.Instance.ObjectReleased();
 

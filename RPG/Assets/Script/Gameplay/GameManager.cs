@@ -26,14 +26,17 @@ public class GameManager : Singleton<GameManager>
         
     }
     // Pega o objeto com o click do botão
-    public void SelectObject(PickObjectButton pickObjectButton) 
+    public void SelectObject( PickObjectButton pickObjectButton) 
     {
         this.SelectedObject = pickObjectButton;
+       
+        
     }
 
     public void ObjectReleased()
     {
         SelectedObject = null;
+        Hover.Instance.DesactiveHover();
     }
 
 

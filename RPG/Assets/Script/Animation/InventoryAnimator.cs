@@ -9,6 +9,7 @@ public class InventoryAnimator: MonoBehaviour
 
     [Space]
     [Header("Ativar e Desativar os Grupos")]
+    public GameObject skillGroup;
     public GameObject statsGroup;
     public GameObject inventoryGroup;
     public GameObject equipmentGroup;
@@ -54,8 +55,13 @@ public class InventoryAnimator: MonoBehaviour
                 if (!isOpen)
                 {
                     inventoryGroup.SetActive(true);
+                    skillGroup.SetActive(false);
                     equipmentGroup.SetActive(false);
                     statsGroup.SetActive(false);
+                }
+                else
+                {
+                    inventoryGroup.SetActive(false);
                 }
 
                 animator.SetBool("open", !isOpen);
@@ -71,12 +77,14 @@ public class InventoryAnimator: MonoBehaviour
             else
             {
                 animatorSelf.SetBool("isSlided", false);
+
                 if (isOpen) {
                     inventoryGroup.SetActive(false);
                 }
                 else
                 {
                     inventoryGroup.SetActive(true);
+                    skillGroup.SetActive(false);
                     equipmentGroup.SetActive(false);
                     statsGroup.SetActive(false);
                 }

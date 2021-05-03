@@ -9,6 +9,7 @@ public class StatusAnimator : MonoBehaviour
 
     [Space]
     [Header("Ativar e Desativar os Grupos")]
+    public GameObject skillGroup;
     public GameObject statsGroup;
     public GameObject inventoryGroup;
     public GameObject equipmentGroup;
@@ -48,6 +49,7 @@ public class StatusAnimator : MonoBehaviour
             if (!isOpen)
             {
                 statsGroup.SetActive(true);
+                skillGroup.SetActive(false);
                 inventoryGroup.SetActive(false);
                 equipmentGroup.SetActive(false);
             }

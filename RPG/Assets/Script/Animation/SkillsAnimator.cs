@@ -9,6 +9,7 @@ public class SkillsAnimator : MonoBehaviour
 
     [Space]
     [Header("Ativar e Desativar os Grupos")]
+    public GameObject skillGroup;
     public GameObject statsGroup;
     public GameObject inventoryGroup;
     public GameObject equipmentGroup;
@@ -24,6 +25,10 @@ public class SkillsAnimator : MonoBehaviour
     public GameObject downInventory;
     public GameObject downEquipment;
 
+    private void Start()
+    {
+        skillGroup.SetActive(false);
+    }
 
     public void PanelOpener()
     {
@@ -41,6 +46,15 @@ public class SkillsAnimator : MonoBehaviour
             bool isDown = animator1.GetBool("isSlided");
             if (animator1.GetBool("isSlided") && !animator.GetBool("open"))
             {
+
+                if (!isOpen)
+                {
+                    skillGroup.SetActive(true);
+                    inventoryGroup.SetActive(false);
+                    equipmentGroup.SetActive(false);
+                    statsGroup.SetActive(false);
+                }
+
                 animator.SetBool("open", !isOpen);
 
                 animatorSelf.SetBool("isSlided", false);
@@ -56,6 +70,18 @@ public class SkillsAnimator : MonoBehaviour
             else
             {
                 animatorSelf.SetBool("isSlided", false);
+
+                if (isOpen)
+                {
+                    skillGroup.SetActive(false);
+                }
+                else
+                {
+                    skillGroup.SetActive(true);
+                    inventoryGroup.SetActive(false);
+                    equipmentGroup.SetActive(false);
+                    statsGroup.SetActive(false);
+                }
 
                 animator.SetBool("open", !isOpen);
 

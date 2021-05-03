@@ -9,6 +9,7 @@ public class EquipmentAnimation : MonoBehaviour
 
     [Space]
     [Header("Ativar e Desativar os Grupos")]
+    public GameObject skillGroup;
     public GameObject statsGroup;
     public GameObject inventoryGroup;
     public GameObject equipmentGroup;
@@ -45,15 +46,16 @@ public class EquipmentAnimation : MonoBehaviour
 
         bool isOpen = animation.GetBool("open");
 
-        if (!isOpen)
+        if (isOpen)
         {
-            statsGroup.SetActive(false);
-            inventoryGroup.SetActive(false);
-            equipmentGroup.SetActive(true);
+            equipmentGroup.SetActive(false);
         }
         else
         {
-            equipmentGroup.SetActive(false);
+            statsGroup.SetActive(false);
+            inventoryGroup.SetActive(false);
+            skillGroup.SetActive(false);
+            equipmentGroup.SetActive(true); 
         }
 
         animation.SetBool("open", !isOpen);

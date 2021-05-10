@@ -17,7 +17,7 @@ public class PlayerMenuScripts : MonoBehaviour
 
     public void PlayerInfo()
     {
-        SceneManager.LoadScene("UserSettings");
+        //SceneManager.LoadScene("UserSettings");
     }
 
     public void ExitGame()

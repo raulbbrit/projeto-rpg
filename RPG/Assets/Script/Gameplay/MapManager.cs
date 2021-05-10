@@ -18,10 +18,14 @@ public class MapManager : Singleton<MapManager>
             return tile.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
         }
     }
-// Start is called before the first frame update
-void Start()
+    private void Awake()
     {
         CreateMap();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame

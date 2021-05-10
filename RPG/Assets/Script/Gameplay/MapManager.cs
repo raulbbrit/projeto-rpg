@@ -54,7 +54,8 @@ public class MapManager : Singleton<MapManager>
     {
         
         TileScript newTile = Instantiate(tile).GetComponent<TileScript>();
-        newTile.GetComponent<TileScript>().Setup(new Point(x, y),new Vector3(worldStartPosition.x + (TileSize * x), worldStartPosition.y - (TileSize * y), 10),map);
+        newTile.GetComponent<TileScript>().Setup(new Point(x, y),
+            new Vector3(worldStartPosition.x + (TileSize * x), worldStartPosition.y - (TileSize * y), 10),map);
      
     }
 

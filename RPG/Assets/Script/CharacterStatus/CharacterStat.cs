@@ -7,6 +7,7 @@ public class CharacterStat
 {
     public float BaseValue;
 
+    //Valor do status, verifica se houve alterações
     public virtual float Value
     {
         get
@@ -28,24 +29,27 @@ public class CharacterStat
     protected readonly List<StatModifier> statModifiers;
     public readonly ReadOnlyCollection<StatModifier> StatModifiers;
 
+    //Lista de modificadores de status
     public CharacterStat()
     {
         statModifiers = new List<StatModifier>();
         StatModifiers = statModifiers.AsReadOnly();
     }
-
+    //Valor base do status
     public CharacterStat(float baseValue) : this()
     {
         BaseValue = baseValue;
     }
 
+    //Adiciona modificador e torna o status "sujo"
     public virtual void AddModifier(StatModifier mod)
     {
         isDirty = true;
         statModifiers.Add(mod);
         statModifiers.Sort(CompareModifierOrder);
+  
     }
-
+    //Remove o Modificador
     public virtual bool RemoveModifier(StatModifier mod)
     {
         if (statModifiers.Remove(mod))
@@ -55,7 +59,7 @@ public class CharacterStat
         }
         return false;
     }
-
+    //Desequipar e reorganizar lista de modificadores
     public virtual bool RemoveAllModifiersFromSource(object source)
     {
         bool didRemove = false;
@@ -72,6 +76,7 @@ public class CharacterStat
         return didRemove;
     }
 
+    //Decide qual valor terá prioridade de acordo com o tipo de modificador (porcentagem, inteiro,etc)
     protected virtual int CompareModifierOrder(StatModifier a, StatModifier b)
     {
         if (a.Order < b.Order)
@@ -82,7 +87,7 @@ public class CharacterStat
 
         return 0;
     }
-
+    //Percorre a lista de modificadores e realiza os calculos
     protected virtual float CalculateFinalValue()
     {
         float finalValue = BaseValue;

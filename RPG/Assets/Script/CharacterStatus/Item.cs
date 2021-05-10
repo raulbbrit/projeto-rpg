@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
-public class Item : ScriptableObject
+
+public class Item : MonoBehaviour
 {
     public string ItemName;
     public Sprite Icon;

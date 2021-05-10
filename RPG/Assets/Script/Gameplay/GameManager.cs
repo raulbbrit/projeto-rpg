@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    // [SerializeField] private GameObject pinPreFab;
-    /*public GameObject PinPreFab
-    {
-        get
-        {
-            return pinPreFab;
-        }
-    }*/
+
     public PickObjectButton SelectedObject { get; private set; }
     
     // Start is called before the first frame update
@@ -29,11 +22,17 @@ public class GameManager : Singleton<GameManager>
     public void SelectObject(PickObjectButton pickObjectButton) 
     {
         this.SelectedObject = pickObjectButton;
+        if(SelectedObject.HoverIcon != null)
+        {
+            Hover.Instance.ActvateHover(SelectedObject.HoverIcon);
+        }
+      
     }
 
     public void ObjectReleased()
     {
         SelectedObject = null;
+        Hover.Instance.ActvateHover(null);
     }
 
 

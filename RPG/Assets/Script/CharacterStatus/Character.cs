@@ -35,7 +35,7 @@ public class Character : MonoBehaviour
             Unequip((EquippableItem)item);
         }
     }
-
+    //Adiciona o item aos equipados
     public void Equip(EquippableItem item)
     {
         if (inventory.RemoveItems(item))

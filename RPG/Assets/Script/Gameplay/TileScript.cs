@@ -5,7 +5,19 @@ using UnityEngine.EventSystems;
 
 public class TileScript : MonoBehaviour
 {
+    
+ //   public GameObject Pin { get; private set; }
+
+
     public Point GridPosition { get; private set; }
+
+    public bool isEmpty { get; private set; }
+
+    private SpriteRenderer spriteRenderer;
+
+    private Color32 fullColor = new Color32(255, 118, 118, 255);
+    private Color32 emptyColor = new Color32(96, 255, 90, 255);
+
     public Vector2 WordPosition
     {
         get
@@ -16,7 +28,7 @@ public class TileScript : MonoBehaviour
     }
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -27,7 +39,7 @@ public class TileScript : MonoBehaviour
     
     public void Setup(Point gridPos, Vector3 worldPos, Transform parent)
     {
-
+        isEmpty = true;
         this.GridPosition = gridPos;
         transform.position = worldPos;
         transform.SetParent(parent);
@@ -37,12 +49,26 @@ public class TileScript : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            if(isEmpty)
+            {
+                ColorTile(emptyColor);
+            }
+            if (!isEmpty)
+            {
+                ColorTile(fullColor);
+            }
+    
+            else if (Input.GetMouseButtonDown(0))
             {
                 PlaceObject();
             }
 
         }
+    }
+
+    private void OnMouseExit()
+    {
+        ColorTile(Color.white);
     }
     //Posiciona o objeto vindo do GamManager
     private void PlaceObject()
@@ -53,7 +79,19 @@ public class TileScript : MonoBehaviour
             new Vector3(transform.position.x, transform.position.y, 9), Quaternion.identity);
 
         _object.transform.SetParent(transform);
-        GameManager.Instance.ObjectReleased();
 
+        isEmpty = false;
+        ColorTile(Color.white);
+
+        GameManager.Instance.ObjectReleased();
+   //     Pin = _object;
+    
     }
+
+    private void ColorTile(Color newColor)
+    {
+        spriteRenderer.color = newColor;
+    }
+
+
 }

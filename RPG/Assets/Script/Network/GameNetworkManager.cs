@@ -10,7 +10,7 @@ public class GameNetworkManager : NetworkManager
     [Scene] [SerializeField] private string gameScene;
     public static event Action OnclientConnected;
     public static event Action OnclientDisconnected;
-
+    [SerializeField] private NetworkPlayer networkPlayer;
     
    
     public override void OnStartServer()
@@ -41,7 +41,8 @@ public class GameNetworkManager : NetworkManager
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
-     
+        NetworkPlayer player= Instantiate(networkPlayer);
+        NetworkServer.AddPlayerForConnection(conn,networkPlayer.gameObject);
     }
     
 }

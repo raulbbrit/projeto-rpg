@@ -26,6 +26,11 @@ public class StatusAnimator : MonoBehaviour
     public GameObject downPanel2;
     public GameObject downPanel3;
 
+    private void Start()
+    {
+        statsGroup.SetActive(false);
+    }
+
     public void PanelOpen()
     {
         

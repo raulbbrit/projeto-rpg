@@ -43,7 +43,6 @@ public class GameNetworkManager : NetworkManager
     {
         NetworkPlayer player= Instantiate(networkPlayer);
         NetworkServer.AddPlayerForConnection(conn,networkPlayer.gameObject);
-
     }
     
 }

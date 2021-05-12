@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Hover : Singleton<Hover>
 {
-
-    public GameObject HoverIcon { get; private set; }
-
     // Start is called before the first frame update
+    private GameObject icon;
+    [SerializeField] private GameObject getGameObject;
+    //public GameObject Icon { get => icon; set => icon = value; }
+    private int delay;
+
     void Start()
     {
         
@@ -17,14 +18,29 @@ public class Hover : Singleton<Hover>
     void Update()
     {
         FollowMouse();
+        
     }
-    private void FollowMouse()
+
+    private Vector3 FollowMouse()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 8);
+        //Vector3 mousePosition = Input.mousePosition;
+        //mousePosition.z = 10;
+        //transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+        //return mousePosition;
+         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+         transform.position = new Vector3(transform.position.x, transform.position.y, 8);
+
+        return transform.position;
+        //Hover.Instance.Activate(null) in the PlaceTower() 
     }
-    public void ActvateHover(GameObject hoverIcon)
+    public void ActivateHover()
     {
-        this.HoverIcon = hoverIcon;
+        this.getGameObject.SetActive(true);
+      
+    }
+
+    public void DesactiveHover()
+    { 
+            this.getGameObject.SetActive(false);
     }
 }

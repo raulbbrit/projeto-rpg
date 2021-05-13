@@ -12,6 +12,7 @@ public class ValuesIncrement : MonoBehaviour
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] StatPanel statPanel;
     [SerializeField] SkillPanel skillPanel;
+    [SerializeField] InfoPanel infoPanel;
     private Character charac;
 
     private void Awake()
@@ -21,6 +22,7 @@ public class ValuesIncrement : MonoBehaviour
         charac.EquipmentPanel = equipmentPanel;
         charac.StatPanel = statPanel;
         charac.SkillPanel = skillPanel;
+        charac.InfoPanel = infoPanel;
         charac.SetFieldsAndUI();
     }
 

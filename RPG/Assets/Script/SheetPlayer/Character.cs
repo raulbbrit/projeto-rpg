@@ -28,17 +28,23 @@ public class Character : MonoBehaviour
 
     [Space]
     [Header("Character Information")]
-    public CharacterInfos Name;
     public CharacterInfos Level;
     public CharacterInfos Health;
     public CharacterInfos Mana;
 
-    
+    [Space]
+    [Header("Character Name")]
+    public CharacterName Name;
+
+    [Space]
+    [Header("Panels to start the UI")]
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] StatPanel statPanel;
     [SerializeField] SkillPanel skillPanel;
     [SerializeField] InfoPanel infoPanel;
+    [SerializeField] NamePanel namePanel;
+
     /*
     private Inventory inventory;
     private EquipmentPanel equipmentPanel;
@@ -52,6 +58,7 @@ public class Character : MonoBehaviour
     public StatPanel StatPanel { get => statPanel; set => statPanel = value; }
     public SkillPanel SkillPanel { get => skillPanel; set => skillPanel = value; }
     public InfoPanel InfoPanel { get => infoPanel; set => infoPanel = value; }
+    public NamePanel NamePanel { get => namePanel; set => namePanel = value; }
 
     /*private void Awake()
     {
@@ -73,9 +80,13 @@ public class Character : MonoBehaviour
 
         skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
             Knowledge, Resources, Intimidation, Deceive);
-        skillPanel.UpadeStatValues();
+        skillPanel.UpadeSkillValues();
 
-        infoPanel.SetInfos(Name, Level, Health, Mana);
+        infoPanel.SetInfos(Level, Health, Mana);
+        infoPanel.UpadeStatValues();
+
+        namePanel.SetName(Name);
+        namePanel.UpadeStatValues();
 
         inventory.OnItemRightClickedEvent += EquipFromInventory;
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;

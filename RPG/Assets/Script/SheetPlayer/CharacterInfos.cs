@@ -6,9 +6,9 @@ using UnityEngine;
 [Serializable]
 public class CharacterInfos
 {
-    public string characterInfo;
+    public int characterInfo;
 
-    public virtual string Value
+    public virtual int Value
     {
         get
         {
@@ -17,9 +17,9 @@ public class CharacterInfos
         }
     }
 
-    protected string _value;
+    protected int _value;
 
-    public CharacterInfos(string characterInfo)
+    public CharacterInfos(int characterInfo)
     {
         this.characterInfo = characterInfo;
     }

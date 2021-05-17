@@ -8,11 +8,13 @@ public class ValuesIncrement : MonoBehaviour
     public GameObject script;
     public GameObject statScript;
     public GameObject skillScript;
+    public GameObject infoScript;
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentPanel equipmentPanel;
     [SerializeField] StatPanel statPanel;
     [SerializeField] SkillPanel skillPanel;
     [SerializeField] InfoPanel infoPanel;
+    [SerializeField] NamePanel namePanel;
     private Character charac;
 
     private void Awake()
@@ -23,6 +25,8 @@ public class ValuesIncrement : MonoBehaviour
         charac.StatPanel = statPanel;
         charac.SkillPanel = skillPanel;
         charac.InfoPanel = infoPanel;
+        charac.NamePanel = namePanel;
+
         charac.SetFieldsAndUI();
     }
 
@@ -33,6 +37,7 @@ public class ValuesIncrement : MonoBehaviour
 
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();
+        InfoDisplay[] info = infoScript.GetComponentsInChildren<InfoDisplay>();
         if (button != 0) {
             
             switch (button)
@@ -94,6 +99,14 @@ public class ValuesIncrement : MonoBehaviour
                 case 19: charac.Deceive.skillValue += 1; break;
                 case -19: if (charac.Deceive.skillValue > 0) { charac.Deceive.skillValue -= 1; } else { } break;
 
+                case 20: charac.Health.characterInfo += 1; break;
+                case -20: if (charac.Health.characterInfo > 0) { charac.Health.characterInfo -= 1; } else { } break;
+
+                case 21: charac.Mana.characterInfo += 1; break;
+                case -21: if (charac.Mana.characterInfo > 0) { charac.Mana.characterInfo -= 1; } else { } break;
+
+                case 22: charac.Level.characterInfo += 1; break;
+                case -22: if (charac.Level.characterInfo > 0) { charac.Level.characterInfo -= 1; } else { } break;
             }
 
 
@@ -103,11 +116,18 @@ public class ValuesIncrement : MonoBehaviour
                     stats.UpdateStatValue();
                 }
             }
-            else
+            else if(button > -20 && button < -4 || button > 5 && button < 20)
             {
                 foreach (SkillDisplay skills in skill)
                 {
                     skills.UpdateStatValue();
+                }
+            }
+            else
+            {
+                foreach (InfoDisplay infos in info)
+                {
+                    infos.UpdateStatValue();
                 }
             }
         }

@@ -12,7 +12,7 @@ public class SkillPanel : MonoBehaviour
     private void OnValidate()
     {
         skillDisplays = GetComponentsInChildren<SkillDisplay>();
-        UpadeStatNames();
+        UpadeSkillNames();
     }
 
     public void SetSkills(params CharacterSkill[] charStats)
@@ -36,7 +36,7 @@ public class SkillPanel : MonoBehaviour
         }
     }
 
-    public void UpadeStatValues()
+    public void UpadeSkillValues()
     {
         for (int i = 0; i < skill.Length; i++)
         {
@@ -44,7 +44,7 @@ public class SkillPanel : MonoBehaviour
         }
     }
 
-    public void UpadeStatNames()
+    public void UpadeSkillNames()
     {
         for (int i = 0; i < skillName.Length; i++)
         {

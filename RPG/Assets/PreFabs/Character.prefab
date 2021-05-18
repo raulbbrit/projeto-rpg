@@ -81,16 +81,17 @@ MonoBehaviour:
     skillValue: 0
   Deceive:
     skillValue: 0
-  Name:
-    characterInfo: Character Name
   Level:
     characterInfo: 1
   Health:
     characterInfo: 1
   Mana:
     characterInfo: 1
+  Name:
+    characterName: Character Name
   inventory: {fileID: 0}
   equipmentPanel: {fileID: 0}
   statPanel: {fileID: 0}
   skillPanel: {fileID: 0}
   infoPanel: {fileID: 0}
+  namePanel: {fileID: 0}

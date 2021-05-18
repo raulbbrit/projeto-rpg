@@ -849,8 +849,6 @@ GameObject:
   - component: {fileID: 315571628}
   - component: {fileID: 315571627}
   - component: {fileID: 315571626}
-  - component: {fileID: 315571625}
-  - component: {fileID: 315571629}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -858,38 +856,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &315571625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315571624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b59b1bedf74ce546b8b46447443c770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  PersistNetworkManagerToOfflineScene: 0
-  runInBackground: 1
-  autoStartServerBuild: 1
-  serverTickRate: 30
-  serverBatching: 1
-  serverBatchInterval: 0
-  offlineScene: 
-  onlineScene: 
-  transport: {fileID: 315571626}
-  networkAddress: localhost
-  maxConnections: 100
-  disconnectInactiveConnections: 0
-  disconnectInactiveTimeout: 60
-  authenticator: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  autoCreatePlayer: 1
-  playerSpawnMethod: 0
-  spawnPrefabs: []
-  ip_InputField: {fileID: 916426105}
 --- !u!114 &315571626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,19 +897,22 @@ MonoBehaviour:
   serverTickRate: 30
   serverBatching: 1
   serverBatchInterval: 0
-  offlineScene: Assets/Scenes/PlayerMenu.unity
-  onlineScene: Assets/Scenes/PlayerScene.unity
+  offlineScene: 
+  onlineScene: Assets/Scenes/PlayerMenu.unity
   transport: {fileID: 315571626}
   networkAddress: localhost
   maxConnections: 4
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 7540408855450193096, guid: 6fe9b2b05eafbf645a634cb22d50649f,
+  playerPrefab: {fileID: 257402104322805791, guid: 101faab6565c10947b40032dbf389063,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
+  gameScene: 
+  networkPlayerPrefab: {fileID: -3705596593625499363, guid: 6fe9b2b05eafbf645a634cb22d50649f,
+    type: 3}
 --- !u!4 &315571628
 Transform:
   m_ObjectHideFlags: 0
@@ -958,21 +927,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &315571629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315571624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
 --- !u!1 &363871177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1441,7 @@ GameObject:
   - component: {fileID: 508864421}
   - component: {fileID: 508864426}
   - component: {fileID: 508864425}
+  - component: {fileID: 508864427}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1618,6 +1573,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508864420}
   m_CullTransparentMesh: 0
+--- !u!114 &508864427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508864420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21dd6f4e08671b845a1e8d3b18ee4c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ip_InputField: {fileID: 916426105}
+  gameNetworkManager: {fileID: 315571627}
 --- !u!1 &565591049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,8 +3009,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 315571625}
-        m_TargetAssemblyTypeName: HostConnect, Assembly-CSharp
+      - m_Target: {fileID: 508864427}
+        m_TargetAssemblyTypeName: StartConnection, Assembly-CSharp
         m_MethodName: ConnectFunction
         m_Mode: 1
         m_Arguments:
@@ -6655,8 +6624,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 315571625}
-        m_TargetAssemblyTypeName: HostConnect, Assembly-CSharp
+      - m_Target: {fileID: 508864427}
+        m_TargetAssemblyTypeName: StartConnection, Assembly-CSharp
         m_MethodName: HostFunction
         m_Mode: 1
         m_Arguments:

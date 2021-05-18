@@ -7,11 +7,13 @@ using System.Linq;
 
 public class GameNetworkManager : NetworkManager
 {
-    [Scene] [SerializeField] private string gameScene;
-    public static event Action OnclientConnected;
-    public static event Action OnclientDisconnected;
-    [SerializeField] private NetworkPlayer networkPlayer;
+    [Scene] [SerializeField] private string gameScene = null;
+  //  public static event Action OnclientConnected;
+  //  public static event Action OnclientDisconnected;
+    [SerializeField] private NetworkPlayer networkPlayerPrefab;
     
+
+    public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();
    
     public override void OnStartServer()
     {
@@ -32,17 +34,33 @@ public class GameNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
-        OnclientConnected?.Invoke();
+        // OnclientConnected?.Invoke();
     }
     public override void OnClientDisconnect(NetworkConnection conn)
     {
         base.OnClientDisconnect(conn);
-        OnclientDisconnected?.Invoke();
+        //OnclientDisconnected?.Invoke();
     }
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
-        NetworkPlayer player= Instantiate(networkPlayer);
-        NetworkServer.AddPlayerForConnection(conn,networkPlayer.gameObject);
+        NetworkPlayer networkPlayerInstance= Instantiate(networkPlayerPrefab);
+        bool isHost = PlayersList.Count==0; //verificando se é o host (primeiro a entrar)
+        networkPlayerInstance.IsHost = isHost;
+        NetworkServer.AddPlayerForConnection(conn,networkPlayerInstance.gameObject);
     }
-    
+    public override void OnServerDisconnect(NetworkConnection conn)
+    {
+        if (conn.identity != null)
+        {
+            var OffPlayer = conn.identity.GetComponent<NetworkPlayer>();
+            PlayersList.Remove(OffPlayer);
+        }
+        base.OnServerDisconnect(conn);
+    }
+
+    public override void OnStopServer()
+    {
+        base.OnStopServer();
+    }
+
 }

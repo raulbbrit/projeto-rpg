@@ -22,6 +22,7 @@ public class StartConnection : MonoBehaviour
     {
         gameNetworkManager.networkAddress = ip_InputField.text;
         gameNetworkManager.StartClient();
+        Debug.Log("Botão Connect");
 
     }
 }

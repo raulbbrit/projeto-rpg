@@ -116,7 +116,7 @@ public class ValuesIncrement : MonoBehaviour
                     stats.UpdateStatValue();
                 }
             }
-            else if(button > -20 && button < -4 || button > 5 && button < 20)
+            else if(button > -20 && button < -4 || button > 4 && button < 20)
             {
                 foreach (SkillDisplay skills in skill)
                 {

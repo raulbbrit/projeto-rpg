@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 670586439631880365, guid: 86edb6e4dac590d439da0d53fc6b4a90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 670586439631880366, guid: 86edb6e4dac590d439da0d53fc6b4a90,
         type: 3}
       propertyPath: m_Pivot.x

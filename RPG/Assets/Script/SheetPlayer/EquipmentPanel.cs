@@ -10,7 +10,6 @@ public class EquipmentPanel : MonoBehaviour
 
     private void Start()
     {
-
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
             equipmentSlots[i].OnRightClickEvent += OnItemRightClickedEvent;

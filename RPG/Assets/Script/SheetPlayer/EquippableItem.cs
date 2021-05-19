@@ -12,8 +12,8 @@ public enum EquipmentType
     Accessory2,
 }
 
-[CreateAssetMenu]
-public class EquippableItem : Item
+
+public class EquippableItem :Item
 {
     public int StrengthBonus;
     public int AgilityBonus;

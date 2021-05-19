@@ -4,8 +4,9 @@ using UnityEngine;
 public class Hover : Singleton<Hover>
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject getGameObject;
+    [SerializeField] GameObject getGameObject;
 
+    public GameObject GetGameObject { get => getGameObject; set => getGameObject = value; }
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class Hover : Singleton<Hover>
 
     private void FollowMouse()
     {
-        if (this.getGameObject.activeSelf == true)
+        if (this.GetGameObject.activeSelf == true)
         { 
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(transform.position.x, transform.position.y, 8);
@@ -30,13 +31,13 @@ public class Hover : Singleton<Hover>
     }
     public void ActivateHover()
     {
-        this.getGameObject.SetActive(true);
+        this.GetGameObject.SetActive(true);
       
     }
 
     public void DesactiveHover()
     { 
-            this.getGameObject.SetActive(false);
+            this.GetGameObject.SetActive(false);
     }
 
 

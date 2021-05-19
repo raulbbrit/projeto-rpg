@@ -20,7 +20,7 @@ public class MenuSlider : MonoBehaviour
     public void SlideRight()
     {
       
-        transform.LeanMoveLocal(new Vector2((float)-295.1, 1), 1).setEaseOutQuart();
+        transform.LeanMoveLocal(new Vector2((float)-300.1, 1), 1).setEaseOutQuart();
         menuIsShowing = true;
 
     }

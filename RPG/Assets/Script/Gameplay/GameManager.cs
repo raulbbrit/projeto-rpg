@@ -39,10 +39,18 @@ public class GameManager : Singleton<GameManager>
 
     public void HandleEscape()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        try
         {
-            Hover.Instance.DesactiveHover();
-            SelectedObject = null;
+            if (Input.GetMouseButtonDown(1))
+            {
+                Hover.Instance.DesactiveHover();
+                SelectedObject = null;
+            }
+        } catch
+        {
+            Debug.Log("Hover: Prefab desativado");
         }
+         
     }
 }

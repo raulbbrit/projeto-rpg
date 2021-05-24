@@ -32,10 +32,7 @@ public class TileScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     
     public void Setup(Point gridPos, Vector3 worldPos, Transform parent)
     {
@@ -49,16 +46,16 @@ public class TileScript : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
         {
-            if(isEmpty)
+            if(isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
             {
                 ColorTile(emptyColor);
             }
-            if (!isEmpty)
+            if (!isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
             {
                 ColorTile(fullColor);
             }
     
-            else if (Input.GetMouseButtonDown(0))
+            else if (Input.GetMouseButtonDown(0) && GameManager.Instance.SelectedObject.MapObjectPreFab!=null )
             {
                 PlaceObject();
             }
@@ -75,7 +72,7 @@ public class TileScript : MonoBehaviour
     {
         // Debug.Log("Placing a pin at "+GridPosition.X+","+GridPosition.Y); Pegar posição do click no quadriculado
      
-        GameObject _object = (GameObject)Instantiate(GameManager.Instance.SelectedObject.ObjectPrefab,
+        GameObject _object = (GameObject)Instantiate(GameManager.Instance.SelectedObject.MapObjectPreFab,
             new Vector3(transform.position.x, transform.position.y, 9), Quaternion.identity);
 
         _object.transform.SetParent(transform);

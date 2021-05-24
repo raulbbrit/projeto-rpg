@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Image Image;
+    [SerializeField] Text Text;
    // [SerializeField] ItemTooltip tooltip; 
 
     public event Action<Item> OnRightClickEvent;
@@ -14,26 +14,30 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
     private Item _item;
     public Item Item
     {
-        get { return _item; }
+        get {return _item;}
         set
         {
+          
             _item = value;
-
+            
+           
+          
             if (_item == null)
             {
-                Image.enabled = false;
+                Text.enabled = false;
             }
             else
             {
-                Image.sprite = _item.Icon;
-                Image.enabled = true;
+                Text.text = _item.ItemName;
+                Text.enabled = true;
             }
+         
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Left)
         {
 
             if (Item != null && OnRightClickEvent != null)
@@ -45,9 +49,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
 
 
     protected virtual void OnValidate()    {
-        if (Image == null)
+        if (Text == null)
         {
-            Image = GetComponent<Image>();
+            Text = GetComponent<Text>();
         }
         
        /* if(tooltip == null)

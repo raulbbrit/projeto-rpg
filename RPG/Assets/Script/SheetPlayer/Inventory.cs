@@ -28,7 +28,9 @@ public class Inventory : MonoBehaviour
         }
         for (; i < itemSlots.Length; i++)
         {
+            //Debug.Log("Item " + itemSlots[i].Item.ItemName + " no slot " + i + " agora é null");
             itemSlots[i].Item = null;
+          
         }
     }
 

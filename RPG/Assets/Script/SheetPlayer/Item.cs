@@ -4,5 +4,5 @@
 public class Item : MonoBehaviour
 {
     public string ItemName;
-    public Sprite Icon;
+    //public Sprite Icon;
 }

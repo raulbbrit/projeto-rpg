@@ -105,7 +105,7 @@ public class Character : MonoBehaviour
     {
         if (item is EquippableItem)
         {
-
+            Unequip((EquippableItem)item);
         }
     }
 

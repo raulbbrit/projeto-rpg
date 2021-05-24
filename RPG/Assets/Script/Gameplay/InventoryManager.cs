@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private InputField intelligenceInput;
     [SerializeField] private InputField vitalityInput;
     [SerializeField] private Dropdown equipmentType;
+    private Character character;
 
 
     public void AddItem()
@@ -23,14 +24,12 @@ public class InventoryManager : MonoBehaviour
         item.AgilityBonus = int.Parse(agilityInput.text);
         item.IntelligenceBonus = int.Parse(intelligenceInput.text);
         item.VitalityBonus = int.Parse(vitalityInput.text);
-       item.EquipamentType = (EquipmentType) equipmentType.value;
+        item.EquipamentType = (EquipmentType) equipmentType.value;
         inventory.AddItem(item);
+
     }
 
-   /* public void RemoveItem()
-    {
-        inventory.RemoveItems();
-    }*/
-}
 
 }
+
+

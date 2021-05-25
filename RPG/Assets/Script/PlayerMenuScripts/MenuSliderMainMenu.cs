@@ -24,7 +24,6 @@ public class MenuSliderMainMenu : MonoBehaviour
     private void Update()
     {
         currentPosition = transform.localPosition;
-        Debug.Log(""+currentPosition.x);
         /*if (transform.position.x > -198)
         {
           

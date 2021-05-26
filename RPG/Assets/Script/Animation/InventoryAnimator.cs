@@ -29,7 +29,6 @@ public class InventoryAnimator: MonoBehaviour
     private void Start()
     {
         inventoryGroup.SetActive(false);
-
     }
 
     public void PanelOpen()

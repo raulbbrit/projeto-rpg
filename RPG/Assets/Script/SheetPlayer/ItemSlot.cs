@@ -6,12 +6,13 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Text Text;
+    [SerializeField] Text text;
    // [SerializeField] ItemTooltip tooltip; 
 
     public event Action<Item> OnRightClickEvent;
 
     private Item _item;
+    private EquippableItem equipItem;
     public Item Item
     {
         get {return _item;}
@@ -19,17 +20,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
         {
           
             _item = value;
-            
+            equipItem = (EquippableItem)value;
            
           
             if (_item == null)
             {
-                Text.enabled = false;
+                text.enabled = false;
             }
             else
             {
-                Text.text = _item.ItemName;
-                Text.enabled = true;
+                text.text = _item.ItemName.ToUpper() + "\n" +"Str: " + equipItem.StrengthBonus + " Int: " + equipItem.IntelligenceBonus + " Vit: " + equipItem.VitalityBonus + " Agi: " + equipItem.AgilityBonus;
+                text.enabled = true;
             }
          
         }
@@ -49,9 +50,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
 
 
     protected virtual void OnValidate()    {
-        if (Text == null)
+        if (text == null)
         {
-            Text = GetComponent<Text>();
+            text = GetComponent<Text>();
         }
         
        /* if(tooltip == null)

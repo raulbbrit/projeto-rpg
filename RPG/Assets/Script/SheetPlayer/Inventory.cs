@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<Item> items;
-    [SerializeField] GameObject[] prefabs;
+    [SerializeField] GameObject prefab;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
 
@@ -83,24 +83,27 @@ public class Inventory : MonoBehaviour
     public void OnLoadInventory()
     {
         SaveData.equipments = (List<EquipmentData>)SerializationManager.Load(Application.persistentDataPath + "/saves/inventory.sheet");
-        Debug.Log("Qunatidadede items no equipments: " + SaveData.equipments.Count);
+
+        Debug.Log("Qunatidadede items no save: " + SaveData.equipments.Count);
 
         for (int i = 0; i < SaveData.equipments.Count; i++)
         {
-            EquipmentData currentEquip = SaveData.equipments[i];
+            
+                EquipmentData currentEquip = SaveData.equipments[i];
             //Debug.Log($"Equipment atual {i}");
             //EquipmentData currentEquip = SaveData.equipments[i];
-
-            GameObject obj = Instantiate(prefabs[i]);
-            EquippableItem equipItem = obj.GetComponent<EquippableItem>();
-            equipItem.ItemName = currentEquip.itemName;
-            equipItem.StrengthBonus = currentEquip.strength;
-            equipItem.IntelligenceBonus = currentEquip.intelligence;
-            equipItem.VitalityBonus = currentEquip.vitality;
-            equipItem.AgilityBonus = currentEquip.agility;
-            equipItem.EquipamentType = currentEquip.equipType;
-
-            items.Add(equipItem);
+            Debug.Log("Index: " + i + " Array Save: "+SaveData.equipments.Count+" Array items: "+items.Count);
+                GameObject obj = Instantiate(prefab);
+            Debug.Log("Passou do gameobject");
+                EquippableItem equipItem = obj.GetComponent<EquippableItem>();
+                equipItem.ItemName = currentEquip.itemName;
+                equipItem.StrengthBonus = currentEquip.strength;
+                equipItem.IntelligenceBonus = currentEquip.intelligence;
+                equipItem.VitalityBonus = currentEquip.vitality;
+                equipItem.AgilityBonus = currentEquip.agility;
+                equipItem.EquipamentType = currentEquip.equipType;
+                items.Add(equipItem);
+            
         }
 
 

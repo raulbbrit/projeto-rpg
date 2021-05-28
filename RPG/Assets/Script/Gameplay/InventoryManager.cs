@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    public EquipmentData data;
     [SerializeField] Text errortext;
     [SerializeField] private Inventory inventory;
     [SerializeField] private InputField nameInput;
@@ -34,6 +35,15 @@ public class InventoryManager : MonoBehaviour
                 item.VitalityBonus = int.Parse(vitalityInput.text);
                 item.EquipamentType = (EquipmentType)equipmentType.value;
                 inventory.AddItem(item);
+
+                data.id = equipmentType.ToString() + nameInput.text;
+                data.itemName = nameInput.text;
+                data.strength = int.Parse(strengthInput.text);
+                data.intelligence = int.Parse(intelligenceInput.text);
+                data.agility = int.Parse(agilityInput.text);
+                data.vitality = int.Parse(vitalityInput.text);
+                data.equipType = (EquipmentType)equipmentType.value;
+                SaveData.equipments.Add(data);//lista principal
 
                 errortext.enabled = false;
                 nameInput.text = "";

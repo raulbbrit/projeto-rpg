@@ -5,27 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    private static SaveData _current;
-    public static SaveData current
-    {
-        get
-        {
-            if (_current == null)
-            {
-                _current = new SaveData();
-            }
-            return _current;
-        }
-        set
-        {
-            if (value != null)
-            {
-                _current = value;
-                
-            }
-        }
-    }
-
     private static List<EquipmentData> _equipments;
     public static List<EquipmentData> equipments
     {
@@ -38,10 +17,32 @@ public class SaveData
             return _equipments;
         }
         set
+        { 
+            if (value != null)
+            {
+              _equipments = value;
+     
+            }
+        }
+    }
+
+    private static List<EquipmentData> _equipmentsaux;
+    public static List<EquipmentData> equipmentsaux
+    {
+        get
+        {
+            if (_equipmentsaux == null)
+            {
+                _equipmentsaux = new List<EquipmentData>();
+            }
+            return _equipmentsaux;
+        }
+        set
         {
             if (value != null)
             {
-                _equipments = value;
+               
+                _equipmentsaux = value;
 
             }
         }

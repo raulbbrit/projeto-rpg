@@ -15,7 +15,7 @@ public enum EquipmentType
 [System.Serializable]
 public class EquippableItem : Item
 {
-    public EquipmentData data;
+    //public EquipmentData data;
 
     public int StrengthBonus;
     public int AgilityBonus;
@@ -56,17 +56,20 @@ public class EquippableItem : Item
         c.Vitality.RemoveAllModifiersFromSource(this);
     }
 
-    private void Start()
+    /*private void Start()
     {
+        //SaveData.equipments.Clear();
         if (string.IsNullOrEmpty(data.id)) {
-            data.id = System.DateTime.Now.ToLongDateString() + System.DateTime.Now.ToLongTimeString() + Random.Range(0, int.MaxValue).ToString();
+            data.id = EquipamentType.ToString()+ItemName;
             data.itemName = ItemName;
             data.strength = StrengthBonus;
             data.intelligence = IntelligenceBonus;
             data.agility = AgilityBonus;
             data.vitality = VitalityBonus;
             data.equipType = EquipamentType;
-            SaveData.equipments.Add(data);
-        } 
-    }
+            SaveData.equipments.Add(data);//lista principal
+
+        }
+        
+    }*/
 }

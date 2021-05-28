@@ -50,6 +50,23 @@ public class SerializationManager
             return null;
         }
     }
+
+    public static bool DeleteOldSave(string path)
+    {
+        BinaryFormatter formatter = GetBinaryFormatter();
+
+        if (!Directory.Exists(Application.persistentDataPath + "/saves/" + "inventory.sheet"))
+        {
+            SaveData.equipments.Clear();
+            return true;
+        }
+        else
+        {
+            Debug.Log("Arquivo nao encontrado");
+            return false;
+        }
+        
+    }
     
 
     public static BinaryFormatter GetBinaryFormatter()

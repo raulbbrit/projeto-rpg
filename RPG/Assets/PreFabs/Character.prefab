@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5167ede36eb044a9ceba5be901f54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterInGame: {fileID: 0}
+  charin: {fileID: 0}
   Strenght:
     BaseValue: 0
   Agility:

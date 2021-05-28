@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using System.IO;
 
 public class Character : MonoBehaviour
 {
+    public Character charin;
     [Header("Character Stats")]
     public CharacterStat Strenght;
     public CharacterStat Agility;
@@ -73,8 +75,18 @@ public class Character : MonoBehaviour
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
     }*/
 
+    /*private void Start()
+    {
+        charin =  GetComponent<Character>();
+
+    }*/
+
     public void SetFieldsAndUI()
     {
+        string path = Application.persistentDataPath + "/character.sheet";
+        if (File.Exists(path)) {
+            LoadCharacter();  
+        }
         statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
         statPanel.UpadeStatValues();
 
@@ -141,4 +153,42 @@ public class Character : MonoBehaviour
             inventory.AddItem(item);
         }
     }
+
+    /*public void SavePlayer()
+    {
+        SaveSystem.SaveCharacter(charin);
+    }*/
+
+    public void LoadCharacter()
+    {
+        CharacterData data = SaveSystem.LoadCharacter();
+
+        Strenght.BaseValue = data.strenght;
+        Intelligence.BaseValue = data.intelligence;
+        Vitality.BaseValue = data.vitality;
+        Agility.BaseValue = data.agility;
+        Fight.skillValue = data.fight;
+        Shoot.skillValue = data.shoot;
+        Brawl.skillValue = data.brawl;
+        Dodge.skillValue = data.dodge;
+        Block.skillValue = data.block;
+        Athletics.skillValue = data.athletics;
+        Physique.skillValue = data.physique;
+        Sneak.skillValue = data.sneak;
+        Investigate.skillValue = data.investigate;
+        Perception.skillValue = data.perception;
+        Language.skillValue = data.language;
+        Knowledge.skillValue = data.knowledge;
+        Resources.skillValue = data.resources;
+        Intimidation.skillValue = data.intimidation;
+        Deceive.skillValue = data.deceive;
+        Level.characterInfo = data.level;
+        Mana.characterInfo = data.mana;
+        Health.characterInfo = data.health;
+        Name.characterName = data.name;
+
+        
+
+        
+}
 }

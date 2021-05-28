@@ -27,12 +27,14 @@ public class InventoryManager : MonoBehaviour
             else { item.ItemName = "NoNameItem"; }
             try
             {
+
                 item.StrengthBonus = int.Parse(strengthInput.text);
                 item.AgilityBonus = int.Parse(agilityInput.text);
                 item.IntelligenceBonus = int.Parse(intelligenceInput.text);
                 item.VitalityBonus = int.Parse(vitalityInput.text);
                 item.EquipamentType = (EquipmentType)equipmentType.value;
                 inventory.AddItem(item);
+
                 errortext.enabled = false;
                 nameInput.text = "";
                 strengthInput.text = "";

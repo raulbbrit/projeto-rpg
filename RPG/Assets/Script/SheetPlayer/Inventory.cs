@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] List<Item> items;
+    public List<Item> items;
+    [SerializeField] GameObject[] prefabs;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
 
@@ -16,11 +17,13 @@ public class Inventory : MonoBehaviour
         {
             itemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
         }
+        OnLoadInventory();
         RefreshUI();
     }
 
     private void RefreshUI()
     {
+        Debug.Log(items);
         int i = 0;
         for (; i < items.Count && i < itemSlots.Length; i++)
         {
@@ -70,4 +73,36 @@ public class Inventory : MonoBehaviour
         return items.Count >= itemSlots.Length;
     }
 
+    /*public void LoadInventory()
+    {
+        EquipmentData data = SaveSystem.LoadInventory();
+
+       
+    }*/
+
+    public void OnLoadInventory()
+    {
+        SaveData.equipments = (List<EquipmentData>)SerializationManager.Load(Application.persistentDataPath + "/saves/inventory.sheet");
+        Debug.Log("Qunatidadede items no equipments: " + SaveData.equipments.Count);
+
+        for (int i = 0; i < SaveData.equipments.Count; i++)
+        {
+            EquipmentData currentEquip = SaveData.equipments[i];
+            //Debug.Log($"Equipment atual {i}");
+            //EquipmentData currentEquip = SaveData.equipments[i];
+
+            GameObject obj = Instantiate(prefabs[i]);
+            EquippableItem equipItem = obj.GetComponent<EquippableItem>();
+            equipItem.ItemName = currentEquip.itemName;
+            equipItem.StrengthBonus = currentEquip.strength;
+            equipItem.IntelligenceBonus = currentEquip.intelligence;
+            equipItem.VitalityBonus = currentEquip.vitality;
+            equipItem.AgilityBonus = currentEquip.agility;
+            equipItem.EquipamentType = currentEquip.equipType;
+
+            items.Add(equipItem);
+        }
+
+
+    }
 }

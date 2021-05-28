@@ -44,7 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemName: 
-  Icon: {fileID: 0}
+  data:
+    id: 
+    equipType: 0
+    itemName: 
+    strength: 0
+    intelligence: 0
+    vitality: 0
+    agility: 0
   StrengthBonus: 0
   AgilityBonus: 0
   IntelligenceBonus: 0

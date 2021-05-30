@@ -63,3 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  masterPanel: {fileID: 0}
+  playerPanel: {fileID: 0}
+  characterSpawn: {fileID: 3266004827153510628, guid: 8a4a1de7bc681f142be5672625b98a9d,
+    type: 3}

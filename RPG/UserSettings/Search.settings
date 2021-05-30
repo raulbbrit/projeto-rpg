@@ -8,7 +8,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.785D90A9" = ""
+	"last_search.785D90A9" = "values"
 	"asset.785D90A9" = "True"
 	"menu.785D90A9" = "True"
 	"scene.785D90A9" = "True"
@@ -56,5 +56,6 @@ providers = {
 	}
 }
 recentSearches = [
+	"values"
 ]
 savedSearchesSortOrder = 0

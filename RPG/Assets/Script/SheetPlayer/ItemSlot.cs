@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Text Text;
+    [SerializeField] Text text;
    // [SerializeField] ItemTooltip tooltip; 
 
     public event Action<Item> OnRightClickEvent;
+    public event Action<Item> OnLeftClickEvent;
 
     private Item _item;
+    private EquippableItem equipItem;
     public Item Item
     {
         get {return _item;}
@@ -19,17 +21,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
         {
           
             _item = value;
-            
+            equipItem = (EquippableItem)value;
            
           
             if (_item == null)
             {
-                Text.enabled = false;
+                text.enabled = false;
             }
             else
             {
-                Text.text = _item.ItemName;
-                Text.enabled = true;
+                text.text = _item.ItemName.ToUpper() + "\n" +"Str: " + equipItem.StrengthBonus + " Int: " + equipItem.IntelligenceBonus + " Vit: " + equipItem.VitalityBonus + " Agi: " + equipItem.AgilityBonus;
+                text.enabled = true;
             }
          
         }
@@ -38,6 +40,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData != null && eventData.button == PointerEventData.InputButton.Left)
+        {
+
+            if (Item != null && OnLeftClickEvent != null)
+            {
+                OnLeftClickEvent(Item);
+            }
+        }
+
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
 
             if (Item != null && OnRightClickEvent != null)
@@ -49,9 +60,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
 
 
     protected virtual void OnValidate()    {
-        if (Text == null)
+        if (text == null)
         {
-            Text = GetComponent<Text>();
+            text = GetComponent<Text>();
         }
         
        /* if(tooltip == null)

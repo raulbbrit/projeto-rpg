@@ -27,8 +27,8 @@ public class MonsterDisplay : MonoBehaviour, IPointerClickHandler
             }
             else
             {
-                text.text = "Name: " + _npc.npcName + "\t" + " Health: " + monsterNpc.health + "\t" + " Mana: " + monsterNpc.mana 
-                    + "\n" + "Str: " + monsterNpc.strength + "\t" + " Int: " + monsterNpc.intelligence + "\t" + " Vit: " + monsterNpc.vitality + "\t" + " Agi: " + monsterNpc.agility;
+                text.text = "Name: " + _npc.npcName + "\t" + "\t" + " Health: " + monsterNpc.health + "\t" + "\t" + " Mana: " + monsterNpc.mana 
+                    + "\n" + "Str: " + monsterNpc.strength + "\t" + "\t" + " Int: " + monsterNpc.intelligence + "\t" + "\t" + " Vit: " + monsterNpc.vitality + "\t" + "\t" + " Agi: " + monsterNpc.agility;
                 text.enabled = true;
             }
         }

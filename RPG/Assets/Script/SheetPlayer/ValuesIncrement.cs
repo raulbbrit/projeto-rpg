@@ -17,6 +17,7 @@ public class ValuesIncrement : MonoBehaviour
     [SerializeField] NamePanel namePanel;
     private Character charac;
 
+
     private void Awake()
     {
         charac = Instantiate(script).GetComponent<Character>();
@@ -38,6 +39,7 @@ public class ValuesIncrement : MonoBehaviour
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();
         InfoDisplay[] info = infoScript.GetComponentsInChildren<InfoDisplay>();
+        
         if (button != 0) {
             
             switch (button)

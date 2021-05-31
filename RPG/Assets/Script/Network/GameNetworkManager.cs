@@ -14,6 +14,7 @@ public class GameNetworkManager : NetworkManager
     [SerializeField] private NetworkPlayer networkPlayerPrefab;
     //[SerializeField] private GameObject playerCharacter;
     [SerializeField] private GameObject characterSpawn;
+    
 
     
     public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();

@@ -10,56 +10,37 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] GameObject masterPanel, playerPanel;
     [SerializeField] CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
+    private GameObject saveManager;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
+    public GameObject SaveManager { get => saveManager; set => saveManager = value; }
 
     public bool IsHost
     {
+        [Client]
         get { return isHost; }
+        [Client]
         set
         {
            isHost = value;
-            Debug.Log("isHost= " + isHost.ToString());
-            if (isLocalPlayer)
-            {
-                if (isHost == false)
+           Debug.Log("isHost= " + isHost.ToString());
+          
+            
+                if (isHost == false && PlayerPanel.activeSelf==true)
                 {
 
                     PlayerPanel.SetActive(true);
                     MasterPanel.SetActive(false);
 
                 }
-                if (isHost == true)
+                if (isHost == true && MasterPanel.activeSelf==true)
                 {
-
                     PlayerPanel.SetActive(false);
                     MasterPanel.SetActive(true);
                 }
 
-            }
-
-
-            /*   if (isHost == false)
-               {
-                   MasterPanel.SetActive(false);
-                   if (hasAuthority)
-                   {
-                       PlayerPanel.SetActive(true);
-                       MasterPanel.SetActive(false);
-                   }
-
-               }
-               if (isHost == true)
-               {
-                   if(hasAuthority)
-                   {
-                       PlayerPanel.SetActive(false);
-                       MasterPanel.SetActive(true);
-                   }
-
-               }
-               //Insira lógica do host aqui com base no value*/
+            
         }
     }
 
@@ -72,6 +53,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+  
 
     [Client]
     private void Awake()
@@ -80,6 +62,7 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerPanel = GameObject.Find("Character Panel");
         //chamar o método de autoridade aqui.
         MasterPanel = GameObject.Find("Master Panel");
+        SaveManager = GameObject.Find("SaveManager");
     }
 
     /* private void GiveAuthorityInPanel(NetworkConnection conn)
@@ -93,6 +76,7 @@ public class NetworkPlayer : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
         GameNetwork.PlayersList.Add(this);
         characterSpawn.Spawn(connectionToClient);
+        saveManager.GetComponent<SaveManager>().FindSaveCharcter();
     }
 
     public override void OnStopClient()

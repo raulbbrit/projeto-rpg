@@ -11929,8 +11929,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 368292095}
-  - {fileID: 2137811260}
   - {fileID: 682622911}
+  - {fileID: 2137811260}
   m_Father: {fileID: 620472261}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12355,7 +12355,7 @@ RectTransform:
   - {fileID: 409944992}
   - {fileID: 778832432}
   m_Father: {fileID: 649747513}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33277,6 +33277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792591834}
   - component: {fileID: 1792591833}
+  - component: {fileID: 1792591835}
   m_Layer: 0
   m_Name: IncrementManager
   m_TagString: Untagged
@@ -33296,7 +33297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e00e5924f28f4587dc73ccc544a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script: {fileID: 8753799165790703496, guid: b6fb71fd17f02824da5bbccea04af945, type: 3}
+  syncMode: 0
+  syncInterval: 0.1
+  characterPreFab: {fileID: 0}
   statScript: {fileID: 1820635537}
   skillScript: {fileID: 260677652}
   infoScript: {fileID: 1847984892}
@@ -33320,6 +33323,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792591835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792591832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2739296498
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1 &1794171134
 GameObject:
   m_ObjectHideFlags: 0
@@ -36585,7 +36605,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1248567243}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5999999
+  m_Size: 0.59999996
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -39179,7 +39199,7 @@ RectTransform:
   m_Children:
   - {fileID: 272140658}
   m_Father: {fileID: 649747513}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Mirror;
 
 public class SaveManager : MonoBehaviour
 {
@@ -9,17 +10,14 @@ public class SaveManager : MonoBehaviour
     //public GameObject[] item;
 
 
-    private void Start()
+  /*  private void Start()
     {
-         saveCharacter = GameObject.Find("Character(Clone)").GetComponent<Character>();
-           
-
-        if (saveCharacter==null)
-        {
-            Debug.Log("saveCharacter==null");
-        }
+         saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+    }*/
+    public void FindSaveCharcter()
+    {
+        saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
     }
-
     public void SaveCharacter()
     {
         SaveSystem.SaveCharacter(saveCharacter);

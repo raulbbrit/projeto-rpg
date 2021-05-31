@@ -6,16 +6,21 @@ public class NpcList : MonoBehaviour
 {
     [SerializeField] List<Npc> npcs;
     [SerializeField] Transform npcsParent;
+    [SerializeField] GameObject npcPrefab;
     [SerializeField] NpcDisplay[] npcsSlots;
+
 
     private void Start()
     {
-        /*for (int i = 0; i < npcsSlots.Length; i++)
+        for (int i = 0; i < npcsSlots.Length; i++)
         {
             npcsSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
-        }*/
+        }
+        OnLoadNpc();
         RefreshUI();
     }
+
+    
 
     private void RefreshUI()
     {
@@ -66,6 +71,47 @@ public class NpcList : MonoBehaviour
     public bool IsFull()
     {
         return npcs.Count >= npcsSlots.Length;
+    }
+
+    private void OnItemRightClickedEvent(Npc npc)
+    {
+        if (npc is SimpleNpc)
+        {
+            DeleteFromList((SimpleNpc)npc);
+        }
+    }
+
+    private void DeleteFromList(SimpleNpc npc)
+    {
+        if (RemoveNpcs(npc))
+        {
+            foreach (NpcData data in SaveData.Npc.ToArray())
+            {
+                if (data.id == npc.id)
+                {
+                    Debug.Log("Entrou no if DeleteNPC");
+                    SaveData.Npc.Remove(data);
+                }
+            }
+            Destroy(npc.gameObject);
+        }
+    }
+
+    public void OnLoadNpc()
+    {
+        SaveData.Npc = (List<NpcData>)SerializationManager.Load(Application.persistentDataPath + "/saves/npc.sheet");
+
+        for (int i = 0; i < SaveData.Npc.Count; i++)
+        {
+            NpcData currentNpc = SaveData.Npc[i];
+            GameObject obj = Instantiate(npcPrefab);
+            SimpleNpc npc = obj.GetComponent<SimpleNpc>();
+            npc.id = currentNpc.id;
+            npc.npcName = currentNpc.name;
+            npc.health = currentNpc.health;
+            npc.mana = currentNpc.mana;
+            npcs.Add(npc);
+        }
     }
 
 }

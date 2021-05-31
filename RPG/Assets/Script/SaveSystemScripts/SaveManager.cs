@@ -6,7 +6,7 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public Character saveCharacter;
-    public GameObject[] item;
+    //public GameObject[] item;
 
 
     private void Start()
@@ -20,21 +20,20 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
-    public void Save()
+    public void SaveCharacter()
     {
         SaveSystem.SaveCharacter(saveCharacter);
-
+        SerializationManager.Save(SaveData.equipments);
+        /*for (int i = 0; i < SaveData.equipments.Count; i++)
+        {
+            Debug.Log(SaveData.equipments[i].itemName);
+        }*/
         //SaveData.equipmentsaux = (List<EquipmentData>)SerializationManager.Load(Application.persistentDataPath + "/saves/inventory.sheet");
 
-      
+
         //SaveData.equipmentsaux = SaveData.equipments; //atribuindo lista duplicada na aux
         //Debug.Log("Save lista: " + SaveData.equipments.Count);
-   
+
         /*if (SaveData.equipments.Count==1)
         {
             int ActualSaveSize = SaveData.equipments.Count / 2;  //pegando o tamanho que realmente precisamos do save
@@ -55,9 +54,6 @@ public class SaveManager : MonoBehaviour
             }
 
         }*/
-
-
-
         //Debug.Log("Saveaux lista: " + SaveData.equipmentsaux.Count);
 
         /*if (File.Exists(Application.persistentDataPath + "/saves/inventory.sheet"))
@@ -73,21 +69,23 @@ public class SaveManager : MonoBehaviour
                     }
                 }
             }*/
-       /* if (File.Exists(Application.persistentDataPath + "/saves/inventory.sheet"))
+        /* if (File.Exists(Application.persistentDataPath + "/saves/inventory.sheet"))
+         {
+             Debug.Log("Entrou aqui delete");
+             SerializationManager.DeleteOldSave(Application.persistentDataPath + "/saves/inventory.sheet");
+         }*/
+        /*}
+        else
         {
-            Debug.Log("Entrou aqui delete");
-            SerializationManager.DeleteOldSave(Application.persistentDataPath + "/saves/inventory.sheet");
+            SerializationManager.Save(SaveData.equipments);
+            Debug.Log("nada");
         }*/
+    }
 
-        
-    SerializationManager.Save(SaveData.equipments);
-
-    /*}
-    else
+    public void SaveMaster()
     {
-        SerializationManager.Save(SaveData.equipments);
-        Debug.Log("nada");
-    }*/
+        SerializationManager.Save(SaveData.Npc);
+        SerializationManager.Save(SaveData.Monster);
     }
 
 }

@@ -15,15 +15,42 @@ public class SerializationManager
             Directory.CreateDirectory(Application.persistentDataPath + "/saves/");
         }
 
-        string path = Application.persistentDataPath + "/saves/" + "inventory.sheet";
+        if (saveData is List<EquipmentData>) {
+            string path = Application.persistentDataPath + "/saves/" + "inventory.sheet";
 
-        FileStream file = File.Create(path);
+            FileStream file = File.Create(path);
 
-        formatter.Serialize(file, saveData);
+            formatter.Serialize(file, saveData);
 
-        file.Close();
+            file.Close();
 
-        return true;
+            return true;
+        }
+        if (saveData is List<NpcData>)
+        {
+            string path = Application.persistentDataPath + "/saves/" + "npc.sheet";
+
+            FileStream file = File.Create(path);
+
+            formatter.Serialize(file, saveData);
+
+            file.Close();
+            Debug.Log("Salvou!!!NPC");
+            return true;
+        }
+        if (saveData is List<MonsterData>)
+        {
+            string path = Application.persistentDataPath + "/saves/" + "monster.sheet";
+
+            FileStream file = File.Create(path);
+
+            formatter.Serialize(file, saveData);
+
+            file.Close();
+
+            return true;
+        }
+        return false;
     }
 
     public static object Load(string path)
@@ -57,7 +84,7 @@ public class SerializationManager
 
         if (!Directory.Exists(Application.persistentDataPath + "/saves/" + "inventory.sheet"))
         {
-            SaveData.equipments.Clear();
+           // File.Delete();
             return true;
         }
         else

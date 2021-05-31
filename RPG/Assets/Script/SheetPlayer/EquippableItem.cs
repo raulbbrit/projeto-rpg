@@ -17,6 +17,7 @@ public class EquippableItem : Item
 {
     //public EquipmentData data;
 
+    public string id;
     public int StrengthBonus;
     public int AgilityBonus;
     public int IntelligenceBonus;

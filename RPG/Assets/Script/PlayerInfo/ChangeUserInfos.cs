@@ -104,12 +104,9 @@ public class ChangeUserInfos : MonoBehaviour
 
     public void ResetInfos()
     {
-        int rnd = 0;
-        rnd = Random.Range(1000, 10001);
-
         PlayerPrefs.SetString("path", "");
         rawImage.texture = null;
-        PlayerPrefs.SetString("userName", "Guest" + rnd);
+        PlayerPrefs.SetString("userName", "");
 
         /*Debug.Log($"ResetInfos:" +
             $"\nuserName = {PlayerPrefs.GetString("userName")}" +

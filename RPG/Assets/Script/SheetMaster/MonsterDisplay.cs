@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MonsterDisplay : MonoBehaviour
+public class MonsterDisplay : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] Text text;
+
+    public event Action<Npc> OnRightClickEvent;
 
     private Npc _npc;
     private MonsterNpc monsterNpc;
@@ -37,6 +41,17 @@ public class MonsterDisplay : MonoBehaviour
         if (text == null)
         {
             text = GetComponent<Text>();
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (NPC != null && OnRightClickEvent != null)
+            {
+                OnRightClickEvent(NPC);
+            }
         }
     }
 }

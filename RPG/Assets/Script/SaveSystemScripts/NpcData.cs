@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleNpc : Npc
+[System.Serializable]
+public class NpcData 
 {
     public string id;
+
+    public string name;
     public int health;
     public int mana;
-
 }

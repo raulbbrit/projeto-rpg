@@ -100,7 +100,9 @@ public class Character : MonoBehaviour
         namePanel.SetName(Name);
         namePanel.UpadeStatValues();
 
-        inventory.OnItemRightClickedEvent += EquipFromInventory;
+        inventory.OnItemLeftClickedEvent += EquipFromInventory;
+        inventory.OnItemRightClickedEvent += DeleteFromInventory;
+
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
     }
 
@@ -154,6 +156,30 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void DeleteFromInventory(Item item)
+    {
+        if (item is EquippableItem)
+        {
+            Delete((EquippableItem)item);
+        }
+    }
+
+    public void Delete(EquippableItem item)
+    {
+        if (inventory.RemoveItems(item))
+        {
+            foreach (EquipmentData data in SaveData.equipments.ToArray())
+            {
+                if (data.id == item.id)
+                {
+                    Debug.Log("Entrou no if Delete");
+                    SaveData.equipments.Remove(data);
+                }
+            }
+            Destroy(item.gameObject);
+        }
+    }
+
     /*public void SavePlayer()
     {
         SaveSystem.SaveCharacter(charin);
@@ -185,7 +211,7 @@ public class Character : MonoBehaviour
         Level.characterInfo = data.level;
         Mana.characterInfo = data.mana;
         Health.characterInfo = data.health;
-        Name.characterName = data.name;
+        Name.characterName = PlayerPrefs.GetString("userName");
 
         
 

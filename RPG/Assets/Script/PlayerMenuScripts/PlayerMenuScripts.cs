@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMenuScripts : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+
+    private void Update()
+    {
+        
+    }
+
     void JoinGame()
     {
 
@@ -22,6 +29,15 @@ public class PlayerMenuScripts : MonoBehaviour
 
     public void ExitGame()
     {
+        StartCoroutine(SeeYouNextTime());
+    }
+
+    
+    IEnumerator SeeYouNextTime()
+    {
+        audioSource.Play();
+        yield return new WaitForSeconds(3.3f);
+        Debug.Log("Fechou o programa");
         Application.Quit();
     }
 }

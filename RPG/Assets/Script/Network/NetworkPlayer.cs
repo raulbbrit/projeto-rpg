@@ -27,7 +27,7 @@ public class NetworkPlayer : NetworkBehaviour
            Debug.Log("isHost= " + isHost.ToString());
           
             
-                if (isHost == false && PlayerPanel.activeSelf==true)
+               /** if (isHost == false && PlayerPanel.activeSelf==true)
                 {
 
                     PlayerPanel.SetActive(true);
@@ -38,7 +38,7 @@ public class NetworkPlayer : NetworkBehaviour
                 {
                     PlayerPanel.SetActive(false);
                     MasterPanel.SetActive(true);
-                }
+                }*/
 
             
         }

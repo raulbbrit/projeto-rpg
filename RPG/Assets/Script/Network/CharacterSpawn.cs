@@ -6,7 +6,8 @@ using Mirror;
 public class CharacterSpawn : NetworkBehaviour
 {
     [SerializeField] private GameObject characterPreFab;
-       
+    
+    [Server]
     public  void Spawn(NetworkConnection conn)
     {
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
@@ -14,5 +15,7 @@ public class CharacterSpawn : NetworkBehaviour
         GameObject playerInstance = Instantiate(characterPreFab);
         playerInstance.name = NetworkClient.connection.identity.gameObject.name + " Character's";
         NetworkServer.Spawn(playerInstance, conn);
+        Debug.Log("O personagem foi spawnado");
+
     }
 }

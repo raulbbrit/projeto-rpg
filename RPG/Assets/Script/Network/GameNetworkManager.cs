@@ -53,6 +53,7 @@ public class GameNetworkManager : NetworkManager
     {
         NetworkPlayer networkPlayerInstance= Instantiate(networkPlayerPrefab);
         networkPlayerInstance.gameObject.name = "Jogador " + PlayersList.Count();
+        Debug.Log("O nome do objeto foi mudado");
         bool isHost = PlayersList.Count==0; //verificando se é o host (primeiro a entrar)
         for (int i = 0; i < PlayersList.Count; i++)
         {

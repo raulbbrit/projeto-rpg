@@ -28,4 +28,13 @@ public class DiceRolls : MonoBehaviour
         text.text = textMessage;
 
     }
+    public void ActiveDice(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void DesactiveDice(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Mirror;
 
 public class TileScript : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class TileScript : MonoBehaviour
     public bool isEmpty { get; private set; }
 
     private SpriteRenderer spriteRenderer;
+    private NetworkPlayer networkPlayer;
+    private int indexMaster = 0;
+    private int indexPlayer = 0;
+    private GameObject mapaDinamico;
 
     private Color32 fullColor = new Color32(255, 118, 118, 255);
     private Color32 emptyColor = new Color32(96, 255, 90, 255);
@@ -44,6 +49,8 @@ public class TileScript : MonoBehaviour
     }
     private void OnMouseOver()
     {
+
+     
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
         {
             if(isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
@@ -57,7 +64,18 @@ public class TileScript : MonoBehaviour
     
             else if (Input.GetMouseButtonDown(0) && GameManager.Instance.SelectedObject.MapObjectPreFab!=null )
             {
-                PlaceObject();
+                networkPlayer = NetworkClient.connection.identity.gameObject.GetComponent<NetworkPlayer>();
+
+                if (networkPlayer.IsHost)
+                { 
+                   PlaceObject();
+                } else
+                {
+                    Debug.Log("Passou no else");
+                    PlaceObject();
+                }
+                 
+                
             }
 
         }

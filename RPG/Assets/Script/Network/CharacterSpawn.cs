@@ -7,7 +7,7 @@ public class CharacterSpawn : NetworkBehaviour
 {
     [SerializeField] private GameObject characterPreFab;
        
-    public  void Spawn(NetworkConnection conn)
+    public void Spawn(NetworkConnection conn)
     {
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;

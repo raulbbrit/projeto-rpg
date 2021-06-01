@@ -910,8 +910,9 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
-  gameScene: 
   networkPlayerPrefab: {fileID: -3705596593625499363, guid: 6fe9b2b05eafbf645a634cb22d50649f,
+    type: 3}
+  characterSpawn: {fileID: 4638134828427481626, guid: 8a4a1de7bc681f142be5672625b98a9d,
     type: 3}
 --- !u!4 &315571628
 Transform:

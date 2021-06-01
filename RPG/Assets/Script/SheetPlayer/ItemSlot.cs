@@ -10,6 +10,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
    // [SerializeField] ItemTooltip tooltip; 
 
     public event Action<Item> OnRightClickEvent;
+    public event Action<Item> OnLeftClickEvent;
 
     private Item _item;
     private EquippableItem equipItem;
@@ -39,6 +40,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData != null && eventData.button == PointerEventData.InputButton.Left)
+        {
+
+            if (Item != null && OnLeftClickEvent != null)
+            {
+                OnLeftClickEvent(Item);
+            }
+        }
+
+        if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
 
             if (Item != null && OnRightClickEvent != null)

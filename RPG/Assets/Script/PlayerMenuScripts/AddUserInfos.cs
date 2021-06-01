@@ -66,12 +66,21 @@ public class AddUserInfos : MonoBehaviour
 
     public void RefreshUser()
     {
-        name.text = PlayerPrefs.GetString("userName");
+        if (PlayerPrefs.GetString("userName").Trim(' ').Equals("") || PlayerPrefs.GetString("userName") == null)
+        {
+            int rnd = 0;
+            rnd = Random.Range(1000, 10001);
+            PlayerPrefs.SetString("userName", "Guest" + rnd);
+            name.text = PlayerPrefs.GetString("userName");
+        }
+        else
+        {
+            name.text = PlayerPrefs.GetString("userName");
+        }
 
         if (!PlayerPrefs.GetString("path").Equals("")) {
             StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
         }
-
         else
         {
             image.texture = null;

@@ -10,12 +10,23 @@ public class CharacterSpawn : NetworkBehaviour
    
     public  void Spawn(NetworkConnection conn)
     {
+        Debug.Log("Conn ID: " + conn.identity);
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;
         GameObject playerInstance = Instantiate(characterPreFab);
-        playerInstance.name = NetworkClient.connection.identity.gameObject.name + " Character's";
+        playerInstance.name = conn.identity.gameObject.name + " Character's";
         NetworkServer.Spawn(playerInstance, conn);
-        Debug.Log("O personagem foi spawnado");
-
+        CmdSpawnMessage();
+    }
+    [Command]
+    private void CmdSpawnMessage()
+    {
+        Debug.Log("Personagem Spawnado");
+        RpcSpawnMessagae();
+    }
+    [ClientRpc]
+    public void RpcSpawnMessagae()
+    {
+        Debug.Log("Personagem spawnado");
     }
 }

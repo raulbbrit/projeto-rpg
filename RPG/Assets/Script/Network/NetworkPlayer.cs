@@ -16,6 +16,7 @@ public class NetworkPlayer : NetworkBehaviour
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
     public GameObject SaveManager { get => saveManager; set => saveManager = value; }
 
+  
     public bool IsHost
     {
         get { return isHost; }
@@ -42,6 +43,12 @@ public class NetworkPlayer : NetworkBehaviour
             
         }
     }
+    public void Start()
+    {
+        PlayerPanel = GameObject.Find("Character Panel");
+        MasterPanel = GameObject.Find("Master Panel");
+    
+    }
 
     private GameNetworkManager GameNetwork
     {
@@ -62,30 +69,32 @@ public class NetworkPlayer : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
-        CmdCharacterPrepares();
-        saveManager.GetComponent<SaveManager>().FindSaveCharcter();
-        Scene scene = SceneManager.GetActiveScene();
-        PlayerPanel = GameObject.Find("Character Panel");
-        MasterPanel = GameObject.Find("Master Panel");
-        SaveManager = GameObject.Find("SaveManager");
+        CharacterPrepares();
         base.OnStartLocalPlayer();
     }
     public override void OnStopClient()
     {
         GameNetwork.PlayersList.Remove(this);
-
     }
-
-    [Command]
-    private void CmdCharacterPrepares()
+    [ClientCallback]
+    private void PrepareSave()
     {
-        RpcCharacterPrepares();
+        if (isClient)
+        {
+            Debug.Log("isclient");
+            saveManager.GetComponent<SaveManager>().FindSaveCharcter();
+        }
     }
-    [ClientRpc]
-    private void RpcCharacterPrepares()
+    [Client]
+    private void CharacterPrepares()
     {
-        characterSpawn.Spawn(NetworkClient.connection);
-     
+       CharacterPrepares(this.netIdentity);
+    }
+    private void CharacterPrepares(NetworkIdentity id)
+    {
+        characterSpawn.Spawn(id.connectionToClient);
+        SaveManager = GameObject.Find("SaveManager");
+        PrepareSave();
     }
 
 }

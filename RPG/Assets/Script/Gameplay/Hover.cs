@@ -40,7 +40,7 @@ public class Hover : Singleton<Hover>
             if (indexPlayer < 1)
             {
                 indexPlayer++;
-                this.getGameObject.SetActive(true);
+                getGameObject.SetActive(true);
             }
         }
         else
@@ -48,7 +48,7 @@ public class Hover : Singleton<Hover>
             if (indexMaster < QtdTile())
             {
                 indexMaster++;   
-                this.getGameObject.SetActive(true);
+                getGameObject.SetActive(true);
             }
 
         }

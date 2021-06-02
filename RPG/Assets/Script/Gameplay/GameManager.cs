@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-   private int indexPlayer = 0;
+    private int indexPlayer = 0;
     private int indexMaster = 0;
-
+    private TileScript[] tiles;
     public PickObjectButton SelectedObject { get; private set; }
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        tiles = GameObject.Find("Map").GetComponentsInChildren<TileScript>();
+
+        for(int x = 0; x < tiles.Length; x++)
+        {
+            tiles[x] = GetComponentInChildren<GameObject>();
+        }
     }
     //foreach ()
     //{
@@ -75,5 +80,8 @@ public class GameManager : Singleton<GameManager>
          
     }
 
-   
+   private void RemovePin()
+    {
+
+    }
 }

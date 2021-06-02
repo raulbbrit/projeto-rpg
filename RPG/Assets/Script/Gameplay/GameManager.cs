@@ -1,9 +1,12 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+   private int indexPlayer = 0;
+    private int indexMaster = 0;
 
     public PickObjectButton SelectedObject { get; private set; }
     
@@ -19,7 +22,25 @@ public class GameManager : Singleton<GameManager>
 
     public void SelectObject(PickObjectButton pickObjectButton)
     {
-        this.SelectedObject = pickObjectButton;
+        int spaceTile = Singleton<Hover>.Instance.QtdTile();
+
+        if (NetworkClient.localPlayer.isClientOnly)
+        {
+            if(indexPlayer < 1)
+            {
+            indexPlayer++;
+            this.SelectedObject = pickObjectButton;
+            } 
+        }
+        else
+        {
+            if(indexMaster < spaceTile)
+            {
+                indexMaster++;
+            this.SelectedObject = pickObjectButton;
+            }
+
+        }
 
     }
 
@@ -53,4 +74,6 @@ public class GameManager : Singleton<GameManager>
         }
          
     }
+
+   
 }

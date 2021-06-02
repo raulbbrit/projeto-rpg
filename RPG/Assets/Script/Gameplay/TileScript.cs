@@ -11,15 +11,8 @@ public class TileScript : MonoBehaviour
 
 
     public Point GridPosition { get; private set; }
-
     public bool isEmpty { get; private set; }
-
     private SpriteRenderer spriteRenderer;
-    private NetworkPlayer networkPlayer;
-    private int indexMaster = 0;
-    private int indexPlayer = 0;
-    private GameObject mapaDinamico;
-
     private Color32 fullColor = new Color32(255, 118, 118, 255);
     private Color32 emptyColor = new Color32(96, 255, 90, 255);
 
@@ -64,18 +57,8 @@ public class TileScript : MonoBehaviour
     
             else if (Input.GetMouseButtonDown(0) && GameManager.Instance.SelectedObject.MapObjectPreFab!=null )
             {
-                networkPlayer = NetworkClient.connection.identity.gameObject.GetComponent<NetworkPlayer>();
 
-                if (networkPlayer.IsHost)
-                { 
-                   PlaceObject();
-                } else
-                {
-                    Debug.Log("Passou no else");
-                    PlaceObject();
-                }
-                 
-                
+                PlaceObject();
             }
 
         }
@@ -107,6 +90,5 @@ public class TileScript : MonoBehaviour
     {
         spriteRenderer.color = newColor;
     }
-
 
 }

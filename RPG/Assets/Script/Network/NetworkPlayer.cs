@@ -27,7 +27,7 @@ public class NetworkPlayer : NetworkBehaviour
            Debug.Log("isHost= " + isHost.ToString());
           
             
-                if (isHost == false && PlayerPanel.activeSelf==true)
+       /*       if (isHost == false && PlayerPanel.activeSelf==true)
                 {
 
                     PlayerPanel.SetActive(true);
@@ -39,7 +39,7 @@ public class NetworkPlayer : NetworkBehaviour
                     PlayerPanel.SetActive(false);
                     MasterPanel.SetActive(true);
                 }
-
+       /=*/
             
         }
     }
@@ -59,9 +59,9 @@ public class NetworkPlayer : NetworkBehaviour
     private void Awake()
     {
         Scene scene = SceneManager.GetActiveScene();
-        PlayerPanel = GameObject.Find("Character Panel");
+      //  PlayerPanel = GameObject.Find("Character Panel");
         //chamar o método de autoridade aqui.
-        MasterPanel = GameObject.Find("Master Panel");
+       // MasterPanel = GameObject.Find("Master Panel");
         SaveManager = GameObject.Find("SaveManager");
     }
 

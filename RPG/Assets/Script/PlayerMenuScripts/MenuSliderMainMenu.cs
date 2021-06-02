@@ -11,6 +11,8 @@ public class MenuSliderMainMenu : MonoBehaviour
     private GameObject exitBtn;
     [SerializeField]
     private GameObject aboutBtn;
+    [SerializeField] GameObject deleteCharBtn;
+    [SerializeField] GameObject deleteMastBtn;
     private Vector3 currentPosition;
     public bool menuIsShowing = false;
 
@@ -19,6 +21,8 @@ public class MenuSliderMainMenu : MonoBehaviour
         optionBtn.SetActive(false);
         exitBtn.SetActive(false);
         aboutBtn.SetActive(false);
+        deleteCharBtn.SetActive(false);
+        deleteMastBtn.SetActive(false);
     }
 
     private void Update()
@@ -40,12 +44,16 @@ public class MenuSliderMainMenu : MonoBehaviour
             optionBtn.SetActive(true);
             exitBtn.SetActive(true);
             aboutBtn.SetActive(true);
+            deleteCharBtn.SetActive(true);
+            deleteMastBtn.SetActive(true);
         }
         else
         {
             optionBtn.SetActive(false);
             exitBtn.SetActive(false);
             aboutBtn.SetActive(false);
+            deleteCharBtn.SetActive(false);
+            deleteMastBtn.SetActive(false);
         }
         
     }

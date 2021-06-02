@@ -78,19 +78,51 @@ public class SerializationManager
         }
     }
 
-    public static bool DeleteOldSave(string path)
+    public static void DeleteOldSave(int i)
     {
-        BinaryFormatter formatter = GetBinaryFormatter();
+        string path;
+        if (i == 1) {
+            path = Application.persistentDataPath + "/saves/" + "inventory.sheet";
+            if (!Directory.Exists(path))
+            {
 
-        if (!Directory.Exists(Application.persistentDataPath + "/saves/" + "inventory.sheet"))
-        {
-           // File.Delete();
-            return true;
+                File.Delete(path);
+                ;
+            }
+            else
+            {
+                Debug.Log("Arquivo nao encontrado");
+                
+            }
         }
-        else
+        if (i == 2)
         {
-            Debug.Log("Arquivo nao encontrado");
-            return false;
+            path = Application.persistentDataPath + "/saves/" + "npc.sheet";
+            if (!Directory.Exists(path))
+            {
+
+                File.Delete(path);
+               
+            }
+            else
+            {
+                Debug.Log("Arquivo nao encontrado");
+                
+            }
+
+            path = Application.persistentDataPath + "/saves/" + "monster.sheet";
+            if (!Directory.Exists(path))
+            {
+
+                File.Delete(path);
+                
+            }
+            else
+            {
+                Debug.Log("Arquivo nao encontrado");
+                
+            }
+
         }
         
     }

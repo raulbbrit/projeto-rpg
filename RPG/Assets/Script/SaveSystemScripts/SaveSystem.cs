@@ -43,5 +43,18 @@ public static class SaveSystem
         }
     }
 
+    public static void DeleteCharacter()
+    {
+        string path = Application.persistentDataPath + "/character.sheet";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+        else
+        {
+            Debug.Log("Save not found");
+        }
+    }
+
 
 }

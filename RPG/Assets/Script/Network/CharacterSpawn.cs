@@ -8,13 +8,13 @@ public class CharacterSpawn : NetworkBehaviour
     [SerializeField] private GameObject characterPreFab;
     
    
-    public  void Spawn(NetworkConnection conn)
+    public  void Spawn(NetworkConnection conn,string name)
     {
-        Debug.Log("Conn ID: " + conn.identity);
+        //Debug.Log("Conn ID: " + conn.identity);
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;
         GameObject playerInstance = Instantiate(characterPreFab);
-        playerInstance.name = conn.identity.gameObject.name + " Character's";
+        playerInstance.name = name + " Character's";
         NetworkServer.Spawn(playerInstance, conn);
         CmdSpawnMessage();
     }

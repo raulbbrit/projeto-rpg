@@ -77,36 +77,5 @@ public class GameNetworkManager : NetworkManager
         base.OnStopServer();
     }
 
-    /**  [ClientRpc]
-      public GameObject RpcCreateCaracter(NetworkConnection conn)
-      {
-          try
-          {
-              IncrmentManager = GameObject.Find("IncrementManager");
-              ValuesIncrement valuesIncrement = IncrmentManager.GetComponent<ValuesIncrement>();
-              playerCharacter = Instantiate(valuesIncrement.CreateCharacter(playerCharacter).gameObject);
-              NetworkServer.Spawn(playerCharacter, conn);
-              return playerCharacter;
-          }
-          catch(NullReferenceException)
-          {
-              Debug.LogError("Null reference");
-              return playerCharacter;
-          }
-             
-      }*/
-  /*  public override void OnServerReady(NetworkConnection conn)
-    {
-        base.OnServerReady(conn);
-        OnServerReadied?.Invoke(conn);
-    }
-   /* public override void OnServerChangeScene(string sceneName)
-    {
-        if (sceneName.StartsWith("Assets/Scenes/PlayerScene.unity"))
-        {
-            GameObject playerSpawnSystemInstance = characterSpawn;
-            NetworkServer.Spawn(playerSpawnSystemInstance);
-        }
-    }*/
-
+ 
 }

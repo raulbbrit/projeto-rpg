@@ -88,11 +88,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Client]
     private void CharacterPrepares()
     {
-       CharacterPrepares(this.netIdentity);
-    }
-    private void CharacterPrepares(NetworkIdentity id)
-    {
-        characterSpawn.Spawn(id.connectionToClient);
+        characterSpawn.Spawn(connectionToClient,this.gameObject.name);
         SaveManager = GameObject.Find("SaveManager");
         PrepareSave();
     }

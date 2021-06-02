@@ -16,9 +16,9 @@ public class CharacterSpawn : NetworkBehaviour
         GameObject playerInstance = Instantiate(characterPreFab);
         playerInstance.name = name + " Character's";
         NetworkServer.Spawn(playerInstance, conn);
-        CmdSpawnMessage();
+     
     }
-    [Command]
+    /*[Command]
     private void CmdSpawnMessage()
     {
         Debug.Log("Personagem Spawnado");
@@ -28,5 +28,5 @@ public class CharacterSpawn : NetworkBehaviour
     public void RpcSpawnMessagae()
     {
         Debug.Log("Personagem spawnado");
-    }
+    }*/
 }

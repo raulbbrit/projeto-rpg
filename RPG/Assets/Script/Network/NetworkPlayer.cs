@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class NetworkPlayer : NetworkBehaviour
 {
     private bool isHost = false;
-    [SerializeField] GameObject masterPanel, playerPanel;
-    [SerializeField] CharacterSpawn characterSpawn;
+    [SerializeField] private GameObject masterPanel, playerPanel;
+    [SerializeField] private CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
     private GameObject saveManager;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
@@ -17,16 +17,16 @@ public class NetworkPlayer : NetworkBehaviour
     public GameObject SaveManager { get => saveManager; set => saveManager = value; }
 
   
+    
     public bool IsHost
     {
         get { return isHost; }
-     
+        
         set
         {
+           
            isHost = value;
            Debug.Log("isHost= " + isHost.ToString());
-          
-            
                /** if (isHost == false && PlayerPanel.activeSelf==true)
                 {
 
@@ -43,11 +43,12 @@ public class NetworkPlayer : NetworkBehaviour
             
         }
     }
+    [Client]
     public void Start()
     {
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
-    
+        CharacterSpawn = GetComponent<CharacterSpawn>();
     }
 
     private GameNetworkManager GameNetwork
@@ -69,6 +70,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
+        CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
         base.OnStartLocalPlayer();
     }
@@ -76,7 +78,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         GameNetwork.PlayersList.Remove(this);
     }
-    [ClientCallback]
+    [Client]
     private void PrepareSave()
     {
         if (isClient)
@@ -85,12 +87,24 @@ public class NetworkPlayer : NetworkBehaviour
             saveManager.GetComponent<SaveManager>().FindSaveCharcter();
         }
     }
+   
     [Client]
     private void CharacterPrepares()
     {
-        characterSpawn.Spawn(connectionToClient,this.gameObject.name);
+       /*
+        var spawnManager = GameObject.Find("SpawnManager(Clone)");
+        var spawnManagerScript = spawnManager.GetComponent<CharacterSpawn>();
+        spawnManagerScript.GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
+        */
+        CharacterSpawn.CmdSpawn();
+        CharacterSpawn.CmdChangeCharacterName("Jogador " + GameNetwork.PlayersList.Count);
+        Debug.Log("O nome do objeto foi mudado");
         SaveManager = GameObject.Find("SaveManager");
+
         PrepareSave();
     }
+    
+  
+
 
 }

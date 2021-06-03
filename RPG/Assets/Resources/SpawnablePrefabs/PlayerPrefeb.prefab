@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3081059525683734401}
   - component: {fileID: 585138600177103852}
   - component: {fileID: -3705596593625499363}
+  - component: {fileID: 1000191368152440610}
   m_Layer: 0
   m_Name: PlayerPrefeb
   m_TagString: Untagged
@@ -65,5 +66,20 @@ MonoBehaviour:
   syncInterval: 0.1
   masterPanel: {fileID: 0}
   playerPanel: {fileID: 0}
-  characterSpawn: {fileID: 3266004827153510628, guid: 8a4a1de7bc681f142be5672625b98a9d,
+  characterSpawn: {fileID: 0}
+--- !u!114 &1000191368152440610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540408855450193096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927089531b8420e40a5a81910f3da714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  characterPreFab: {fileID: 8753799165790703496, guid: b6fb71fd17f02824da5bbccea04af945,
     type: 3}

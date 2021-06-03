@@ -6,27 +6,22 @@ using Mirror;
 public class CharacterSpawn : NetworkBehaviour
 {
     [SerializeField] private GameObject characterPreFab;
-    
-   
-    public  void Spawn(NetworkConnection conn,string name)
+
+
+    [Command]
+    public void CmdSpawn()
     {
-        //Debug.Log("Conn ID: " + conn.identity);
+        Debug.Log("Entrou no método spawn");
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;
-        GameObject playerInstance = Instantiate(characterPreFab);
-        playerInstance.name = name + " Character's";
-        NetworkServer.Spawn(playerInstance, conn);
-     
+        GameObject CharacterInstance = Instantiate(characterPreFab);
+        NetworkServer.Spawn(CharacterInstance, connectionToClient);
     }
-    /*[Command]
-    private void CmdSpawnMessage()
+    [Command]
+    public void CmdChangeCharacterName(string playerName)
     {
-        Debug.Log("Personagem Spawnado");
-        RpcSpawnMessagae();
+      
+
     }
-    [ClientRpc]
-    public void RpcSpawnMessagae()
-    {
-        Debug.Log("Personagem spawnado");
-    }*/
+   
 }

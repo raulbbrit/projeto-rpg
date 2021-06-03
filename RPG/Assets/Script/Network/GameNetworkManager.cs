@@ -7,18 +7,15 @@ using System.Linq;
 
 public class GameNetworkManager : NetworkManager
 {
-   // [Scene] [SerializeField] private string gameScene = null;
+ 
       public static event Action OnclientConnected;
       public static event Action OnclientDisconnected;
-    public static event Action<NetworkConnection> OnServerReadied;
     [SerializeField] private NetworkPlayer networkPlayerPrefab;
-    //[SerializeField] private GameObject playerCharacter;
     [SerializeField] private GameObject characterSpawn;
     
 
     
     public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();
-    // public GameObject PlayerCharacter { get => playerCharacter; set => playerCharacter = value; }
 
     public override void OnStartServer()
     {
@@ -52,8 +49,8 @@ public class GameNetworkManager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         NetworkPlayer networkPlayerInstance= Instantiate(networkPlayerPrefab);
-        networkPlayerInstance.gameObject.name = "Jogador " + PlayersList.Count();
-        Debug.Log("O nome do objeto foi mudado");
+        /* networkPlayerInstance.gameObject.name = "Jogador " + PlayersList.Count();
+        Debug.Log("O nome do objeto foi mudado");*/
         bool isHost = PlayersList.Count==0; //verificando se é o host (primeiro a entrar)
         for (int i = 0; i < PlayersList.Count; i++)
         {
@@ -77,5 +74,4 @@ public class GameNetworkManager : NetworkManager
         base.OnStopServer();
     }
 
- 
 }

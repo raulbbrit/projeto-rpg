@@ -15,13 +15,9 @@ public class CharacterSpawn : NetworkBehaviour
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;
         GameObject CharacterInstance = Instantiate(characterPreFab);
+        CharacterInstance.name = transform.name + " Character's";
         NetworkServer.Spawn(CharacterInstance, connectionToClient);
     }
-    [Command]
-    public void CmdChangeCharacterName(string playerName)
-    {
-      
-
-    }
+    
    
 }

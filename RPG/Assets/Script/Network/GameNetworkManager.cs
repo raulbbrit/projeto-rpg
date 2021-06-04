@@ -49,13 +49,11 @@ public class GameNetworkManager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         NetworkPlayer networkPlayerInstance= Instantiate(networkPlayerPrefab);
-        /* networkPlayerInstance.gameObject.name = "Jogador " + PlayersList.Count();
-        Debug.Log("O nome do objeto foi mudado");*/
         bool isHost = PlayersList.Count==0; //verificando se é o host (primeiro a entrar)
-        for (int i = 0; i < PlayersList.Count; i++)
+      /*  for (int i = 0; i < PlayersList.Count; i++)
         {
             Debug.Log("A lista possuí: " +PlayersList.Count+" ishost= " + isHost.ToString());
-        }
+        }*/
         networkPlayerInstance.IsHost = isHost;
         NetworkServer.AddPlayerForConnection(conn,networkPlayerInstance.gameObject);
     }

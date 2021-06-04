@@ -13,6 +13,7 @@ public class TileScript : MonoBehaviour
     public Point GridPosition { get; private set; }
     public bool isEmpty { get; private set; }
     private SpriteRenderer spriteRenderer;
+    private GameObject prefabTile;
     private Color32 fullColor = new Color32(255, 118, 118, 255);
     private Color32 emptyColor = new Color32(96, 255, 90, 255);
 
@@ -42,7 +43,15 @@ public class TileScript : MonoBehaviour
     }
     private void OnMouseOver()
     {
+        if(!(EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null))
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+            isEmpty = true;
+            Destroy(prefabTile);
+            }
 
+        }
      
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
         {
@@ -80,6 +89,7 @@ public class TileScript : MonoBehaviour
 
         isEmpty = false;
         ColorTile(Color.white);
+        prefabTile = _object;
 
         GameManager.Instance.ObjectReleased();
    //     Pin = _object;

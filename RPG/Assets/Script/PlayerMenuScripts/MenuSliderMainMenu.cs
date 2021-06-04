@@ -40,7 +40,7 @@ public class MenuSliderMainMenu : MonoBehaviour
         }*/
         if (currentPosition.x >= 758 && currentPosition.x <= 761)
         {
-            Debug.Log("Entrou no if");
+            //Debug.Log("Entrou no if");
             optionBtn.SetActive(true);
             exitBtn.SetActive(true);
             aboutBtn.SetActive(true);

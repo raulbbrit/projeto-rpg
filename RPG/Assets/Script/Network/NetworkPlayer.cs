@@ -23,29 +23,29 @@ public class NetworkPlayer : NetworkBehaviour
     public bool IsHost
     {
         get { return isHost; }
-        
+
         set
         {
-           
-           isHost = value;
-           Debug.Log("isHost= " + isHost.ToString());
-               /** if (isHost == false && PlayerPanel.activeSelf==true)
-                {
 
-                    PlayerPanel.SetActive(true);
-                    MasterPanel.SetActive(false);
+            isHost = value;
+            Debug.Log("isHost= " + isHost.ToString());
+            /** if (isHost == false && PlayerPanel.activeSelf==true)
+             {
 
-                }
-                if (isHost == true && MasterPanel.activeSelf==true)
-                {
-                    PlayerPanel.SetActive(false);
-                    MasterPanel.SetActive(true);
-                }*/
+                 PlayerPanel.SetActive(true);
+                 MasterPanel.SetActive(false);
 
-            
+             }
+             if (isHost == true && MasterPanel.activeSelf==true)
+             {
+                 PlayerPanel.SetActive(false);
+                 MasterPanel.SetActive(true);
+             }*/
+
+
         }
     }
-   
+
 
     private GameNetworkManager GameNetwork
     {
@@ -60,14 +60,16 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartClient()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    public override void OnStartLocalPlayer()
-    {
         CharacterSpawn = GetComponent<CharacterSpawn>();
         GameNetwork.PlayersList.Add(this);
         ChangePlayerObjetcName();
         CharacterPrepares();
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        SaveManager = GameObject.Find("SaveManager");
+        PrepareSave();
         base.OnStartLocalPlayer();
     }
 
@@ -98,15 +100,19 @@ public class NetworkPlayer : NetworkBehaviour
    // [Client]
     private void ChangePlayerObjetcName()
     {
-        CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
+        if (hasAuthority)
+        {
+            transform.name = "Jogador " + GameNetwork.PlayersList.Count;
+            CmdChangePlayerName(transform.name);
+        }
+      
     }
    
     //[Client]
     private void CharacterPrepares()
     {
         CharacterSpawn.CmdSpawn();
-        SaveManager = GameObject.Find("SaveManager");
-        PrepareSave();
+        
     }
 
     // COMMAND //

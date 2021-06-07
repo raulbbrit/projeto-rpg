@@ -52,7 +52,7 @@ public class TileScript : MonoBehaviour
             }
 
         }
-     
+
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
         {
             if(isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)

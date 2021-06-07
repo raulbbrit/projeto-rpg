@@ -38,18 +38,31 @@ public class PinScript : MonoBehaviour
     }
     private void change(Texture2D sprite)
     {
-        if (sprite.width <= 300 && sprite.height <= 300)
+        if (sprite.width >= 1500 && sprite.height >= 1500)
+        {
+            //Nao é possível criar um pin com imagens muito grandes
+        }
+        else if (sprite.width >= 1000 && sprite.height >= 1000)
+        {
+            Rect rec = new Rect(0, 0, sprite.width, sprite.height);
+            //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
+            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.6f), 370);
+        }
+        else if (sprite.width <= 300 && sprite.height <= 300)
         {
             Rect rec = new Rect(0, 0, sprite.width, sprite.height);
             //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
             sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.6f), 90);
         }
-        if (sprite.width > 400 && sprite.height > 400)
+        else if (sprite.width > 400 && sprite.height > 400)
         {
             Rect rec = new Rect(0, 0, sprite.width, sprite.height);
             //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
             sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.6f), 150);
         }
+
+
+        
 
 
         bg.sprite = sprites;

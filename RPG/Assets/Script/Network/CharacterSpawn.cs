@@ -6,7 +6,7 @@ using Mirror;
 public class CharacterSpawn : NetworkBehaviour
 {
     [SerializeField] private GameObject characterPreFab;
-
+  
 
     [Command]
     public void CmdSpawn()
@@ -17,7 +17,6 @@ public class CharacterSpawn : NetworkBehaviour
         GameObject CharacterInstance = Instantiate(characterPreFab);
         CharacterInstance.name = transform.name + " Character's";
         NetworkServer.Spawn(CharacterInstance, connectionToClient);
+
     }
-    
-   
 }

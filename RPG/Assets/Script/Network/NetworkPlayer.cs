@@ -122,7 +122,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         transform.name = newplayerName;
         RpcChangePlayerName(newplayerName);
-
     }
 
     // RPCS //

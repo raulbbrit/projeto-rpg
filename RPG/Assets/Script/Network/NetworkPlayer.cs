@@ -95,13 +95,13 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    [Client]
+   // [Client]
     private void ChangePlayerObjetcName()
     {
         CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
     }
    
-    [Client]
+    //[Client]
     private void CharacterPrepares()
     {
         CharacterSpawn.CmdSpawn();

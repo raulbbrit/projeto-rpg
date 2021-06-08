@@ -137,6 +137,16 @@ public class Character : MonoBehaviour
                     statPanel.UpadeStatValues();
                 }
                 item.Equip(this);
+
+                //Deletar do save quando equipar
+                foreach (EquipmentData data in SaveData.equipments.ToArray())
+                {
+                    if (data.id == item.id)
+                    {
+                        Debug.Log("Entrou no if Delete");
+                        SaveData.equipments.Remove(data);
+                    }
+                }
                 statPanel.UpadeStatValues();
             }
             else
@@ -150,9 +160,19 @@ public class Character : MonoBehaviour
     {
         if (!inventory.IsFull() && equipmentPanel.RemoveItem(item))
         {
+            EquipmentData equip = new EquipmentData();
             item.Unequip(this);
             statPanel.UpadeStatValues();
             inventory.AddItem(item);
+            //recolocar o item na lista de save
+            equip.id = item.id;
+            equip.itemName = item.ItemName;
+            equip.strength = item.StrengthBonus;
+            equip.intelligence = item.IntelligenceBonus;
+            equip.agility = item.AgilityBonus;
+            equip.vitality = item.VitalityBonus;
+
+            SaveData.equipments.Add(equip);
         }
     }
 

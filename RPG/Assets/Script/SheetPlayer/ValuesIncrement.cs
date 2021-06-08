@@ -20,6 +20,7 @@ public class ValuesIncrement : NetworkBehaviour
     private NetworkPlayer networkPlayer;
     public Character CharacterScript { get => characterScript; set => characterScript = value; }
 
+
     private void Awake()
     {
     
@@ -47,6 +48,7 @@ public class ValuesIncrement : NetworkBehaviour
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();
         InfoDisplay[] info = infoScript.GetComponentsInChildren<InfoDisplay>();
+        
         if (button != 0) {
             
             switch (button)

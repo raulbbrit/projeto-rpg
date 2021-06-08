@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
 
     //}
 
-    public void SelectObject(PickObjectButton pickObjectButton)
+    public void SelectPinObject(PickObjectButton pickObjectButton)
     {
         int spaceTile = Singleton<Hover>.Instance.QtdTile();
 
@@ -40,6 +40,11 @@ public class GameManager : Singleton<GameManager>
             }
 
         }
+
+    }
+    public void SelectObject(PickObjectButton pickObjectButton)
+    {
+         this.SelectedObject = pickObjectButton;
 
     }
 

@@ -7595,7 +7595,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1355150654}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectObject
+        m_MethodName: SelectPinObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 373991940}
@@ -7725,7 +7725,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652699866}
   m_HandleRect: {fileID: 1652699865}
   m_Direction: 0
-  m_Value: 0.0000007138615
+  m_Value: 0
   m_Size: 0.7793548
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13354,8 +13354,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1346260207}
   m_HandleRect: {fileID: 1346260206}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.011926045
+  m_Value: 1.0000001
+  m_Size: 0.0119260475
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14249,6 +14249,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647618817599280351, guid: 1b7ab2e93ac1e734daba2a554de8b3eb,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647618817599280351, guid: 1b7ab2e93ac1e734daba2a554de8b3eb,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647618817599280351, guid: 1b7ab2e93ac1e734daba2a554de8b3eb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d40d5796f37d31945822583ffe6c2b5b,
+        type: 3}
+    - target: {fileID: 8647618817599280351, guid: 1b7ab2e93ac1e734daba2a554de8b3eb,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7ab2e93ac1e734daba2a554de8b3eb, type: 3}
@@ -18175,7 +18196,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1834973324}
   m_HandleRect: {fileID: 1834973323}
   m_Direction: 0
-  m_Value: 0.000000836098
+  m_Value: 0
   m_Size: 0.8053333
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -30753,7 +30774,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1844939681}
   m_HandleRect: {fileID: 1844939680}
   m_Direction: 2
-  m_Value: 0.9999998
+  m_Value: 1.0000001
   m_Size: 0.59999996
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -38887,7 +38908,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248567244}
   m_HandleRect: {fileID: 1248567243}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0.59999996
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -46,23 +46,23 @@ public class PinScript : MonoBehaviour
         {
             Rect rec = new Rect(0, 0, sprite.width, sprite.height);
             //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
-            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.6f), 370);
-        }
-        else if (sprite.width <= 300 && sprite.height <= 300)
-        {
-            Rect rec = new Rect(0, 0, sprite.width, sprite.height);
-            //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
-            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.6f), 90);
+            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.53f), 370);
         }
         else if (sprite.width > 400 && sprite.height > 400)
         {
             Rect rec = new Rect(0, 0, sprite.width, sprite.height);
             //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
-            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.6f), 150);
+            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.53f), 150);
+        }
+        else if (sprite.width > 300 || sprite.height > 300)
+        {
+            Rect rec = new Rect(0, 0, sprite.width, sprite.height);
+            //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
+            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.53f), 90);
         }
 
 
-        
+
 
 
         bg.sprite = sprites;

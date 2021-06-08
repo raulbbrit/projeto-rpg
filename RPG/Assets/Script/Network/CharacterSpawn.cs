@@ -12,15 +12,14 @@ public class CharacterSpawn : NetworkBehaviour
     [Command]
     public void CmdSpawn()
     {
-      //  networkPlayer = gameObject.GetComponent<NetworkPlayer>();
+        networkPlayer = gameObject.GetComponent<NetworkPlayer>();
         Debug.Log("Entrou no método spawn");
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;
-        GameObject CharacterInstance = Instantiate(characterPreFab);
-        CharacterInstance.name = transform.name + " Character's";
-        NetworkServer.Spawn(CharacterInstance, connectionToClient);
-        /*networkPlayer.Character = Instantiate(characterPreFab);
+        //  GameObject CharacterInstance = Instantiate(characterPreFab);
+        //  CharacterInstance.name = transform.name + " Character's";
+        networkPlayer.Character = Instantiate(characterPreFab);
         networkPlayer.ChangePlayerCharacterName();
-        NetworkServer.Spawn(networkPlayer.Character, connectionToClient);*/
+        NetworkServer.Spawn(networkPlayer.Character, connectionToClient);
     }
 }

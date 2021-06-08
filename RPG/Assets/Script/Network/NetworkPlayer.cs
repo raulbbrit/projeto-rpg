@@ -10,6 +10,7 @@ public class NetworkPlayer : NetworkBehaviour
     private bool isHost = false;
     [SerializeField] private GameObject masterPanel, playerPanel;
     [SerializeField] private CharacterSpawn characterSpawn;
+    private GameObject character;
     private GameNetworkManager gameNetwork;
     private GameObject saveManager;
     private string newName;
@@ -19,6 +20,7 @@ public class NetworkPlayer : NetworkBehaviour
     public GameObject SaveManager { get => saveManager; set => saveManager = value; }
     public string NewName { get => newName; set => newName = value; }
 
+    public GameObject Character { get => character; set => character = value; }
 
     public bool IsHost
     {
@@ -56,16 +58,18 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    
 
     public override void OnStartClient()
     {
         DontDestroyOnLoad(gameObject);
         CharacterSpawn = GetComponent<CharacterSpawn>();
         GameNetwork.PlayersList.Add(this);
-        ChangePlayerObjetcName();
+        ChangePlayerObjetcName();                     
         CharacterPrepares();
     }
 
+  
     public override void OnStartLocalPlayer()
     {
         SaveManager = GameObject.Find("SaveManager");
@@ -85,6 +89,13 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
         CharacterSpawn = GetComponent<CharacterSpawn>();
+        ChangePlayerCharacterName();
+        foreach (var networkPlayer in GameNetwork.PlayersList)
+        {
+
+            Debug.Log(networkPlayer.Character.name);
+         
+        }
     }
 
     [Client]
@@ -97,7 +108,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-   // [Client]
     private void ChangePlayerObjetcName()
     {
         if (hasAuthority)
@@ -108,15 +118,26 @@ public class NetworkPlayer : NetworkBehaviour
       
     }
    
-    //[Client]
+  
     private void CharacterPrepares()
     {
         CharacterSpawn.CmdSpawn();
         
+        
+    }
+
+    public void ChangePlayerCharacterName()
+    {
+        if (hasAuthority)
+        {
+            transform.name = "Jogador " + GameNetwork.PlayersList.Count;
+            CmdChangePlayerCharacterName(Character.name = transform.name + " Character's");
+        }
+       
     }
 
     // COMMAND //
-    
+
     [Command]
     public void CmdChangePlayerName(string newplayerName)
     {
@@ -124,6 +145,11 @@ public class NetworkPlayer : NetworkBehaviour
         RpcChangePlayerName(newplayerName);
     }
 
+    [Command]
+    private void CmdChangePlayerCharacterName(string newCharacterName)
+    {
+
+    }
     // RPCS //
 
     [ClientRpc]
@@ -131,4 +157,10 @@ public class NetworkPlayer : NetworkBehaviour
     {
         transform.name = newplayerName;
     }
+    [ClientRpc]
+    private void RpcChangePlayerCharacterName(string newplayerName)
+    {
+        transform.name = newplayerName;
+    }
+
 }

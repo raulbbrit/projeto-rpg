@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Mirror;
 
 public class Options : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Options : MonoBehaviour
 
     private void Update()
     {
+      
         if(!isShow && Input.GetKeyDown(KeyCode.Escape))
         {
             OpenMenu();
@@ -21,7 +23,22 @@ public class Options : MonoBehaviour
 
     public void ExitGame()
     {
+        if (NetworkClient.localPlayer.isServer)
+        {
+            NetworkManager.singleton.StopHost();
+            SceneTransitionManager.Return();
+
+        } else if (NetworkClient.localPlayer.isClientOnly)
+        {
+
+            NetworkManager.singleton.StopClient();
+            SceneTransitionManager.Return();
+
+        }
+
         SceneManager.LoadScene("PlayerMenu");
+
+
     }
 
     public void OpenMenu()

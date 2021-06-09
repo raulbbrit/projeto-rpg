@@ -65,12 +65,15 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
+        SaveManager = GameObject.Find("SaveManager");
+        PrepareSave();
+
 
     }
 
     public override void OnStartLocalPlayer()
     {
-        SaveManager = GameObject.Find("SaveManager");
+        
         base.OnStartLocalPlayer();
     }
 
@@ -85,7 +88,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
-        PrepareSave();
+       
 
     }
 

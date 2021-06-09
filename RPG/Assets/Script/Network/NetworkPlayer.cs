@@ -63,7 +63,9 @@ public class NetworkPlayer : NetworkBehaviour
         CharacterSpawn = GetComponent<CharacterSpawn>();
         GameNetwork.PlayersList.Add(this);
         ChangePlayerObjetcName();
-     
+        CharacterSpawn = GetComponent<CharacterSpawn>();
+        CharacterPrepares();
+
     }
 
     public override void OnStartLocalPlayer()
@@ -83,8 +85,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
-        CharacterSpawn = GetComponent<CharacterSpawn>();
-        CharacterPrepares();
         PrepareSave();
 
     }

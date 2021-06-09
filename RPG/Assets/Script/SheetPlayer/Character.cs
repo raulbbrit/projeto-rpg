@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.IO;
+using Mirror;
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
     public Character charin;
+    [SyncVar (hook= nameof (HookObjectName))]
+    string currentobjectname;
     [Header("Character Stats")]
     public CharacterStat Strenght;
     public CharacterStat Agility;
@@ -61,6 +64,7 @@ public class Character : MonoBehaviour
     public SkillPanel SkillPanel { get => skillPanel; set => skillPanel = value; }
     public InfoPanel InfoPanel { get => infoPanel; set => infoPanel = value; }
     public NamePanel NamePanel { get => namePanel; set => namePanel = value; }
+    public string Currentobjectname { get => currentobjectname; set => currentobjectname = value; }
 
     /*private void Awake()
     {
@@ -217,4 +221,12 @@ public class Character : MonoBehaviour
 
         
     }
+    // Hooks //
+
+    public void HookObjectName(string currentObjectName, string newObjectName)
+    {
+        transform.name = newObjectName;
+        Debug.Log("HookObjectName" + transform.name);
+    }
+
 }

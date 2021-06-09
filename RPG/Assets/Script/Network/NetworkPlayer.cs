@@ -12,7 +12,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
     private GameObject saveManager;
-    [SyncVar(hook= nameof(NameHook))] string currentName;
+    [SyncVar(hook= nameof(HookName))] string currentName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
@@ -132,14 +132,10 @@ public class NetworkPlayer : NetworkBehaviour
 
     // RPCS //
 
-    /* [ClientRpc]
-     private void RpcChangePlayerName(string newplayerName)
-     {
-         transform.name = newplayerName;
-     }*/
+    
 
-    //Rooks
-    public void NameHook(string currentName, string newName)
+    //Hooks
+    public void HookName(string currentName, string newName)
     {
         transform.name = newName;
         Debug.Log("NAMEHOOK: "+transform.name);

@@ -12,12 +12,12 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
     private GameObject saveManager;
-    private string newName;
+    [SyncVar(hook= nameof(NameHook))] string currentName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
     public GameObject SaveManager { get => saveManager; set => saveManager = value; }
-    public string NewName { get => newName; set => newName = value; }
+    public string CurrentName{ get => currentName; set => currentName = value; }
 
 
     public bool IsHost
@@ -63,13 +63,12 @@ public class NetworkPlayer : NetworkBehaviour
         CharacterSpawn = GetComponent<CharacterSpawn>();
         GameNetwork.PlayersList.Add(this);
         ChangePlayerObjetcName();
-        CharacterPrepares();
+     
     }
 
     public override void OnStartLocalPlayer()
     {
         SaveManager = GameObject.Find("SaveManager");
-        PrepareSave();
         base.OnStartLocalPlayer();
     }
 
@@ -85,6 +84,9 @@ public class NetworkPlayer : NetworkBehaviour
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
         CharacterSpawn = GetComponent<CharacterSpawn>();
+        CharacterPrepares();
+        PrepareSave();
+
     }
 
     [Client]
@@ -102,8 +104,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            transform.name = "Jogador " + GameNetwork.PlayersList.Count;
-            CmdChangePlayerName(transform.name);
+            //transform.name = "Jogador " + GameNetwork.PlayersList.Count;
+            CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
         }
       
     }
@@ -111,7 +113,11 @@ public class NetworkPlayer : NetworkBehaviour
     [Client]
     private void CharacterPrepares()
     {
-        CharacterSpawn.CmdSpawn();
+        if (hasAuthority)
+        {
+            CharacterSpawn.CmdSpawn();
+        }
+      
         
     }
 
@@ -120,15 +126,23 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdChangePlayerName(string newplayerName)
     {
-        transform.name = newplayerName;
-        RpcChangePlayerName(newplayerName);
+        this.currentName = newplayerName;
+        //RpcChangePlayerName(newplayerName);
     }
 
     // RPCS //
 
-    [ClientRpc]
-    private void RpcChangePlayerName(string newplayerName)
+    /* [ClientRpc]
+     private void RpcChangePlayerName(string newplayerName)
+     {
+         transform.name = newplayerName;
+     }*/
+
+    //Rooks
+    public void NameHook(string currentName, string newName)
     {
-        transform.name = newplayerName;
+        transform.name = newName;
+        Debug.Log("NAMEHOOK: "+transform.name);
     }
+    
 }

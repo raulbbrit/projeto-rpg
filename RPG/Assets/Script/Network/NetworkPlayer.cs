@@ -65,13 +65,14 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         SaveManager = GameObject.Find("SaveManager");
-        PrepareSave();
+        CharacterPrepares();
 
     }
 
     public override void OnStartLocalPlayer()
     {
-        CharacterPrepares();
+      
+        PrepareSave();
         base.OnStartLocalPlayer();
     }
 

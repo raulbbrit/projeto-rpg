@@ -64,7 +64,6 @@ public class NetworkPlayer : NetworkBehaviour
         GameNetwork.PlayersList.Add(this);
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
-        SaveManager = GameObject.Find("SaveManager");
         CharacterPrepares();
 
     }
@@ -96,7 +95,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (isClient)
         {
-            Debug.Log("isclient");
+          
+            SaveManager = GameObject.Find("SaveManager");
             saveManager.GetComponent<SaveManager>().FindSaveCharcter();
         }
     }

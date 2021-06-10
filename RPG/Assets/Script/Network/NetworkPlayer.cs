@@ -92,7 +92,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Client]
     private void PrepareSave()
     {
-        if (isClient)
+        if (isClient && hasAuthority)
         {
           
             SaveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();

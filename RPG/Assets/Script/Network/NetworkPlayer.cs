@@ -106,7 +106,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            //transform.name = "Jogador " + GameNetwork.PlayersList.Count;
+            transform.name = "Jogador " + GameNetwork.PlayersList.Count;
             CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
         }
       

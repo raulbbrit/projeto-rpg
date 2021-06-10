@@ -11,12 +11,12 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject masterPanel, playerPanel;
     [SerializeField] private CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
-    private GameObject saveManager;
+    private SaveManager saveManager;
     [SyncVar(hook= nameof(HookName))] string currentName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
-    public GameObject SaveManager { get => saveManager; set => saveManager = value; }
+    public SaveManager SaveManager { get => saveManager; set => saveManager = value; }
     public string CurrentName{ get => currentName; set => currentName = value; }
 
 
@@ -65,12 +65,12 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
-
+        Debug.Log("StartClient");
     }
 
     public override void OnStartLocalPlayer()
     {
-      
+        Debug.Log("LocalPlayer");
         PrepareSave();
         base.OnStartLocalPlayer();
     }
@@ -96,8 +96,24 @@ public class NetworkPlayer : NetworkBehaviour
         if (isClient)
         {
           
-            SaveManager = GameObject.Find("SaveManager");
-            saveManager.GetComponent<SaveManager>().FindSaveCharcter();
+            SaveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+            if (saveManager != null)
+            {
+                try
+                {
+                    saveManager.GetComponent<SaveManager>().saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+
+                }  catch (Exception ex)
+                {
+                    Debug.Log(ex.Message);
+                }
+               
+            }
+            else
+            {
+                Debug.Log("Savemanager null");
+            }
+          
         }
     }
 
@@ -107,6 +123,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (hasAuthority)
         {
             transform.name = "Jogador " + GameNetwork.PlayersList.Count;
+            Debug.Log("No Player: " + NetworkClient.connection.identity.gameObject.name);
             CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
         }
       

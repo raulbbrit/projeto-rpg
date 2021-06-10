@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
@@ -16,7 +17,16 @@ public class SaveManager : MonoBehaviour
     }*/
     public void FindSaveCharcter()
     {
-        saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+        Debug.Log("NO SAVE: " + NetworkClient.connection.identity.gameObject.name);
+        try
+        {
+            saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
+       
     }
     public void SaveCharacter()
     {

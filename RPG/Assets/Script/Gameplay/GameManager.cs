@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    private int indexPlayer = 0;
-    private int indexMaster = 0;
     public PickObjectButton SelectedObject { get; private set; }
     
     // Start is called before the first frame update
@@ -22,23 +20,29 @@ public class GameManager : Singleton<GameManager>
     public void SelectPinObject(PickObjectButton pickObjectButton)
     {
         int spaceTile = Singleton<Hover>.Instance.QtdTile();
-
-        if (NetworkClient.localPlayer.isClientOnly)
+        
+        if (Hover.hoverBool)
         {
-            if(indexPlayer < 1)
-            {
-            indexPlayer++;
-            this.SelectedObject = pickObjectButton;
-            } 
-        }
-        else
+            Debug.LogError("Hover Ativado");
+        } else
         {
-            if(indexMaster < spaceTile)
+          
+            if (NetworkClient.localPlayer.isClientOnly)
             {
-                indexMaster++;
-            this.SelectedObject = pickObjectButton;
+                if (Hover.indexPlayer < 1)
+                {
+                    this.SelectedObject = pickObjectButton;
+                }
             }
+            else if (NetworkClient.localPlayer.isServerOnly)
+            {
+                if (Hover.indexMaster < spaceTile)
+                {
 
+                    this.SelectedObject = pickObjectButton;
+                }
+
+            }
         }
 
     }
@@ -64,13 +68,22 @@ public class GameManager : Singleton<GameManager>
 
     public void HandleEscape()
     {
-
         try
         {
             if (Input.GetMouseButtonDown(1))
             {
-                Hover.Instance.DesactiveHover();
-                SelectedObject = null;
+                if (NetworkClient.localPlayer.isClientOnly)
+                {
+                    Hover.indexPlayer--;
+                    Hover.Instance.DesactiveHover();
+                    SelectedObject = null;
+                }
+                else if (NetworkClient.localPlayer.isServer)
+                {
+                    Hover.indexMaster--;
+                    Hover.Instance.DesactiveHover();
+                    SelectedObject = null;
+                }
             }
         } catch
         {
@@ -79,8 +92,5 @@ public class GameManager : Singleton<GameManager>
          
     }
 
-   private void RemovePin()
-    {
-
-    }
+ 
 }

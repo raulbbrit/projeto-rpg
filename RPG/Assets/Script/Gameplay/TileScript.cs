@@ -41,14 +41,38 @@ public class TileScript : MonoBehaviour
         transform.SetParent(parent);
         MapManager.Instance.Tiles.Add(gridPos, this);
     }
+
+
     private void OnMouseOver()
     {
         if(!(EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null))
         {
             if (Input.GetMouseButtonDown(1))
             {
-            isEmpty = true;
-            Destroy(prefabTile);
+
+                if(NetworkClient.localPlayer.isClientOnly)
+                {
+                    if(Hover.indexPlayer != 0)
+                    {
+
+                    Hover.indexPlayer--;
+                    isEmpty = true;
+                    Destroy(prefabTile);
+
+                    }
+                }
+                else if (NetworkClient.localPlayer.isServer)
+                {
+                    if(Hover.indexMaster != 0)
+                    {
+
+                    Hover.indexMaster--;
+                    Debug.Log(Hover.indexMaster);
+                    isEmpty = true;
+                    Destroy(prefabTile);
+
+                    }  
+                }
             }
 
         }

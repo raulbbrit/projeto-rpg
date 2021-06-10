@@ -5,8 +5,9 @@ public class Hover : Singleton<Hover>
 {
     // Start is called before the first frame update
     [SerializeField] GameObject getGameObject;
-    public int indexMaster = 0;
-    public int indexPlayer = 0;
+    public static int indexMaster = 0;
+    public static int indexPlayer = 0;
+    public static bool hoverBool = false;
     private GameObject spaceObject;
 
     public GameObject GetGameObject { get => getGameObject; set => getGameObject = value; }
@@ -34,21 +35,34 @@ public class Hover : Singleton<Hover>
     }
     public void ActivateHover()
     {
-     
-        if (NetworkClient.localPlayer.isClientOnly)
+       
+
+        if (hoverBool)
         {
-            if (indexPlayer < 1)
-            {
-                indexPlayer++;
-                getGameObject.SetActive(true);
-            }
+            Debug.Log("Hover Ativado");
         }
         else
         {
-            if (indexMaster < QtdTile())
+
+            if (NetworkClient.localPlayer.isClientOnly)
             {
-                indexMaster++;   
-                getGameObject.SetActive(true);
+                if (indexPlayer < 1)
+                {
+                    indexPlayer++;
+                    getGameObject.SetActive(true);
+                    hoverBool = true;
+                }
+            }
+            else
+            {
+                if (indexMaster < QtdTile())
+                {
+                    indexMaster++;
+                    Debug.Log(Hover.indexMaster);
+                    hoverBool = true;
+                    getGameObject.SetActive(true);
+                }
+
             }
 
         }
@@ -57,8 +71,8 @@ public class Hover : Singleton<Hover>
     }
 
     public void DesactiveHover()
-    { 
-
+    {
+        hoverBool = false;
         if(this.getGameObject.activeSelf == true)
         {
             this.GetGameObject.SetActive(false);
@@ -76,4 +90,5 @@ public class Hover : Singleton<Hover>
 
         return result;
     }
+
 }

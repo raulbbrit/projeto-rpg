@@ -83,7 +83,7 @@ public class SerializationManager
         string path;
         if (i == 1) {
             path = Application.persistentDataPath + "/saves/" + "inventory.sheet";
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
 
                 File.Delete(path);
@@ -98,7 +98,7 @@ public class SerializationManager
         if (i == 2)
         {
             path = Application.persistentDataPath + "/saves/" + "npc.sheet";
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
 
                 File.Delete(path);
@@ -111,7 +111,7 @@ public class SerializationManager
             }
 
             path = Application.persistentDataPath + "/saves/" + "monster.sheet";
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
 
                 File.Delete(path);

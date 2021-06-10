@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public PickObjectButton SelectedObject { get; private set; }
-    
+  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,34 +21,33 @@ public class GameManager : Singleton<GameManager>
     public void SelectPinObject(PickObjectButton pickObjectButton)
     {
         int spaceTile = Singleton<Hover>.Instance.QtdTile();
-        
-        if (Hover.hoverBool)
+
+        if (NetworkClient.localPlayer.isServer)
         {
-            Debug.LogError("Hover Ativado");
-        } else
-        {
-          
-            if (NetworkClient.localPlayer.isClientOnly)
+            
+            if (Hover.indexMaster < spaceTile)
+            {
+
+                this.SelectedObject = pickObjectButton;
+            }
+
+        }
+
+        else if (NetworkClient.localPlayer.isClientOnly)
             {
                 if (Hover.indexPlayer < 1)
                 {
+                    Debug.Log(Hover.indexPlayer);
                     this.SelectedObject = pickObjectButton;
                 }
             }
-            else if (NetworkClient.localPlayer.isServerOnly)
-            {
-                if (Hover.indexMaster < spaceTile)
-                {
 
-                    this.SelectedObject = pickObjectButton;
-                }
-
-            }
-        }
-
+            
     }
+
     public void SelectObject(PickObjectButton pickObjectButton)
     {
+    
          this.SelectedObject = pickObjectButton;
 
     }

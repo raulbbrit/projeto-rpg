@@ -9005,7 +9005,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1355150654}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SelectObject
+        m_MethodName: SelectPinObject
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 373991940}
@@ -42248,8 +42248,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248567244}
   m_HandleRect: {fileID: 1248567243}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.1764706
+  m_Value: 0.99999994
+  m_Size: 0.17647058
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

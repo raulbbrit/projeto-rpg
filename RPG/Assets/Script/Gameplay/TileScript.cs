@@ -54,7 +54,7 @@ public class TileScript : MonoBehaviour
                 {
                     if(Hover.indexPlayer != 0)
                     {
-
+                        Debug.Log(Hover.indexPlayer);
                     Hover.indexPlayer--;
                     isEmpty = true;
                     Destroy(prefabTile);

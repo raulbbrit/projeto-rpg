@@ -48,6 +48,7 @@ public class Hover : Singleton<Hover>
             {
                 if (indexPlayer < 1)
                 {
+                    Debug.Log(Hover.indexPlayer);
                     indexPlayer++;
                     getGameObject.SetActive(true);
                     hoverBool = true;

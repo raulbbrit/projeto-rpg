@@ -101,7 +101,8 @@ public class NetworkPlayer : NetworkBehaviour
             {
                 try
                 {
-                    saveManager.GetComponent<SaveManager>().saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+
+                    saveManager.GetComponent<SaveManager>().saveCharacter = GameObject.Find(gameObject.name+ " Character's");
 
                 }  catch (Exception ex)
                 {

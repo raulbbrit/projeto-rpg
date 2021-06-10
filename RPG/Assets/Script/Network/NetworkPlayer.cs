@@ -71,7 +71,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         Debug.Log("LocalPlayer");
-        PrepareSave();
+        
         base.OnStartLocalPlayer();
     }
 
@@ -86,8 +86,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
-       
-
+        PrepareSave();
     }
 
     [Client]

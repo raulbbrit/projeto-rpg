@@ -27,5 +27,6 @@ public class CharacterSpawn : NetworkBehaviour
         CharacterInstance.name = transform.name + " Character's";
         NetworkServer.Spawn(CharacterInstance, connectionToClient);
         CharacterInstance.GetComponent<Character>().Currentobjectname = transform.name + " Character's";
+        
     }
 }

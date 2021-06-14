@@ -26,16 +26,16 @@ public class ValuesIncrement : NetworkBehaviour
     }
     public  Character CreateCharacter(GameObject netCharacterPrefab)
     {
-        CharacterScript = netCharacterPrefab.GetComponent<Character>();
-        CharacterScript.Inventory = inventory;
-        CharacterScript.EquipmentPanel = equipmentPanel;
-        CharacterScript.StatPanel = statPanel;
-        CharacterScript.SkillPanel = skillPanel;
-        CharacterScript.InfoPanel = infoPanel;
-        CharacterScript.NamePanel = namePanel;
-        CharacterScript.SetFieldsAndUI();
-        return characterScript;
-
+            Debug.Log("ENTROU NO CREATE CHARACTER");
+            CharacterScript = netCharacterPrefab.GetComponent<Character>();
+            CharacterScript.InventorySyncString = inventory.gameObject.name;
+            CharacterScript.EquipmentPanelSyncString = equipmentPanel.gameObject.name;
+            CharacterScript.StatPanelSyncString = statPanel.gameObject.name;
+            CharacterScript.SkillPanelSyncString = skillPanel.gameObject.name;
+            CharacterScript.InfoPanelSyncString = infoPanel.gameObject.name;
+            CharacterScript.NamePanelSyncString = namePanel.gameObject.name;
+            CharacterScript.SetFieldsAndUI();
+            return characterScript;
     }
 
     public void IncremetValues(int button)

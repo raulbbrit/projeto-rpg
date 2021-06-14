@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using Mirror;
+using System;
 
 public class Character : NetworkBehaviour
 {
@@ -52,12 +53,72 @@ public class Character : NetworkBehaviour
 
     [Space]
     [Header("Panels Syncvars")]
-    [SerializeField] string inventorySyncString;
-    [SerializeField] string equipmentPanelSyncString;
-    [SerializeField] string statPanelSyncString;
-    [SerializeField] string skillPanelSyncString;
-    [SerializeField] string infoPanelSyncString;
-    [SerializeField] string namePanelSyncStringl;
+    [SerializeField] [SyncVar(hook = nameof(HookInventorySyncString))] string inventorySyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookEquipmentPanelSyncString))] string equipmentPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookStatPanelSyncString))] string statPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookSkillPanelSyncString))] string skillPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookInfoPanelSyncString))] string infoPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookNamePanelSyncString))] string namePanelSyncString;
+
+    public Inventory Inventory { get => inventory; set => inventory = value; }
+    public EquipmentPanel EquipmentPanel { get => equipmentPanel; set => equipmentPanel = value; }
+    public StatPanel StatPanel { get => statPanel; set => statPanel = value; }
+    public SkillPanel SkillPanel { get => skillPanel; set => skillPanel = value; }
+    public InfoPanel InfoPanel { get => infoPanel; set => infoPanel = value; }
+    public NamePanel NamePanel { get => namePanel; set => namePanel = value; }
+    public string Currentobjectname { get => currentobjectname; set => currentobjectname = value; }
+    public string InventorySyncString { get => inventorySyncString; set => inventorySyncString = value; }
+    public string EquipmentPanelSyncString { get => equipmentPanelSyncString; set => equipmentPanelSyncString = value; }
+    public string StatPanelSyncString { get => statPanelSyncString; set => statPanelSyncString = value; }
+    public string SkillPanelSyncString { get => skillPanelSyncString; set => skillPanelSyncString = value; }
+    public string InfoPanelSyncString { get => infoPanelSyncString; set => infoPanelSyncString = value; }
+    public string NamePanelSyncString { get => namePanelSyncString; set => namePanelSyncString = value; }
+
+    //Hooks
+    public void HookInventorySyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookInventorySyncString "+ stringReference);
+        Inventory = GameObject.Find(stringReference).GetComponent<Inventory>();
+    }
+
+
+
+    public void HookEquipmentPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookEquipmentPanelSyncString "+ stringReference);
+        EquipmentPanel = GameObject.Find(stringReference).GetComponent<EquipmentPanel>();
+    }
+
+
+    public void HookStatPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookStatPanelSyncString "+ stringReference);
+        StatPanel = GameObject.Find(stringReference).GetComponent<StatPanel>();
+    }
+
+
+
+    public void HookSkillPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookSkillPanelSyncString" + stringReference);
+        SkillPanel = GameObject.Find(stringReference).GetComponent<SkillPanel>();
+    }
+
+
+
+    public void HookInfoPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookInfoPanelSyncString" + stringReference);
+        InfoPanel = GameObject.Find(stringReference).GetComponent<InfoPanel>();
+    }
+
+
+
+    public void HookNamePanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookNamePanelSyncString" + stringReference);
+        NamePanel = GameObject.Find(stringReference).GetComponent<NamePanel>();
+    }
 
     /*
     private Inventory inventory;
@@ -67,13 +128,7 @@ public class Character : NetworkBehaviour
     */
 
 
-    public Inventory Inventory { get => inventory; set => inventory = value; }
-    public EquipmentPanel EquipmentPanel { get => equipmentPanel; set => equipmentPanel = value; }
-    public StatPanel StatPanel { get => statPanel; set => statPanel = value; }
-    public SkillPanel SkillPanel { get => skillPanel; set => skillPanel = value; }
-    public InfoPanel InfoPanel { get => infoPanel; set => infoPanel = value; }
-    public NamePanel NamePanel { get => namePanel; set => namePanel = value; }
-    public string Currentobjectname { get => currentobjectname; set => currentobjectname = value; }
+  
 
     /*private void Awake()
     {

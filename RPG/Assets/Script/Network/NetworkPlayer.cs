@@ -23,6 +23,7 @@ public class NetworkPlayer : NetworkBehaviour
     public bool IsHost
     {
         get { return isHost; }
+    
 
         set
         {

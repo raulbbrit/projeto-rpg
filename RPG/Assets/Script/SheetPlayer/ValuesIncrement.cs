@@ -26,15 +26,27 @@ public class ValuesIncrement : NetworkBehaviour
     }
     public  Character CreateCharacter(GameObject netCharacterPrefab)
     {
-            Debug.Log("ENTROU NO CREATE CHARACTER");
-            CharacterScript = netCharacterPrefab.GetComponent<Character>();
+       
+        Debug.Log("ENTROU NO CREATE CHARACTER");
+        CharacterScript = netCharacterPrefab.GetComponent<Character>();
+        //ON SERVER
+        CharacterScript.Inventory = inventory;
+        CharacterScript.EquipmentPanel = equipmentPanel;
+        CharacterScript.StatPanel = statPanel;
+        CharacterScript.SkillPanel = skillPanel;
+        CharacterScript.InfoPanel = infoPanel;
+        CharacterScript.NamePanel = namePanel;
+        //SYNCVARS 
+      
             CharacterScript.InventorySyncString = inventory.gameObject.name;
             CharacterScript.EquipmentPanelSyncString = equipmentPanel.gameObject.name;
             CharacterScript.StatPanelSyncString = statPanel.gameObject.name;
             CharacterScript.SkillPanelSyncString = skillPanel.gameObject.name;
             CharacterScript.InfoPanelSyncString = infoPanel.gameObject.name;
             CharacterScript.NamePanelSyncString = namePanel.gameObject.name;
-            CharacterScript.SetFieldsAndUI();
+      
+        Debug.Log("FieldsCheck" + CharacterScript.FieldsCheck);
+        CharacterScript.SetFieldsAndUI();
             return characterScript;
     }
 

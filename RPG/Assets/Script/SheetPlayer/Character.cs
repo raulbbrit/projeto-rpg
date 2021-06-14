@@ -6,6 +6,20 @@ using System;
 public class Character : NetworkBehaviour
 {
     public Character charin;
+    private int fieldCheck;
+    public int FieldsCheck{
+        get { return fieldCheck; }
+        set
+        {
+            fieldCheck = value;
+            if (fieldCheck==6)
+            {
+                Debug.Log("FIELDSCHECK==6");
+                SetFieldsAndUI();
+                fieldCheck = 0;
+            }
+        }
+    }
     [SyncVar (hook= nameof (HookObjectName))]
     string currentobjectname;
     [Header("Character Stats")]
@@ -74,11 +88,14 @@ public class Character : NetworkBehaviour
     public string InfoPanelSyncString { get => infoPanelSyncString; set => infoPanelSyncString = value; }
     public string NamePanelSyncString { get => namePanelSyncString; set => namePanelSyncString = value; }
 
+  
     //Hooks
+
     public void HookInventorySyncString(string oldstring, string stringReference)
     {
         Debug.Log("HookInventorySyncString "+ stringReference);
         Inventory = GameObject.Find(stringReference).GetComponent<Inventory>();
+        FieldsCheck++;
     }
 
 
@@ -87,6 +104,7 @@ public class Character : NetworkBehaviour
     {
         Debug.Log("HookEquipmentPanelSyncString "+ stringReference);
         EquipmentPanel = GameObject.Find(stringReference).GetComponent<EquipmentPanel>();
+        FieldsCheck++;
     }
 
 
@@ -94,6 +112,7 @@ public class Character : NetworkBehaviour
     {
         Debug.Log("HookStatPanelSyncString "+ stringReference);
         StatPanel = GameObject.Find(stringReference).GetComponent<StatPanel>();
+        FieldsCheck++;
     }
 
 
@@ -102,6 +121,7 @@ public class Character : NetworkBehaviour
     {
         Debug.Log("HookSkillPanelSyncString" + stringReference);
         SkillPanel = GameObject.Find(stringReference).GetComponent<SkillPanel>();
+        FieldsCheck++;
     }
 
 
@@ -110,6 +130,7 @@ public class Character : NetworkBehaviour
     {
         Debug.Log("HookInfoPanelSyncString" + stringReference);
         InfoPanel = GameObject.Find(stringReference).GetComponent<InfoPanel>();
+        FieldsCheck++;
     }
 
 
@@ -118,6 +139,7 @@ public class Character : NetworkBehaviour
     {
         Debug.Log("HookNamePanelSyncString" + stringReference);
         NamePanel = GameObject.Find(stringReference).GetComponent<NamePanel>();
+        FieldsCheck++;
     }
 
     /*

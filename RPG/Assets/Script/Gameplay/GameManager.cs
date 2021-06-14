@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
         if (NetworkClient.localPlayer.isServer)
         {
             
-            if (Hover.indexMaster < spaceTile)
+            if (Hover.indexMaster <= spaceTile)
             {
 
                 this.SelectedObject = pickObjectButton;
@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
 
         else if (NetworkClient.localPlayer.isClientOnly)
             {
-                if (Hover.indexPlayer < 1)
+                if (Hover.indexPlayer <= 1)
                 {
                     Debug.Log(Hover.indexPlayer);
                     this.SelectedObject = pickObjectButton;
@@ -74,7 +74,7 @@ public class GameManager : Singleton<GameManager>
             {
                 if (NetworkClient.localPlayer.isClientOnly)
                 {
-                    if(Hover.indexPlayer == 1)
+                    if(Hover.indexPlayer >= 1)
                     {
                         if(Hover.hoverBool)
                         {

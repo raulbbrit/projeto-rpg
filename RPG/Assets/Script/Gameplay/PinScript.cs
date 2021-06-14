@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using Mirror;
+using AnotherFileBrowser.Windows;
 
 public class PinScript : MonoBehaviour
 {
@@ -12,7 +14,36 @@ public class PinScript : MonoBehaviour
     private void Start()
     {
         bg = GetComponentInChildren<SpriteRenderer>();
-        StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
+        prefabCall();
+    }
+
+    private void prefabCall()
+    {
+
+        if (NetworkClient.localPlayer.isClientOnly)
+        {
+            StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
+        }
+        else if (NetworkClient.localPlayer.isServer)
+        {
+            if(!Hover.hoverBool)
+            {
+
+                bg.color = Color.white;
+                var bp = new BrowserProperties();
+                bp.filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+                bp.filterIndex = 0;
+
+
+
+                new FileBrowser().OpenFileBrowser(bp, path =>
+                {
+                    //Load image from local path with UWR
+
+                    StartCoroutine(LoadImage(path));
+                });
+            }
+        }
     }
 
     IEnumerator LoadImage(string path)

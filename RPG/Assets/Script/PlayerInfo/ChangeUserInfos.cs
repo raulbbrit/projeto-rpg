@@ -94,13 +94,13 @@ public class ChangeUserInfos : MonoBehaviour
     }
 
         public void ChangeUsername(Text newUsername)
-    {
+        {
         if (!newUsername.text.Equals(""))
         {
             PlayerPrefs.SetString("userName", newUsername.text);
            // Debug.Log($"ChangeUsername: newUsername.text = {newUsername.text}");
         }
-    }
+        }
 
     public void ResetInfos()
     {

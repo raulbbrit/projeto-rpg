@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class DiceRolls : MonoBehaviour
 {
@@ -23,8 +24,17 @@ public class DiceRolls : MonoBehaviour
             case 6 : result = Random.Range(1, 101); nomeDado = "D100"; break;
             default : result = 0;  break;
         }
+        
+        if(NetworkClient.localPlayer.isClientOnly)
+        {
+            textMessage += PlayerPrefs.GetString("userName");
+        }
+        else if(NetworkClient.localPlayer.isServer)
+        {
+            textMessage += "GameMaster";
+        }
 
-        textMessage += $"{PlayerPrefs.GetString("userName")} rolou o dado {nomeDado} e obteve {result}\n\n";
+        textMessage += $" rolled {nomeDado} and got a {result}\n\n";
         
         text.text = textMessage;
 

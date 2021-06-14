@@ -74,15 +74,31 @@ public class GameManager : Singleton<GameManager>
             {
                 if (NetworkClient.localPlayer.isClientOnly)
                 {
+                    if(Hover.indexPlayer == 1)
+                    {
+                        if(Hover.hoverBool)
+                        {
                     Hover.indexPlayer--;
                     Hover.Instance.DesactiveHover();
                     SelectedObject = null;
+
+                        }
+                    }
                 }
                 else if (NetworkClient.localPlayer.isServer)
                 {
+                    if(Hover.indexMaster >= 1)
+                    {
+                        if(Hover.hoverBool)
+                        {
                     Hover.indexMaster--;
-                    Hover.Instance.DesactiveHover();
+                        Debug.Log("GAMEMANAGER:" + Hover.indexMaster);
+                        Hover.Instance.DesactiveHover();
                     SelectedObject = null;
+
+                        }
+
+                    }
                 }
             }
         } catch

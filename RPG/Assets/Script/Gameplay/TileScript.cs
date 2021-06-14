@@ -48,50 +48,60 @@ public class TileScript : MonoBehaviour
         if(!(EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null))
         {
             if (Input.GetMouseButtonDown(1))
-            {
-
-                if(NetworkClient.localPlayer.isClientOnly)
                 {
-                    if(Hover.indexPlayer != 0)
+                    if (NetworkClient.localPlayer.isClientOnly)
                     {
-                        Debug.Log(Hover.indexPlayer);
-                    Hover.indexPlayer--;
-                    isEmpty = true;
-                    Destroy(prefabTile);
+                        if (Hover.indexPlayer > 0)
+                        {
+                            if (!Hover.hoverBool)
+                            {
 
+                                Hover.indexPlayer--;
+                                isEmpty = true;
+                                Destroy(prefabTile);
+
+                            }
+
+                        }
+                    }
+                    else if (NetworkClient.localPlayer.isServer)
+                    {
+                        if (Hover.indexMaster > 0)
+                        {
+                            if (!Hover.hoverBool)
+                            {
+
+                                Hover.indexMaster--;
+                                Debug.Log("TILESCRIPT: " + Hover.indexMaster);
+                                isEmpty = true;
+                                Destroy(prefabTile);
+
+                            }
+                        }
                     }
                 }
-                else if (NetworkClient.localPlayer.isServer)
-                {
-                    if(Hover.indexMaster != 0)
-                    {
-
-                    Hover.indexMaster--;
-                    Debug.Log(Hover.indexMaster);
-                    isEmpty = true;
-                    Destroy(prefabTile);
-
-                    }  
-                }
-            }
-
         }
 
         if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.SelectedObject != null)
         {
-            if(isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
-            {
-                ColorTile(emptyColor);
-            }
-            if (!isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
-            {
-                ColorTile(fullColor);
-            }
-    
-            else if (Input.GetMouseButtonDown(0) && GameManager.Instance.SelectedObject.MapObjectPreFab!=null )
+            if (Hover.hoverBool)
             {
 
-                PlaceObject();
+                if (isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
+                {
+                    ColorTile(emptyColor);
+                }
+                if (!isEmpty && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
+                {
+                    ColorTile(fullColor);
+                }
+
+                else if (Input.GetMouseButtonDown(0) && GameManager.Instance.SelectedObject.MapObjectPreFab != null)
+                {
+
+                    PlaceObject();
+
+                }
             }
 
         }

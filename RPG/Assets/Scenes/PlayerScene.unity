@@ -8905,7 +8905,7 @@ GameObject:
   - component: {fileID: 373991941}
   - component: {fileID: 373991940}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33765,7 +33765,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1844939680}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.1764706
+  m_Size: 0.17647058
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

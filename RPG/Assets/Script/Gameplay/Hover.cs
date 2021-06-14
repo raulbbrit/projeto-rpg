@@ -35,7 +35,6 @@ public class Hover : Singleton<Hover>
     }
     public void ActivateHover()
     {
-       
 
         if (hoverBool)
         {
@@ -56,7 +55,7 @@ public class Hover : Singleton<Hover>
             }
             else
             {
-                if (indexMaster < QtdTile())
+                if (indexMaster < QtdTile()) //QTDTILE()
                 {
                     indexMaster++;
                     Debug.Log(Hover.indexMaster);

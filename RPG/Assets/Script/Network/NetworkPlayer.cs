@@ -105,7 +105,7 @@ public class NetworkPlayer : NetworkBehaviour
 
                 }  catch (Exception ex)
                 {
-                    Debug.Log(ex.Message);
+                    Debug.LogError(ex.Message);
                 }
                
             }

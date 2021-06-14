@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
-    public Character saveCharacter;
+    public GameObject saveCharacter;
     //public GameObject[] item;
 
 
@@ -16,11 +17,20 @@ public class SaveManager : MonoBehaviour
     }*/
     public void FindSaveCharcter()
     {
-        saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+        Debug.Log("NO SAVE: " + NetworkClient.connection.identity.gameObject.name);
+        try
+        {
+            saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's");
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError(ex.Message);
+        }
+       
     }
     public void SaveCharacter()
     {
-        SaveSystem.SaveCharacter(saveCharacter);
+        SaveSystem.SaveCharacter(saveCharacter.GetComponent<Character>());
         SerializationManager.Save(SaveData.equipments);
         /*for (int i = 0; i < SaveData.equipments.Count; i++)
         {

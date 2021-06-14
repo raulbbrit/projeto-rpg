@@ -50,6 +50,15 @@ public class Character : NetworkBehaviour
     [SerializeField] InfoPanel infoPanel;
     [SerializeField] NamePanel namePanel;
 
+    [Space]
+    [Header("Panels Syncvars")]
+    [SerializeField] string inventorySyncString;
+    [SerializeField] string equipmentPanelSyncString;
+    [SerializeField] string statPanelSyncString;
+    [SerializeField] string skillPanelSyncString;
+    [SerializeField] string infoPanelSyncString;
+    [SerializeField] string namePanelSyncStringl;
+
     /*
     private Inventory inventory;
     private EquipmentPanel equipmentPanel;

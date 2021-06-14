@@ -11,13 +11,13 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject masterPanel, playerPanel;
     [SerializeField] private CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
-    private GameObject saveManager;
-    private string newName;
+    private SaveManager saveManager;
+    [SyncVar(hook= nameof(HookName))] string currentName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
-    public GameObject SaveManager { get => saveManager; set => saveManager = value; }
-    public string NewName { get => newName; set => newName = value; }
+    public SaveManager SaveManager { get => saveManager; set => saveManager = value; }
+    public string CurrentName{ get => currentName; set => currentName = value; }
 
 
     public bool IsHost
@@ -63,13 +63,15 @@ public class NetworkPlayer : NetworkBehaviour
         CharacterSpawn = GetComponent<CharacterSpawn>();
         GameNetwork.PlayersList.Add(this);
         ChangePlayerObjetcName();
+        CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
+        Debug.Log("StartClient");
     }
 
     public override void OnStartLocalPlayer()
     {
-        SaveManager = GameObject.Find("SaveManager");
-        PrepareSave();
+        Debug.Log("LocalPlayer");
+        
         base.OnStartLocalPlayer();
     }
 
@@ -84,16 +86,34 @@ public class NetworkPlayer : NetworkBehaviour
     {
         PlayerPanel = GameObject.Find("Character Panel");
         MasterPanel = GameObject.Find("Master Panel");
-        CharacterSpawn = GetComponent<CharacterSpawn>();
+        PrepareSave();
     }
 
     [Client]
     private void PrepareSave()
     {
-        if (isClient)
+        if (isClient && hasAuthority)
         {
-            Debug.Log("isclient");
-            saveManager.GetComponent<SaveManager>().FindSaveCharcter();
+          
+            SaveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+            if (saveManager != null)
+            {
+                try
+                {
+
+                    saveManager.GetComponent<SaveManager>().saveCharacter = GameObject.Find(gameObject.name+ " Character's");
+
+                }  catch (Exception ex)
+                {
+                    Debug.LogError(ex.Message);
+                }
+               
+            }
+            else
+            {
+                Debug.Log("Savemanager null");
+            }
+          
         }
     }
 
@@ -103,7 +123,8 @@ public class NetworkPlayer : NetworkBehaviour
         if (hasAuthority)
         {
             transform.name = "Jogador " + GameNetwork.PlayersList.Count;
-            CmdChangePlayerName(transform.name);
+            Debug.Log("No Player: " + NetworkClient.connection.identity.gameObject.name);
+            CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
         }
       
     }
@@ -111,7 +132,11 @@ public class NetworkPlayer : NetworkBehaviour
     [Client]
     private void CharacterPrepares()
     {
-        CharacterSpawn.CmdSpawn();
+        if (hasAuthority)
+        {
+            CharacterSpawn.CmdSpawn();
+        }
+      
         
     }
 
@@ -120,15 +145,19 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdChangePlayerName(string newplayerName)
     {
-        transform.name = newplayerName;
-        RpcChangePlayerName(newplayerName);
+        this.currentName = newplayerName;
+        //RpcChangePlayerName(newplayerName);
     }
 
     // RPCS //
 
-    [ClientRpc]
-    private void RpcChangePlayerName(string newplayerName)
+    
+
+    //Hooks
+    public void HookName(string currentName, string newName)
     {
-        transform.name = newplayerName;
+        transform.name = newName;
+        Debug.Log("NAMEHOOK: "+transform.name);
     }
+    
 }

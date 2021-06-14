@@ -56,10 +56,13 @@ public class TileScript : MonoBehaviour
                             if (!Hover.hoverBool)
                             {
 
+                            if(!isEmpty)
+                            {
                                 Hover.indexPlayer--;
                                 isEmpty = true;
                                 Destroy(prefabTile);
 
+                            }
                             }
 
                         }
@@ -70,11 +73,15 @@ public class TileScript : MonoBehaviour
                         {
                             if (!Hover.hoverBool)
                             {
+                            if(!isEmpty)
+                            {
 
                                 Hover.indexMaster--;
                                 Debug.Log("TILESCRIPT: " + Hover.indexMaster);
                                 isEmpty = true;
                                 Destroy(prefabTile);
+                            }
+
 
                             }
                         }

@@ -49,8 +49,17 @@ public class ValuesIncrement : NetworkBehaviour
         return characterScript;
     }
 
+ /**   public void IncremmentCalled(int buttonID)
+    {
+        NetworkIdentity playerObject = NetworkClient.connection.identity;
+        networkPlayer = playerObject.GetComponent<NetworkPlayer>();
+        IncremetValues(buttonID,networkPlayer);
+
+
+    }*/
     public void IncremetValues(int button)
     {
+
         //Character charac = script.GetComponent<Character>();
         NetworkIdentity networkIdentity = NetworkClient.connection.identity;
         networkPlayer = networkIdentity.GetComponent<NetworkPlayer>();

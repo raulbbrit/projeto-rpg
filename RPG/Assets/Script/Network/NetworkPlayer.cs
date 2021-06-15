@@ -11,13 +11,19 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private GameObject masterPanel, playerPanel;
     [SerializeField] private CharacterSpawn characterSpawn;
     private GameNetworkManager gameNetwork;
-    private SaveManager saveManager;
+    [SerializeField] private SaveManager saveManager;
+    [SerializeField] private Character playercharacter;
     [SyncVar(hook= nameof(HookName))] string currentName;
+    [SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
     public SaveManager SaveManager { get => saveManager; set => saveManager = value; }
     public string CurrentName{ get => currentName; set => currentName = value; }
+
+    public Character Playercharacter { get => playercharacter; set => playercharacter = value; }
+
+    public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
 
 
     public bool IsHost
@@ -57,6 +63,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+ 
 
     public override void OnStartClient()
     {
@@ -160,5 +167,12 @@ public class NetworkPlayer : NetworkBehaviour
         transform.name = newName;
         Debug.Log("NAMEHOOK: "+transform.name);
     }
-    
+
+    public void HookCharacter(string currentCharacter, string newCharacter)
+    {
+        this.playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
+        Debug.Log("HookCharacter: " + newCharacter);
+    }
+
+
 }

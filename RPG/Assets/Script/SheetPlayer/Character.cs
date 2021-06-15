@@ -178,6 +178,7 @@ public class Character : NetworkBehaviour
         if (File.Exists(path)) {
             LoadCharacter();  
         }
+        Name.characterName = PlayerPrefs.GetString("userName");
         try
         {
             statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
@@ -310,7 +311,7 @@ public class Character : NetworkBehaviour
         Level.characterInfo = data.level;
         Mana.characterInfo = data.mana;
         Health.characterInfo = data.health;
-        Name.characterName = PlayerPrefs.GetString("userName");
+      //  Name.characterName = PlayerPrefs.GetString("userName");
 
         
 

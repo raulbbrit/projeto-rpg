@@ -22,14 +22,14 @@ public class ValuesIncrement : NetworkBehaviour
 
     private void Awake()
     {
-    
+
     }
-    public  Character CreateCharacter(GameObject netCharacterPrefab)
+    public Character CreateCharacter(GameObject netCharacterPrefab)
     {
-       
+
         Debug.Log("ENTROU NO CREATE CHARACTER");
         CharacterScript = netCharacterPrefab.GetComponent<Character>();
-        //ON SERVER
+        //Server
         CharacterScript.Inventory = inventory;
         CharacterScript.EquipmentPanel = equipmentPanel;
         CharacterScript.StatPanel = statPanel;
@@ -37,17 +37,16 @@ public class ValuesIncrement : NetworkBehaviour
         CharacterScript.InfoPanel = infoPanel;
         CharacterScript.NamePanel = namePanel;
         //SYNCVARS 
-      
-            CharacterScript.InventorySyncString = inventory.gameObject.name;
-            CharacterScript.EquipmentPanelSyncString = equipmentPanel.gameObject.name;
-            CharacterScript.StatPanelSyncString = statPanel.gameObject.name;
-            CharacterScript.SkillPanelSyncString = skillPanel.gameObject.name;
-            CharacterScript.InfoPanelSyncString = infoPanel.gameObject.name;
-            CharacterScript.NamePanelSyncString = namePanel.gameObject.name;
-      
+        CharacterScript.InventorySyncString = inventory.gameObject.name;
+        CharacterScript.EquipmentPanelSyncString = equipmentPanel.gameObject.name;
+        CharacterScript.StatPanelSyncString = statPanel.gameObject.name;
+        CharacterScript.SkillPanelSyncString = skillPanel.gameObject.name;
+        CharacterScript.InfoPanelSyncString = infoPanel.gameObject.name;
+        CharacterScript.NamePanelSyncString = namePanel.gameObject.name;
+
         Debug.Log("FieldsCheck" + CharacterScript.FieldsCheck);
         CharacterScript.SetFieldsAndUI();
-            return characterScript;
+        return characterScript;
     }
 
     public void IncremetValues(int button)
@@ -59,25 +58,26 @@ public class ValuesIncrement : NetworkBehaviour
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();
         InfoDisplay[] info = infoScript.GetComponentsInChildren<InfoDisplay>();
-        if (button != 0) {
-            
+        if (button != 0)
+        {
+
             switch (button)
             {
-                  case 1: CharacterScript.Strenght.BaseValue += 1; break;
-               // case 1: networkPlayer.Character.GetComponent<Character>().Strenght.BaseValue += 1; break;
-                case -1: if (CharacterScript.Strenght.BaseValue > 0){ CharacterScript.Strenght.BaseValue -= 1; } else { } break;
+                case 1: CharacterScript.Strenght.BaseValue += 1; break;
+                // case 1: networkPlayer.Character.GetComponent<Character>().Strenght.BaseValue += 1; break;
+                case -1: if (CharacterScript.Strenght.BaseValue > 0) { CharacterScript.Strenght.BaseValue -= 1; } else { } break;
 
                 case 2: CharacterScript.Agility.BaseValue += 1; break;
-                case -2: if (CharacterScript.Agility.BaseValue > 0){ CharacterScript.Agility.BaseValue -= 1; } else { } break;
+                case -2: if (CharacterScript.Agility.BaseValue > 0) { CharacterScript.Agility.BaseValue -= 1; } else { } break;
 
                 case 3: CharacterScript.Intelligence.BaseValue += 1; break;
-                case -3: if (CharacterScript.Intelligence.BaseValue > 0){ CharacterScript.Intelligence.BaseValue -= 1; } else { } break;
+                case -3: if (CharacterScript.Intelligence.BaseValue > 0) { CharacterScript.Intelligence.BaseValue -= 1; } else { } break;
 
                 case 4: CharacterScript.Vitality.BaseValue += 1; break;
                 case -4: if (CharacterScript.Vitality.BaseValue > 0) { CharacterScript.Vitality.BaseValue -= 1; } else { } break;
 
                 case 5: CharacterScript.Fight.skillValue += 1; break;
-                case -5: if (CharacterScript.Fight.skillValue > 0) { CharacterScript.Fight.skillValue-= 1; } else { } break;
+                case -5: if (CharacterScript.Fight.skillValue > 0) { CharacterScript.Fight.skillValue -= 1; } else { } break;
 
                 case 6: CharacterScript.Shoot.skillValue += 1; break;
                 case -6: if (CharacterScript.Shoot.skillValue > 0) { CharacterScript.Shoot.skillValue -= 1; } else { } break;
@@ -132,13 +132,14 @@ public class ValuesIncrement : NetworkBehaviour
             }
 
 
-            if (button > -5 && button < 0||button > 0 && button < 5) {
+            if (button > -5 && button < 0 || button > 0 && button < 5)
+            {
                 foreach (StatDisplay stats in stat)
                 {
                     stats.UpdateStatValue();
                 }
             }
-            else if(button > -20 && button < -4 || button > 4 && button < 20)
+            else if (button > -20 && button < -4 || button > 4 && button < 20)
             {
                 foreach (SkillDisplay skills in skill)
                 {
@@ -153,7 +154,7 @@ public class ValuesIncrement : NetworkBehaviour
                 }
             }
         }
-        
+
 
     }
 

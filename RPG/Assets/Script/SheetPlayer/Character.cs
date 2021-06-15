@@ -173,27 +173,36 @@ public class Character : NetworkBehaviour
 
     public void SetFieldsAndUI()
     {
+        Debug.Log("SET FIELDS AND UI");
         string path = Application.persistentDataPath + "/character.sheet";
         if (File.Exists(path)) {
             LoadCharacter();  
         }
-        statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
-        statPanel.UpadeStatValues();
+        try
+        {
+            statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
+            statPanel.UpadeStatValues();
 
-        skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
-            Knowledge, Resources, Intimidation, Deceive);
-        skillPanel.UpadeSkillValues();
+            skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
+                Knowledge, Resources, Intimidation, Deceive);
+            skillPanel.UpadeSkillValues();
 
-        infoPanel.SetInfos(Level, Health, Mana);
-        infoPanel.UpadeStatValues();
+            infoPanel.SetInfos(Level, Health, Mana);
+            infoPanel.UpadeStatValues();
 
-        namePanel.SetName(Name);
-        namePanel.UpadeStatValues();
+            namePanel.SetName(Name);
+            namePanel.UpadeStatValues();
 
-        inventory.OnItemLeftClickedEvent += EquipFromInventory;
-        inventory.OnItemRightClickedEvent += DeleteFromInventory;
+            inventory.OnItemLeftClickedEvent += EquipFromInventory;
+            inventory.OnItemRightClickedEvent += DeleteFromInventory;
 
-        equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+            equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("SetFieldsAndUI erro: "+e.Message);
+        }
+     
     }
 
 

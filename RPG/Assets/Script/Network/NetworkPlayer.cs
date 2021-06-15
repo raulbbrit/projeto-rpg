@@ -73,8 +73,11 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
+        AssignCharacterToPlayer();
         Debug.Log("StartClient");
     }
+
+  
 
     public override void OnStartLocalPlayer()
     {
@@ -147,19 +150,33 @@ public class NetworkPlayer : NetworkBehaviour
       
         
     }
+    [Client]
+    private void AssignCharacterToPlayer()
+    {
+        if (hasAuthority)
+        {
+            CmdAssingCharacterToPlayer();
+        }
+    }
 
+   
     // COMMAND //
-    
+
     [Command]
     public void CmdChangePlayerName(string newplayerName)
     {
         this.currentName = newplayerName;
         //RpcChangePlayerName(newplayerName);
     }
+    [Command]
+    private void CmdAssingCharacterToPlayer()
+    {
+        this.currentCharacterName = transform.name + " Character's";
+    }
 
     // RPCS //
 
-    
+
 
     //Hooks
     public void HookName(string currentName, string newName)
@@ -170,6 +187,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void HookCharacter(string currentCharacter, string newCharacter)
     {
+
         this.playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
         Debug.Log("HookCharacter: " + newCharacter);
     }

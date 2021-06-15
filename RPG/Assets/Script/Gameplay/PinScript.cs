@@ -22,14 +22,17 @@ public class PinScript : MonoBehaviour
 
         if (NetworkClient.localPlayer.isClientOnly)
         {
+            if (!PlayerPrefs.GetString("path").Equals("") && PlayerPrefs.GetString("path") != null) {
+            bg.color = Color.white;
             StartCoroutine(LoadImage(PlayerPrefs.GetString("path")));
+             }
         }
         else if (NetworkClient.localPlayer.isServer)
         {
             if(!Hover.hoverBool)
             {
 
-                bg.color = Color.white;
+               
                 var bp = new BrowserProperties();
                 bp.filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
                 bp.filterIndex = 0;
@@ -39,8 +42,10 @@ public class PinScript : MonoBehaviour
                 new FileBrowser().OpenFileBrowser(bp, path =>
                 {
                     //Load image from local path with UWR
-
-                    StartCoroutine(LoadImage(path));
+                    if (!path.Equals("") || path != null) {
+                        bg.color = Color.white;
+                        StartCoroutine(LoadImage(path));
+                    }
                 });
             }
         }

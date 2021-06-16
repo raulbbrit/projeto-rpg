@@ -73,7 +73,6 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
-        AssignCharacterToPlayer();
         Debug.Log("StartClient");
     }
 
@@ -82,7 +81,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         Debug.Log("LocalPlayer");
-        
+        AssignCharacterToPlayer();
         base.OnStartLocalPlayer();
     }
 

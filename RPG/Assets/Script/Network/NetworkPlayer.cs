@@ -170,6 +170,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     private void CmdAssingCharacterToPlayer()
     {
+
         RpcAssignCharacterToPlayer(connectionToClient.identity, transform.name + " Character's");
     }
 

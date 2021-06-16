@@ -13,23 +13,23 @@ public class NetworkPlayer : NetworkBehaviour
     private GameNetworkManager gameNetwork;
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private Character playercharacter;
-    [SyncVar(hook= nameof(HookName))] string currentName;
+    [SyncVar(hook = nameof(HookName))] string currentName;
     //[SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
     public SaveManager SaveManager { get => saveManager; set => saveManager = value; }
-    public string CurrentName{ get => currentName; set => currentName = value; }
+    public string CurrentName { get => currentName; set => currentName = value; }
 
     public Character Playercharacter { get => playercharacter; set => playercharacter = value; }
 
-   // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
+    // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
 
 
     public bool IsHost
     {
         get { return isHost; }
-    
+
 
         set
         {
@@ -63,7 +63,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
- 
+
 
     public override void OnStartClient()
     {
@@ -76,7 +76,7 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("StartClient");
     }
 
-  
+
 
     public override void OnStartLocalPlayer()
     {
@@ -104,26 +104,27 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (isClient && hasAuthority)
         {
-          
+
             SaveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
             if (saveManager != null)
             {
                 try
                 {
 
-                    saveManager.GetComponent<SaveManager>().saveCharacter = GameObject.Find(gameObject.name+ " Character's");
+                    saveManager.GetComponent<SaveManager>().saveCharacter = GameObject.Find(gameObject.name + " Character's");
 
-                }  catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Debug.LogError(ex.Message);
                 }
-               
+
             }
             else
             {
                 Debug.Log("Savemanager null");
             }
-          
+
         }
     }
 
@@ -136,9 +137,9 @@ public class NetworkPlayer : NetworkBehaviour
             Debug.Log("No Player: " + NetworkClient.connection.identity.gameObject.name);
             CmdChangePlayerName("Jogador " + GameNetwork.PlayersList.Count);
         }
-      
+
     }
-   
+
     [Client]
     private void CharacterPrepares()
     {
@@ -146,19 +147,19 @@ public class NetworkPlayer : NetworkBehaviour
         {
             CharacterSpawn.CmdSpawn();
         }
-      
-        
+
+
     }
     [Client]
     private void AssignCharacterToPlayer()
     {
-        if (hasAuthority)
+        if (hasAuthority && isLocalPlayer)
         {
             CmdAssingCharacterToPlayer();
         }
     }
 
-   
+
     // COMMAND //
 
     [Command]
@@ -174,19 +175,29 @@ public class NetworkPlayer : NetworkBehaviour
 
     // RPCS //
     [ClientRpc]
-    public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity,string newCharacter )
+    public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity, string newCharacter)
     {
 
-        if (GameObject.Find(newCharacter).GetComponent<Character>() == null)
-        {
-            Debug.LogError("GameObject.Find(newCharacter).GetComponent<Character>() == null");
+        try
+        { 
+            var assignedCharacter = GameObject.Find(newCharacter).GetComponent<Character>();
+
+            if (assignedCharacter == null)
+            {
+                Debug.LogError("GameObject.Find(newCharacter).GetComponent<Character>() == null");
+            }
+            else
+            {
+                networkIdentity.gameObject.GetComponent<NetworkPlayer>().playercharacter = assignedCharacter;
+                Debug.Log("Sucesso em: RpcAssignCharacterToPlayer");
+            }
         }
-        else
+        catch (Exception e)
         {
-            networkIdentity.gameObject.GetComponent<NetworkPlayer>().playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
-            Debug.Log("Sucesso em: RpcAssignCharacterToPlayer");
+            Debug.Log("MY EXCEPTION: " + e.Message);
         }
-       
+
+
     }
 
 
@@ -195,9 +206,9 @@ public class NetworkPlayer : NetworkBehaviour
     public void HookName(string currentName, string newName)
     {
         transform.name = newName;
-        Debug.Log("NAMEHOOK: "+transform.name);
+        Debug.Log("NAMEHOOK: " + transform.name);
     }
 
- 
+
 
 }

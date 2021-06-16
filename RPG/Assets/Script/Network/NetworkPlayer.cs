@@ -210,6 +210,15 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("NAMEHOOK: " + transform.name);
     }
 
+<<<<<<< HEAD
+=======
+    public void HookCharacter(string currentCharacter, string newCharacter)
+    {
+
+        this.playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
+        Debug.Log("HookCharacter: " + newCharacter);
+    }
+>>>>>>> parent of 94e7515 (att final)
 
 
 }

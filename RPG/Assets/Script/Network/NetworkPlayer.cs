@@ -14,7 +14,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private Character playercharacter;
     [SyncVar(hook= nameof(HookName))] string currentName;
-    [SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
+    //[SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
@@ -23,7 +23,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     public Character Playercharacter { get => playercharacter; set => playercharacter = value; }
 
-    public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
+   // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
 
 
     public bool IsHost
@@ -166,15 +166,29 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdChangePlayerName(string newplayerName)
     {
         this.currentName = newplayerName;
-        //RpcChangePlayerName(newplayerName);
     }
     [Command]
     private void CmdAssingCharacterToPlayer()
     {
-        this.currentCharacterName = transform.name + " Character's";
+        RpcAssignCharacterToPlayer(connectionToClient.identity, transform.name + " Character's");
     }
 
     // RPCS //
+    [ClientRpc]
+    public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity,string newCharacter )
+    {
+
+        if (GameObject.Find(newCharacter).GetComponent<Character>() == null)
+        {
+            Debug.LogError("GameObject.Find(newCharacter).GetComponent<Character>() == null");
+        }
+        else
+        {
+            networkIdentity.gameObject.GetComponent<NetworkPlayer>().playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
+            Debug.Log("Sucesso em: RpcAssignCharacterToPlayer");
+        }
+       
+    }
 
 
 
@@ -185,11 +199,6 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("NAMEHOOK: "+transform.name);
     }
 
-    public void HookCharacter(string currentCharacter, string newCharacter)
-    {
-        this.playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
-        Debug.Log("HookCharacter: " + newCharacter);
-    }
-
+ 
 
 }

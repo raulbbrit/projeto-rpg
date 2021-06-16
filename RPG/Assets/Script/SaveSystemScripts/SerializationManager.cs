@@ -51,6 +51,8 @@ public class SerializationManager
             return true;
         }
         return false;
+
+        
     }
 
     public static object Load(string path)

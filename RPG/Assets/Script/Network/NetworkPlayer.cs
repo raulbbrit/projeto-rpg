@@ -13,13 +13,12 @@ public class NetworkPlayer : NetworkBehaviour
     private GameNetworkManager gameNetwork;
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private Character playercharacter;
-<<<<<<< HEAD
     [SyncVar(hook = nameof(HookName))] string currentName;
+
     //[SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
-=======
-    [SyncVar(hook= nameof(HookName))] string currentName;
+    //[SyncVar(hook= nameof(HookName))] string currentName;
+
     [SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
->>>>>>> parent of 2cb2700 (RpcAssignCharacterToPlayer)
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
@@ -28,11 +27,8 @@ public class NetworkPlayer : NetworkBehaviour
 
     public Character Playercharacter { get => playercharacter; set => playercharacter = value; }
 
-<<<<<<< HEAD
     // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
-=======
     public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
->>>>>>> parent of 2cb2700 (RpcAssignCharacterToPlayer)
 
 
     public bool IsHost
@@ -77,7 +73,6 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartClient()
     {
         DontDestroyOnLoad(gameObject);
-        CharacterSpawn = GetComponent<CharacterSpawn>();
         GameNetwork.PlayersList.Add(this);
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
@@ -90,7 +85,7 @@ public class NetworkPlayer : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         Debug.Log("LocalPlayer");
-        AssignCharacterToPlayer();
+        //,AssignCharacterToPlayer();
         base.OnStartLocalPlayer();
     }
 
@@ -159,14 +154,15 @@ public class NetworkPlayer : NetworkBehaviour
 
 
     }
-    [Client]
+    
+    /*[Client]
     private void AssignCharacterToPlayer()
     {
         if (hasAuthority && isLocalPlayer)
         {
             CmdAssingCharacterToPlayer();
         }
-    }
+    }*/
 
 
     // COMMAND //
@@ -177,20 +173,19 @@ public class NetworkPlayer : NetworkBehaviour
         this.currentName = newplayerName;
         //RpcChangePlayerName(newplayerName);
     }
-    [Command]
+    /*[Command]
     private void CmdAssingCharacterToPlayer()
     {
-<<<<<<< HEAD
 
         RpcAssignCharacterToPlayer(connectionToClient.identity, transform.name + " Character's");
-    }
+    }*/
 
     // RPCS //
-    [ClientRpc]
-    public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity, string newCharacter)
+    //[ClientRpc]
+    /*public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity, string newCharacter)
     {
 
-        try
+       /* try
         { 
             var assignedCharacter = GameObject.Find(newCharacter).GetComponent<Character>();
 
@@ -211,12 +206,10 @@ public class NetworkPlayer : NetworkBehaviour
 
 
     }
-=======
         this.currentCharacterName = transform.name + " Character's";
-    }
+    }*/
 
     // RPCS //
->>>>>>> parent of 2cb2700 (RpcAssignCharacterToPlayer)
 
 
 
@@ -226,23 +219,14 @@ public class NetworkPlayer : NetworkBehaviour
         transform.name = newName;
         Debug.Log("NAMEHOOK: " + transform.name);
     }
-
-<<<<<<< HEAD
-
+    
     public void HookCharacter(string currentCharacter, string newCharacter)
     {
-
-=======
-    public void HookCharacter(string currentCharacter, string newCharacter)
-    {
->>>>>>> parent of 2cb2700 (RpcAssignCharacterToPlayer)
         this.playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
         Debug.Log("HookCharacter: " + newCharacter);
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 2cb2700 (RpcAssignCharacterToPlayer)
 
 }
+

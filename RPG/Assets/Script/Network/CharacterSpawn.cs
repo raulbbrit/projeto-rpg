@@ -6,8 +6,16 @@ using Mirror;
 public class CharacterSpawn : NetworkBehaviour
 {
     [SerializeField] private GameObject characterPreFab;
+    private GameNetworkManager gameNetwork;
 
-    
+    private GameNetworkManager GameNetwork
+    {
+        get
+        {
+            if (gameNetwork != null) { return gameNetwork; }
+            return gameNetwork = NetworkManager.singleton as GameNetworkManager;
+        }
+    }
     [Command]
     public void CmdSpawn()
     {
@@ -19,6 +27,7 @@ public class CharacterSpawn : NetworkBehaviour
         CharacterInstance.name = transform.name + " Character's";
         NetworkServer.Spawn(CharacterInstance, connectionToClient);
         CharacterInstance.GetComponent<Character>().Currentobjectname = transform.name + " Character's";
+        gameNetwork.CharacterList.Add(CharacterInstance.GetComponent<Character>());
        
 
     }

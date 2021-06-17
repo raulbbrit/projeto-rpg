@@ -16,7 +16,7 @@ public class ValuesIncrement : NetworkBehaviour
     [SerializeField] SkillPanel skillPanel;
     [SerializeField] InfoPanel infoPanel;
     [SerializeField] NamePanel namePanel;
-    private Character characterScript;
+    [SerializeField] Character characterScript;
     private NetworkPlayer networkPlayer;
     public Character CharacterScript { get => characterScript; set => characterScript = value; }
 
@@ -60,9 +60,8 @@ public class ValuesIncrement : NetworkBehaviour
     public void IncremetValues(int button)
     {
 
-        //Character charac = script.GetComponent<Character>();
-        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-        networkPlayer = networkIdentity.GetComponent<NetworkPlayer>();
+       // Character charac = script.GetComponent<Character>();
+       
 
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();

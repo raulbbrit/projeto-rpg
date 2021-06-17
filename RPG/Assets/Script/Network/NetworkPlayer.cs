@@ -156,14 +156,14 @@ public class NetworkPlayer : NetworkBehaviour
 
     }
     
-    [Client]
+   /* [Client]
     private void AssignCharacterToPlayer()
     {
         if (hasAuthority)
         {
             CmdAssingCharacterToPlayer();
         }
-    }
+    }*/
 
 
     // COMMAND //
@@ -174,12 +174,12 @@ public class NetworkPlayer : NetworkBehaviour
         this.currentName = newplayerName;
         //RpcChangePlayerName(newplayerName);
     }
-    [Command]
+    /*[Command]
     private void CmdAssingCharacterToPlayer()
     { 
         this.Playercharacter = GameObject.Find(gameObject.name+ " Character's").GetComponent<Character>();
         this.CurrentCharacterName = Playercharacter.name;
-    }
+    }*/
 
     // RPCS //
     //[ClientRpc]
@@ -212,7 +212,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     // RPCS //
 
-
+  
 
     //Hooks
     public void HookName(string currentName, string newName)

@@ -16,10 +16,11 @@ public class CharacterSpawn : NetworkBehaviour
             return gameNetwork = NetworkManager.singleton as GameNetworkManager;
         }
     }
+    //CMDS//
     [Command]
     public void CmdSpawn()
     {
-      //  NetworkPlayer CallingPlayer = connectionToClient.identity.gameObject.GetComponent<NetworkPlayer>();
+        NetworkIdentity CallingPlayer = connectionToClient.identity;
         Debug.Log("Entrou no método spawn");
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         characterPreFab = valueIncrement.CreateCharacter(characterPreFab).gameObject;
@@ -28,7 +29,13 @@ public class CharacterSpawn : NetworkBehaviour
         NetworkServer.Spawn(CharacterInstance, connectionToClient);
         CharacterInstance.GetComponent<Character>().Currentobjectname = transform.name + " Character's";
         gameNetwork.CharacterList.Add(CharacterInstance.GetComponent<Character>());
-       
+        RpcAssignCharacterToPlayer(CharacterInstance,CallingPlayer);
 
+    }
+    //RPC//
+    [ClientRpc]
+    public void RpcAssignCharacterToPlayer(GameObject character,NetworkIdentity networkIdentity)
+    {
+        networkIdentity.gameObject.GetComponent<NetworkPlayer>().Playercharacter = character.GetComponent<Character>();
     }
 }

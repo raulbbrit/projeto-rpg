@@ -14,6 +14,9 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private Character playercharacter;
     [SyncVar(hook = nameof(HookName))] string currentName;
+    [SyncVar(hook = nameof(HookCharacter))] string syncCharacterIdentity;
+
+   
 
     //[SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     //[SyncVar(hook= nameof(HookName))] string currentName;
@@ -29,6 +32,8 @@ public class NetworkPlayer : NetworkBehaviour
 
     // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
     public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
+    public string SyncCharacterIdentity { get => syncCharacterIdentity; set => syncCharacterIdentity = value; }
+
 
 
     public bool IsHost
@@ -68,8 +73,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-
-
+   
     public override void OnStartClient()
     {
         DontDestroyOnLoad(gameObject);
@@ -77,7 +81,6 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
-      //  AssignCharacterToPlayer();
         Debug.Log("StartClient");
     }
 
@@ -156,14 +159,14 @@ public class NetworkPlayer : NetworkBehaviour
 
     }
     
-   /* [Client]
-    private void AssignCharacterToPlayer()
+    [Client]
+    public void AssignCharacterToPlayer(NetworkIdentity characterID)
     {
         if (hasAuthority)
         {
-            CmdAssingCharacterToPlayer();
+            CmdAssingCharacterToPlayer(characterID);
         }
-    }*/
+    }
 
 
     // COMMAND //
@@ -174,12 +177,13 @@ public class NetworkPlayer : NetworkBehaviour
         this.currentName = newplayerName;
         //RpcChangePlayerName(newplayerName);
     }
-    /*[Command]
-    private void CmdAssingCharacterToPlayer()
-    { 
-        this.Playercharacter = GameObject.Find(gameObject.name+ " Character's").GetComponent<Character>();
-        this.CurrentCharacterName = Playercharacter.name;
-    }*/
+    [Command]
+    private void CmdAssingCharacterToPlayer(NetworkIdentity characterIdentity)
+    {
+        SyncCharacterIdentity = characterIdentity.netId.ToString();
+        NetworkIdentity id = (NetworkIdentity.)characterIdentity.netId.ToString();
+       
+    }
 
     // RPCS //
     //[ClientRpc]

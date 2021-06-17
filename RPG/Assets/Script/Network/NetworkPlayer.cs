@@ -77,7 +77,7 @@ public class NetworkPlayer : NetworkBehaviour
         ChangePlayerObjetcName();
         CharacterSpawn = GetComponent<CharacterSpawn>();
         CharacterPrepares();
-        AssignCharacterToPlayer();
+      //  AssignCharacterToPlayer();
         Debug.Log("StartClient");
     }
 

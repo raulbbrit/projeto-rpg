@@ -15,7 +15,7 @@ public class GameNetworkManager : NetworkManager
     
 
     
-    public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();
+   [SerializeField]  public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();
 
     public override void OnStartServer()
     {

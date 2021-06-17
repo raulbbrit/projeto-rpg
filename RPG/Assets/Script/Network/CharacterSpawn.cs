@@ -6,6 +6,7 @@ using Mirror;
 public class CharacterSpawn : NetworkBehaviour
 {
     [SerializeField] private GameObject characterPreFab;
+
     
     [Command]
     public void CmdSpawn()

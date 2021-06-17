@@ -225,7 +225,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         try
         {
-            this.Playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
+            Playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
             Debug.Log("HookCharacter: " + newCharacter);
         }
         catch (NullReferenceException e)

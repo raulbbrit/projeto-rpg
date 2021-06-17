@@ -18,7 +18,7 @@ public class NetworkPlayer : NetworkBehaviour
     //[SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     //[SyncVar(hook= nameof(HookName))] string currentName;
 
-    [SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
+    [SerializeField] [SyncVar] string currentCharacterName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
@@ -221,20 +221,6 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("NAMEHOOK: " + transform.name);
     }
     
-    public void HookCharacter(string currentCharacter, string newCharacter)
-    {
-        try
-        {
-            this.Playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
-            Debug.Log("HookCharacter: " + newCharacter);
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.LogError("MY EXCEPTION: "+e.Message);
-        }
-     
-    }
-
 
 
 }

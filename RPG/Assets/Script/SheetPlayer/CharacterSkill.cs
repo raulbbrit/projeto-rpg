@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 [Serializable]
-public class CharacterSkill
+public class CharacterSkill: NetworkBehaviour
 {
-    public int skillValue;
+   [SyncVar] public int skillValue;
 
     public virtual int Value
     {

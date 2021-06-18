@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Mirror;
 
 [Serializable]
-public class CharacterStat
+public class CharacterStat: NetworkBehaviour
 {
-    public float BaseValue;
+    [SyncVar] public float BaseValue;
 
     //Valor do status, verifica se houve alterações
     public virtual float Value

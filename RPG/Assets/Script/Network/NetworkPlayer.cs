@@ -75,7 +75,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-  
+    public NetworkIdentity CharacterIdentity1 { get => characterIdentity; set => characterIdentity = value; }
 
     public override void OnStartClient()
     {
@@ -185,7 +185,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     private void CmdAssingCharacterToPlayer(NetworkIdentity characterID)
     {
-        CharacterIdentity = characterIdentity;
+        CharacterIdentity = CharacterIdentity1;
        // SyncCharacterIdentity = characterIdentity.netId.ToString();
        
     }

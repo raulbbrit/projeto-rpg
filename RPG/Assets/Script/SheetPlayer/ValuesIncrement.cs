@@ -57,11 +57,22 @@ public class ValuesIncrement : NetworkBehaviour
 
 
     }*/
-    public void IncremetValues(int button)
+    [Client] 
+    public void CallForIncrement(int button)
+    {
+        if (hasAuthority)
+        {
+
+        }
+        CmdIncremetValues(button,NetworkClient.connection.identity);
+    }
+    [Command]
+    public void CmdIncremetValues(int button, NetworkIdentity playerIdentity)
     {
 
-       // Character charac = script.GetComponent<Character>();
-       
+       Character playerCharacter = playerIdentity.gameObject.GetComponent<NetworkPlayer>().CharacterIdentity.gameObject.GetComponent<Character>();
+
+
 
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();
@@ -71,72 +82,72 @@ public class ValuesIncrement : NetworkBehaviour
 
             switch (button)
             {
-                case 1: CharacterScript.Strenght.BaseValue += 1; break;
+                case 1: playerCharacter.Strenght.BaseValue += 1; break;
                 // case 1: networkPlayer.Character.GetComponent<Character>().Strenght.BaseValue += 1; break;
-                case -1: if (CharacterScript.Strenght.BaseValue > 0) { CharacterScript.Strenght.BaseValue -= 1; } else { } break;
+                case -1: if (playerCharacter.Strenght.BaseValue > 0) { playerCharacter.Strenght.BaseValue -= 1; } else { } break;
 
-                case 2: CharacterScript.Agility.BaseValue += 1; break;
-                case -2: if (CharacterScript.Agility.BaseValue > 0) { CharacterScript.Agility.BaseValue -= 1; } else { } break;
+                case 2: playerCharacter.Agility.BaseValue += 1; break;
+                case -2: if (playerCharacter.Agility.BaseValue > 0) { playerCharacter.Agility.BaseValue -= 1; } else { } break;
 
-                case 3: CharacterScript.Intelligence.BaseValue += 1; break;
-                case -3: if (CharacterScript.Intelligence.BaseValue > 0) { CharacterScript.Intelligence.BaseValue -= 1; } else { } break;
+                case 3: playerCharacter.Intelligence.BaseValue += 1; break;
+                case -3: if (playerCharacter.Intelligence.BaseValue > 0) { playerCharacter.Intelligence.BaseValue -= 1; } else { } break;
 
-                case 4: CharacterScript.Vitality.BaseValue += 1; break;
-                case -4: if (CharacterScript.Vitality.BaseValue > 0) { CharacterScript.Vitality.BaseValue -= 1; } else { } break;
+                case 4: playerCharacter.Vitality.BaseValue += 1; break;
+                case -4: if (playerCharacter.Vitality.BaseValue > 0) { playerCharacter.Vitality.BaseValue -= 1; } else { } break;
 
-                case 5: CharacterScript.Fight.skillValue += 1; break;
-                case -5: if (CharacterScript.Fight.skillValue > 0) { CharacterScript.Fight.skillValue -= 1; } else { } break;
+                case 5: playerCharacter.Fight.skillValue += 1; break;
+                case -5: if (playerCharacter.Fight.skillValue > 0) { playerCharacter.Fight.skillValue -= 1; } else { } break;
 
-                case 6: CharacterScript.Shoot.skillValue += 1; break;
-                case -6: if (CharacterScript.Shoot.skillValue > 0) { CharacterScript.Shoot.skillValue -= 1; } else { } break;
+                case 6: playerCharacter.Shoot.skillValue += 1; break;
+                case -6: if (playerCharacter.Shoot.skillValue > 0) { playerCharacter.Shoot.skillValue -= 1; } else { } break;
 
-                case 7: CharacterScript.Brawl.skillValue += 1; break;
-                case -7: if (CharacterScript.Brawl.skillValue > 0) { CharacterScript.Brawl.skillValue -= 1; } else { } break;
+                case 7: playerCharacter.Brawl.skillValue += 1; break;
+                case -7: if (playerCharacter.Brawl.skillValue > 0) { playerCharacter.Brawl.skillValue -= 1; } else { } break;
 
-                case 8: CharacterScript.Dodge.skillValue += 1; break;
-                case -8: if (CharacterScript.Dodge.skillValue > 0) { CharacterScript.Dodge.skillValue -= 1; } else { } break;
+                case 8: playerCharacter.Dodge.skillValue += 1; break;
+                case -8: if (playerCharacter.Dodge.skillValue > 0) { playerCharacter.Dodge.skillValue -= 1; } else { } break;
 
-                case 9: CharacterScript.Block.skillValue += 1; break;
-                case -9: if (CharacterScript.Block.skillValue > 0) { CharacterScript.Block.skillValue -= 1; } else { } break;
+                case 9: playerCharacter.Block.skillValue += 1; break;
+                case -9: if (playerCharacter.Block.skillValue > 0) { playerCharacter.Block.skillValue -= 1; } else { } break;
 
-                case 10: CharacterScript.Athletics.skillValue += 1; break;
-                case -10: if (CharacterScript.Athletics.skillValue > 0) { CharacterScript.Athletics.skillValue -= 1; } else { } break;
+                case 10: playerCharacter.Athletics.skillValue += 1; break;
+                case -10: if (playerCharacter.Athletics.skillValue > 0) { playerCharacter.Athletics.skillValue -= 1; } else { } break;
 
-                case 11: CharacterScript.Physique.skillValue += 1; break;
-                case -11: if (CharacterScript.Physique.skillValue > 0) { CharacterScript.Physique.skillValue -= 1; } else { } break;
+                case 11: playerCharacter.Physique.skillValue += 1; break;
+                case -11: if (playerCharacter.Physique.skillValue > 0) { playerCharacter.Physique.skillValue -= 1; } else { } break;
 
-                case 12: CharacterScript.Sneak.skillValue += 1; break;
-                case -12: if (CharacterScript.Sneak.skillValue > 0) { CharacterScript.Sneak.skillValue -= 1; } else { } break;
+                case 12: playerCharacter.Sneak.skillValue += 1; break;
+                case -12: if (playerCharacter.Sneak.skillValue > 0) { playerCharacter.Sneak.skillValue -= 1; } else { } break;
 
-                case 13: CharacterScript.Investigate.skillValue += 1; break;
-                case -13: if (CharacterScript.Investigate.skillValue > 0) { CharacterScript.Investigate.skillValue -= 1; } else { } break;
+                case 13: playerCharacter.Investigate.skillValue += 1; break;
+                case -13: if (playerCharacter.Investigate.skillValue > 0) { playerCharacter.Investigate.skillValue -= 1; } else { } break;
 
-                case 14: CharacterScript.Perception.skillValue += 1; break;
-                case -14: if (CharacterScript.Perception.skillValue > 0) { CharacterScript.Perception.skillValue -= 1; } else { } break;
+                case 14: playerCharacter.Perception.skillValue += 1; break;
+                case -14: if (playerCharacter.Perception.skillValue > 0) { playerCharacter.Perception.skillValue -= 1; } else { } break;
 
-                case 15: CharacterScript.Language.skillValue += 1; break;
-                case -15: if (CharacterScript.Language.skillValue > 0) { CharacterScript.Language.skillValue -= 1; } else { } break;
+                case 15: playerCharacter.Language.skillValue += 1; break;
+                case -15: if (playerCharacter.Language.skillValue > 0) { playerCharacter.Language.skillValue -= 1; } else { } break;
 
-                case 16: CharacterScript.Knowledge.skillValue += 1; break;
-                case -16: if (CharacterScript.Knowledge.skillValue > 0) { CharacterScript.Knowledge.skillValue -= 1; } else { } break;
+                case 16: playerCharacter.Knowledge.skillValue += 1; break;
+                case -16: if (playerCharacter.Knowledge.skillValue > 0) { playerCharacter.Knowledge.skillValue -= 1; } else { } break;
 
-                case 17: CharacterScript.Resources.skillValue += 1; break;
-                case -17: if (CharacterScript.Resources.skillValue > 0) { CharacterScript.Resources.skillValue -= 1; } else { } break;
+                case 17: playerCharacter.Resources.skillValue += 1; break;
+                case -17: if (playerCharacter.Resources.skillValue > 0) { playerCharacter.Resources.skillValue -= 1; } else { } break;
 
-                case 18: CharacterScript.Intimidation.skillValue += 1; break;
-                case -18: if (CharacterScript.Intimidation.skillValue > 0) { CharacterScript.Intimidation.skillValue -= 1; } else { } break;
+                case 18: playerCharacter.Intimidation.skillValue += 1; break;
+                case -18: if (playerCharacter.Intimidation.skillValue > 0) { playerCharacter.Intimidation.skillValue -= 1; } else { } break;
 
-                case 19: CharacterScript.Deceive.skillValue += 1; break;
-                case -19: if (CharacterScript.Deceive.skillValue > 0) { CharacterScript.Deceive.skillValue -= 1; } else { } break;
+                case 19: playerCharacter.Deceive.skillValue += 1; break;
+                case -19: if (playerCharacter.Deceive.skillValue > 0) { playerCharacter.Deceive.skillValue -= 1; } else { } break;
 
-                case 20: CharacterScript.Health.characterInfo += 1; break;
-                case -20: if (CharacterScript.Health.characterInfo > 0) { CharacterScript.Health.characterInfo -= 1; } else { } break;
+                case 20: playerCharacter.Health.characterInfo += 1; break;
+                case -20: if (playerCharacter.Health.characterInfo > 0) { playerCharacter.Health.characterInfo -= 1; } else { } break;
 
-                case 21: CharacterScript.Mana.characterInfo += 1; break;
-                case -21: if (CharacterScript.Mana.characterInfo > 0) { CharacterScript.Mana.characterInfo -= 1; } else { } break;
+                case 21: playerCharacter.Mana.characterInfo += 1; break;
+                case -21: if (playerCharacter.Mana.characterInfo > 0) { playerCharacter.Mana.characterInfo -= 1; } else { } break;
 
-                case 22: CharacterScript.Level.characterInfo += 1; break;
-                case -22: if (CharacterScript.Level.characterInfo > 0) { CharacterScript.Level.characterInfo -= 1; } else { } break;
+                case 22: playerCharacter.Level.characterInfo += 1; break;
+                case -22: if (playerCharacter.Level.characterInfo > 0) { playerCharacter.Level.characterInfo -= 1; } else { } break;
             }
 
 

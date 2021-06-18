@@ -15,6 +15,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private Character playercharacter;
     [SyncVar(hook = nameof(HookName))] string currentName;
     [SyncVar(hook = nameof(HookCharacter))] string syncCharacterIdentity;
+    private NetworkIdentity characterIdentity;
 
    
 
@@ -33,6 +34,7 @@ public class NetworkPlayer : NetworkBehaviour
     // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
     public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
     public string SyncCharacterIdentity { get => syncCharacterIdentity; set => syncCharacterIdentity = value; }
+    public NetworkIdentity CharacterIdentity { get => characterIdentity; set => characterIdentity = value; }
 
 
 
@@ -73,7 +75,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-   
+  
+
     public override void OnStartClient()
     {
         DontDestroyOnLoad(gameObject);
@@ -164,7 +167,9 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            CmdAssingCharacterToPlayer(characterID);
+            CharacterIdentity = characterID;
+            //CmdAssingCharacterToPlayer(characterID);
+
         }
     }
 
@@ -178,10 +183,10 @@ public class NetworkPlayer : NetworkBehaviour
         //RpcChangePlayerName(newplayerName);
     }
     [Command]
-    private void CmdAssingCharacterToPlayer(NetworkIdentity characterIdentity)
+    private void CmdAssingCharacterToPlayer(NetworkIdentity characterID)
     {
+        CharacterIdentity = characterIdentity;
         SyncCharacterIdentity = characterIdentity.netId.ToString();
-        NetworkIdentity id = (NetworkIdentity.)characterIdentity.netId.ToString();
        
     }
 
@@ -225,16 +230,7 @@ public class NetworkPlayer : NetworkBehaviour
         Debug.Log("NAMEHOOK: " + transform.name);
     }
     
-    public void HookCharacter(string currentCharacter, string newCharacter)
-    {
-        
-
-            Playercharacter = GameObject.Find(newCharacter).GetComponent<Character>();
-            Debug.Log("HookCharacter: " + newCharacter);
-       
-     
-    }
-
+  
 
 
 }

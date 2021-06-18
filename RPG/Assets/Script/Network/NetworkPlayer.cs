@@ -35,8 +35,8 @@ public class NetworkPlayer : NetworkBehaviour
     public Character Playercharacter { get => playercharacter; set => playercharacter = value; }
 
     // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
-    public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
-    public string SyncCharacterIdentity { get => syncCharacterIdentity; set => syncCharacterIdentity = value; }
+    // public string CurrentCharacterName { get => currentCharacterName; set => currentCharacterName = value; }
+    //public string SyncCharacterIdentity { get => syncCharacterIdentity; set => syncCharacterIdentity = value; }
     public NetworkIdentity CharacterIdentity { get => characterIdentity; set => characterIdentity = value; }
 
 

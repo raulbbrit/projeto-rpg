@@ -14,7 +14,10 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private Character playercharacter;
     [SyncVar(hook = nameof(HookName))] string currentName;
-    [SyncVar(hook = nameof(HookCharacter))] string syncCharacterIdentity;
+   // [SyncVar(hook = nameof(HookCharacter))] string syncCharacterIdentity;
+
+  
+
     private NetworkIdentity characterIdentity;
 
    
@@ -22,7 +25,7 @@ public class NetworkPlayer : NetworkBehaviour
     //[SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     //[SyncVar(hook= nameof(HookName))] string currentName;
 
-    [SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
+  //  [SerializeField] [SyncVar(hook = nameof(HookCharacter))] string currentCharacterName;
     public GameObject MasterPanel { get => masterPanel; set => masterPanel = value; }
     public GameObject PlayerPanel { get => playerPanel; set => playerPanel = value; }
     public CharacterSpawn CharacterSpawn { get => characterSpawn; set => characterSpawn = value; }
@@ -229,8 +232,8 @@ public class NetworkPlayer : NetworkBehaviour
         transform.name = newName;
         Debug.Log("NAMEHOOK: " + transform.name);
     }
-    
-  
+
+   
 
 
 }

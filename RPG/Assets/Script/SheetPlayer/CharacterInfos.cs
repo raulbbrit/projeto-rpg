@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 [Serializable]
-public class CharacterInfos: NetworkBehaviour
+public class CharacterInfos
 {
     [SyncVar] public int characterInfo;
 

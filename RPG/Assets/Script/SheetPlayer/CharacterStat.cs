@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using Mirror;
 
 [Serializable]
-public class CharacterStat: NetworkBehaviour
+public class CharacterStat
 {
     [SyncVar] public float BaseValue;
 

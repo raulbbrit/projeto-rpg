@@ -5,7 +5,7 @@ using UnityEngine;
 using Mirror;
 
 [Serializable]
-public class CharacterSkill: NetworkBehaviour
+public class CharacterSkill
 {
    [SyncVar] public int skillValue;
 

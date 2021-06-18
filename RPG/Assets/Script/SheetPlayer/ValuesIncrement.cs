@@ -62,9 +62,9 @@ public class ValuesIncrement : NetworkBehaviour
     {
         if (hasAuthority)
         {
-
+            CmdIncremetValues(button, NetworkClient.connection.identity);
         }
-        CmdIncremetValues(button,NetworkClient.connection.identity);
+     
     }
     [Command]
     public void CmdIncremetValues(int button, NetworkIdentity playerIdentity)

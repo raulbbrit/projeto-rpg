@@ -14,11 +14,8 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private Character playercharacter;
     [SyncVar(hook = nameof(HookName))] string currentName;
-   // [SyncVar(hook = nameof(HookCharacter))] string syncCharacterIdentity;
-
-  
-
-    private NetworkIdentity characterIdentity;
+    // [SyncVar(hook = nameof(HookCharacter))] string syncCharacterIdentity;
+    [SerializeField] private NetworkIdentity characterIdentity;
 
    
 

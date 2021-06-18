@@ -189,7 +189,7 @@ public class NetworkPlayer : NetworkBehaviour
     private void CmdAssingCharacterToPlayer(NetworkIdentity characterID)
     {
         CharacterIdentity = characterIdentity;
-        SyncCharacterIdentity = characterIdentity.netId.ToString();
+       // SyncCharacterIdentity = characterIdentity.netId.ToString();
        
     }
 

@@ -210,7 +210,6 @@ public class NetworkPlayer : NetworkBehaviour
             valuesIncrement.CmdIncrementValues(button, identity);
             valuesIncrement.netIdentity.RemoveClientAuthority();
         }
-        
        
     }
 

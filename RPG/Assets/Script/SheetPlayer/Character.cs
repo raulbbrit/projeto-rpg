@@ -24,8 +24,14 @@ public class Character : NetworkBehaviour
     string currentobjectname;
     [Header("Character Stats")]
     public CharacterStat Strenght;
+    [SyncVar(hook = nameof(HookStrenght))]public float SyncStrenght;
+
+ 
+
     public CharacterStat Agility;
+   // [SyncVar(hook = nameof(HookName))] float Sync;
     public CharacterStat Intelligence;
+   // [SyncVar(hook = nameof(HookName))] float Sync;
     public CharacterStat Vitality;
 
     [Space]
@@ -142,34 +148,16 @@ public class Character : NetworkBehaviour
         FieldsCheck++;
     }
 
-    /*
-    private Inventory inventory;
-    private EquipmentPanel equipmentPanel;
-    private StatPanel statPanel;
-    private SkillPanel skillPanel;
-    */
-
-
-  
-
-    /*private void Awake()
+    public void HookStrenght(float oldValue, float newValue)
     {
-        statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
-        statPanel.UpadeStatValues();
+        Strenght.BaseValue = newValue;
+    }
 
-        skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
-            Knowledge, Resources, Intimidation, Deceive);
-        skillPanel.UpadeStatValues();
-        
-        inventory.OnItemRightClickedEvent += EquipFromInventory;
-        equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
-    }*/
-
-    /*private void Start()
+    public void HookObjectName(string currentObjectName, string newObjectName)
     {
-        charin =  GetComponent<Character>();
-
-    }*/
+        transform.name = newObjectName;
+        Debug.Log("HookObjectName" + transform.name);
+    }
 
     public void SetFieldsAndUI()
     {
@@ -317,12 +305,6 @@ public class Character : NetworkBehaviour
 
         
     }
-    // Hooks //
 
-    public void HookObjectName(string currentObjectName, string newObjectName)
-    {
-        transform.name = newObjectName;
-        Debug.Log("HookObjectName" + transform.name);
-    }
 
 }

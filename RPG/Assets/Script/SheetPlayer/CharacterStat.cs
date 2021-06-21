@@ -2,26 +2,33 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Mirror;
+using UnityEngine;
 
 [Serializable]
 public class CharacterStat
 {
-    [SyncVar] public float BaseValue;
+    public float BaseValue;
 
+   
     //Valor do status, verifica se houve alterações
+
     public virtual float Value
     {
         get
         {
             if (isDirty || BaseValue != lastBaseValue)
             {
+                Debug.Log("O VALOR ESTÁ ALTERADO");
                 lastBaseValue = BaseValue;
                 _value = CalculateFinalValue();
+
                 isDirty = false; 
             }
             return _value;
         }
     }
+   
+    
 
     [SyncVar] protected bool isDirty = true;
     [SyncVar] protected float _value;

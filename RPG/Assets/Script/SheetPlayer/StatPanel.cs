@@ -10,7 +10,7 @@ public class StatPanel : MonoBehaviour
     private void OnValidate()
     {
         statDisplays = GetComponentsInChildren<StatDisplay>();
-        UpadeStatNames();
+        UpdateStatNames();
     }
 
     public void SetStats(params CharacterStat[] charStats)
@@ -34,15 +34,16 @@ public class StatPanel : MonoBehaviour
         }
     }
 
-    public void UpadeStatValues()
+    public void UpdateStatValues()
     {
         for (int i = 0; i < stats.Length; i++)
         {
+            Debug.Log("UPDATE NO STATPANEL");
             statDisplays[i].UpdateStatValue();
         }
     }
 
-    public void UpadeStatNames()
+    public void UpdateStatNames()
     {
         for (int i = 0; i < statName.Length; i++)
         {

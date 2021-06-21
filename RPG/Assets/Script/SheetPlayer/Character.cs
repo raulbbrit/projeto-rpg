@@ -182,7 +182,7 @@ public class Character : NetworkBehaviour
         try
         {
             statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
-            statPanel.UpadeStatValues();
+            statPanel.UpdateStatValues();
 
             skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
                 Knowledge, Resources, Intimidation, Deceive);
@@ -234,10 +234,10 @@ public class Character : NetworkBehaviour
                 {
                     inventory.AddItem(previousItem);
                     previousItem.Unequip(this);
-                    statPanel.UpadeStatValues();
+                    statPanel.UpdateStatValues();
                 }
                 item.Equip(this);
-                statPanel.UpadeStatValues();
+                statPanel.UpdateStatValues();
             }
             else
             {
@@ -251,7 +251,7 @@ public class Character : NetworkBehaviour
         if (!inventory.IsFull() && equipmentPanel.RemoveItem(item))
         {
             item.Unequip(this);
-            statPanel.UpadeStatValues();
+            statPanel.UpdateStatValues();
             inventory.AddItem(item);
         }
     }

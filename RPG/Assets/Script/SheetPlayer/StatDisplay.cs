@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Mirror;
 
 public class StatDisplay : MonoBehaviour//, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,7 +16,7 @@ public class StatDisplay : MonoBehaviour//, IPointerEnterHandler, IPointerExitHa
     }
     
 
-    private string _name;
+   private string _name;
     public string Name
     {
         get { return _name; }
@@ -54,7 +55,9 @@ public class StatDisplay : MonoBehaviour//, IPointerEnterHandler, IPointerExitHa
 
     public void UpdateStatValue()
     {
+        Debug.Log("UPDATE STATS VALUE"+Stat.Value);
         valueText.text = Stat.Value.ToString();
+
     }
 
 }

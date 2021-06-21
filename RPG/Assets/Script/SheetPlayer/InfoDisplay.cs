@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class InfoDisplay : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class InfoDisplay : MonoBehaviour
         }
     }
 
-    private string _name;
+     private string _name;
     public string Name
     {
         get { return _name; }
@@ -27,8 +28,8 @@ public class InfoDisplay : MonoBehaviour
         }
     }
 
-    [SerializeField] Text nameText;
-    [SerializeField] Text valueText;
+     [SerializeField] Text nameText;
+     [SerializeField] Text valueText;
 
     private void OnValidate()
     {

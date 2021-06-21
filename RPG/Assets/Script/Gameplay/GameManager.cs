@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -52,5 +53,11 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("Hover: Prefab desativado");
         }
          
+    }
+
+    public void LocalIncrementRequest(int button)
+    {
+        NetworkPlayer networkPlayer = NetworkClient.connection.identity.gameObject.GetComponent<NetworkPlayer>();
+        networkPlayer.CmdCallForIncrement(button);
     }
 }

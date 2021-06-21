@@ -17,18 +17,18 @@ public class CharacterStat
             {
                 lastBaseValue = BaseValue;
                 _value = CalculateFinalValue();
-                isDirty = false;
+                isDirty = false; 
             }
             return _value;
         }
     }
 
-    protected bool isDirty = true;
-    protected float _value;
-    protected float lastBaseValue = float.MinValue;
+    [SyncVar] protected bool isDirty = true;
+    [SyncVar] protected float _value;
+    [SyncVar] protected float lastBaseValue = float.MinValue;
 
-    protected readonly List<StatModifier> statModifiers;
-    public readonly ReadOnlyCollection<StatModifier> StatModifiers;
+    [SyncVar] protected readonly List<StatModifier> statModifiers;
+    [SyncVar] public readonly ReadOnlyCollection<StatModifier> StatModifiers;
 
     //Lista de modificadores de status
     public CharacterStat()

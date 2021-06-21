@@ -72,7 +72,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    public NetworkIdentity CharacterIdentity1 { get => characterIdentity; set => characterIdentity = value; }
 
     public override void OnStartClient()
     {
@@ -182,7 +181,7 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     private void CmdAssingCharacterToPlayer(NetworkIdentity characterID)
     {
-        CharacterIdentity = CharacterIdentity1;
+        CharacterIdentity = CharacterIdentity;
        // SyncCharacterIdentity = characterIdentity.netId.ToString();
        
     }
@@ -194,47 +193,25 @@ public class NetworkPlayer : NetworkBehaviour
         incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
         if (hasAuthority)
         {
-
+         
            TargetIncrement(NetworkClient.connection.identity, button,incrementManager);
         }
-       
-            incrementManager.netIdentity.RemoveClientAuthority();
-        
+          
     }
-    // RPCS //
-    //[ClientRpc]
-    /*public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity, string newCharacter)
-    {
-
-       /* try
-        { 
-            var assignedCharacter = GameObject.Find(newCharacter).GetComponent<Character>();
-
-            if (assignedCharacter == null)
-            {
-                Debug.LogError("GameObject.Find(newCharacter).GetComponent<Character>() == null");
-            }
-            else
-            {
-                networkIdentity.gameObject.GetComponent<NetworkPlayer>().playercharacter = assignedCharacter;
-                Debug.Log("Sucesso em: RpcAssignCharacterToPlayer");
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log("MY EXCEPTION: " + e.Message);
-        }
-
-
-    }
-        this.currentCharacterName = transform.name + " Character's";
-    }*/
+ 
 
     // RPCS //
     [TargetRpc]
     private void TargetIncrement(NetworkIdentity identity, int button, ValuesIncrement valuesIncrement)
     {
-        valuesIncrement.CmdIncrementValues(button, identity);
+        if (valuesIncrement.hasAuthority)
+        {
+            Debug.Log("ENTROU NO IF");
+            valuesIncrement.CmdIncrementValues(button, identity);
+            valuesIncrement.netIdentity.RemoveClientAuthority();
+        }
+        
+       
     }
 
 

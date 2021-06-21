@@ -147,28 +147,30 @@ public class ValuesIncrement:NetworkBehaviour
                 case -22: if (playerCharacter.Level.characterInfo > 0) { playerCharacter.Level.characterInfo -= 1; } else { } break;
             }
 
-
-            if (button > -5 && button < 0 || button > 0 && button < 5)
+            foreach (StatDisplay stats in stat)
             {
-                foreach (StatDisplay stats in stat)
-                {
-                    stats.UpdateStatValue();
-                }
+                stats.UpdateStatValue();
+            }
+            foreach (SkillDisplay skills in skill)
+            {
+                skills.UpdateStatValue();
+            }
+            foreach (InfoDisplay infos in info)
+            {
+                infos.UpdateStatValue();
+            }
+          /*  if (button > -5 && button < 0 || button > 0 && button < 5)
+            {
+                
             }
             else if (button > -20 && button < -4 || button > 4 && button < 20)
             {
-                foreach (SkillDisplay skills in skill)
-                {
-                    skills.UpdateStatValue();
-                }
+                
             }
             else
             {
-                foreach (InfoDisplay infos in info)
-                {
-                    infos.UpdateStatValue();
-                }
-            }
+               
+            }*/
         }
 
 

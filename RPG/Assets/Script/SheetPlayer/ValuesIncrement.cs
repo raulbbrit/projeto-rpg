@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using System;
 
-public class ValuesIncrement : NetworkBehaviour
+public class ValuesIncrement:NetworkBehaviour
 {
     public GameObject characterPreFab;
     public GameObject statScript;
@@ -57,21 +58,17 @@ public class ValuesIncrement : NetworkBehaviour
 
 
     }*/
-    [Client] 
-    public void CallForIncrement(int button)
-    {
-        if (hasAuthority)
-        {
-            CmdIncremetValues(button, NetworkClient.connection.identity);
-        }
-     
-    }
+    
+
+    
+
+    
+
     [Command]
-    public void CmdIncremetValues(int button, NetworkIdentity playerIdentity)
+    public void CmdIncrementValues(int button, NetworkIdentity playerIdentity)
     {
-
+             
        Character playerCharacter = playerIdentity.gameObject.GetComponent<NetworkPlayer>().CharacterIdentity.gameObject.GetComponent<Character>();
-
 
 
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();

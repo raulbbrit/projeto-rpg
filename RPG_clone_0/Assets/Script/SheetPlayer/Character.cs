@@ -1,10 +1,25 @@
 ﻿using UnityEngine;
 using System.IO;
 using Mirror;
+using System;
 
 public class Character : NetworkBehaviour
 {
     public Character charin;
+    private int fieldCheck;
+    public int FieldsCheck{
+        get { return fieldCheck; }
+        set
+        {
+            fieldCheck = value;
+            if (fieldCheck==6)
+            {
+                Debug.Log("FIELDSCHECK==6");
+                SetFieldsAndUI();
+                fieldCheck = 0;
+            }
+        }
+    }
     [SyncVar (hook= nameof (HookObjectName))]
     string currentobjectname;
     [Header("Character Stats")]
@@ -52,12 +67,80 @@ public class Character : NetworkBehaviour
 
     [Space]
     [Header("Panels Syncvars")]
-    [SerializeField] string inventorySyncString;
-    [SerializeField] string equipmentPanelSyncString;
-    [SerializeField] string statPanelSyncString;
-    [SerializeField] string skillPanelSyncString;
-    [SerializeField] string infoPanelSyncString;
-    [SerializeField] string namePanelSyncStringl;
+    [SerializeField] [SyncVar(hook = nameof(HookInventorySyncString))] string inventorySyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookEquipmentPanelSyncString))] string equipmentPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookStatPanelSyncString))] string statPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookSkillPanelSyncString))] string skillPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookInfoPanelSyncString))] string infoPanelSyncString;
+    [SerializeField] [SyncVar(hook = nameof(HookNamePanelSyncString))] string namePanelSyncString;
+
+    public Inventory Inventory { get => inventory; set => inventory = value; }
+    public EquipmentPanel EquipmentPanel { get => equipmentPanel; set => equipmentPanel = value; }
+    public StatPanel StatPanel { get => statPanel; set => statPanel = value; }
+    public SkillPanel SkillPanel { get => skillPanel; set => skillPanel = value; }
+    public InfoPanel InfoPanel { get => infoPanel; set => infoPanel = value; }
+    public NamePanel NamePanel { get => namePanel; set => namePanel = value; }
+    public string Currentobjectname { get => currentobjectname; set => currentobjectname = value; }
+    public string InventorySyncString { get => inventorySyncString; set => inventorySyncString = value; }
+    public string EquipmentPanelSyncString { get => equipmentPanelSyncString; set => equipmentPanelSyncString = value; }
+    public string StatPanelSyncString { get => statPanelSyncString; set => statPanelSyncString = value; }
+    public string SkillPanelSyncString { get => skillPanelSyncString; set => skillPanelSyncString = value; }
+    public string InfoPanelSyncString { get => infoPanelSyncString; set => infoPanelSyncString = value; }
+    public string NamePanelSyncString { get => namePanelSyncString; set => namePanelSyncString = value; }
+
+  
+    //Hooks
+
+    public void HookInventorySyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookInventorySyncString "+ stringReference);
+        Inventory = GameObject.Find(stringReference).GetComponent<Inventory>();
+        FieldsCheck++;
+    }
+
+
+
+    public void HookEquipmentPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookEquipmentPanelSyncString "+ stringReference);
+        EquipmentPanel = GameObject.Find(stringReference).GetComponent<EquipmentPanel>();
+        FieldsCheck++;
+    }
+
+
+    public void HookStatPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookStatPanelSyncString "+ stringReference);
+        StatPanel = GameObject.Find(stringReference).GetComponent<StatPanel>();
+        FieldsCheck++;
+    }
+
+
+
+    public void HookSkillPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookSkillPanelSyncString" + stringReference);
+        SkillPanel = GameObject.Find(stringReference).GetComponent<SkillPanel>();
+        FieldsCheck++;
+    }
+
+
+
+    public void HookInfoPanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookInfoPanelSyncString" + stringReference);
+        InfoPanel = GameObject.Find(stringReference).GetComponent<InfoPanel>();
+        FieldsCheck++;
+    }
+
+
+
+    public void HookNamePanelSyncString(string oldstring, string stringReference)
+    {
+        Debug.Log("HookNamePanelSyncString" + stringReference);
+        NamePanel = GameObject.Find(stringReference).GetComponent<NamePanel>();
+        FieldsCheck++;
+    }
 
     /*
     private Inventory inventory;
@@ -67,13 +150,7 @@ public class Character : NetworkBehaviour
     */
 
 
-    public Inventory Inventory { get => inventory; set => inventory = value; }
-    public EquipmentPanel EquipmentPanel { get => equipmentPanel; set => equipmentPanel = value; }
-    public StatPanel StatPanel { get => statPanel; set => statPanel = value; }
-    public SkillPanel SkillPanel { get => skillPanel; set => skillPanel = value; }
-    public InfoPanel InfoPanel { get => infoPanel; set => infoPanel = value; }
-    public NamePanel NamePanel { get => namePanel; set => namePanel = value; }
-    public string Currentobjectname { get => currentobjectname; set => currentobjectname = value; }
+  
 
     /*private void Awake()
     {
@@ -96,27 +173,37 @@ public class Character : NetworkBehaviour
 
     public void SetFieldsAndUI()
     {
+        Debug.Log("SET FIELDS AND UI");
         string path = Application.persistentDataPath + "/character.sheet";
         if (File.Exists(path)) {
             LoadCharacter();  
         }
-        statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
-        statPanel.UpadeStatValues();
+        Name.characterName = PlayerPrefs.GetString("userName");
+        try
+        {
+            statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
+            statPanel.UpadeStatValues();
 
-        skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
-            Knowledge, Resources, Intimidation, Deceive);
-        skillPanel.UpadeSkillValues();
+            skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
+                Knowledge, Resources, Intimidation, Deceive);
+            skillPanel.UpadeSkillValues();
 
-        infoPanel.SetInfos(Level, Health, Mana);
-        infoPanel.UpadeStatValues();
+            infoPanel.SetInfos(Level, Health, Mana);
+            infoPanel.UpadeStatValues();
 
-        namePanel.SetName(Name);
-        namePanel.UpadeStatValues();
+            namePanel.SetName(Name);
+            namePanel.UpadeStatValues();
 
-        inventory.OnItemLeftClickedEvent += EquipFromInventory;
-        inventory.OnItemRightClickedEvent += DeleteFromInventory;
+            inventory.OnItemLeftClickedEvent += EquipFromInventory;
+            inventory.OnItemRightClickedEvent += DeleteFromInventory;
 
-        equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+            equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("SetFieldsAndUI erro: "+e.Message);
+        }
+     
     }
 
 
@@ -224,7 +311,7 @@ public class Character : NetworkBehaviour
         Level.characterInfo = data.level;
         Mana.characterInfo = data.mana;
         Health.characterInfo = data.health;
-        Name.characterName = PlayerPrefs.GetString("userName");
+      //  Name.characterName = PlayerPrefs.GetString("userName");
 
         
 

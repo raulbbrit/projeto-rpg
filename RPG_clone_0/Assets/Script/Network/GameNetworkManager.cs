@@ -12,10 +12,12 @@ public class GameNetworkManager : NetworkManager
       public static event Action OnclientDisconnected;
     [SerializeField] private NetworkPlayer networkPlayerPrefab;
     [SerializeField] private GameObject characterSpawn;
-    
+    [SerializeField] private List<Character> characterList= new List<Character>();
+
 
     
     public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();
+    public List<Character> CharacterList { get => characterList; set => characterList = value; }
 
     public override void OnStartServer()
     {

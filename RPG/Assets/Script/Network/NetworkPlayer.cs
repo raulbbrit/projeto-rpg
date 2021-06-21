@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Mirror;
-using UnityEngine.SceneManagement;
 using System;
+using UnityEngine;
 
 public class NetworkPlayer : NetworkBehaviour
 {
@@ -190,6 +187,20 @@ public class NetworkPlayer : NetworkBehaviour
        
     }
 
+    [Command]
+    public void CmdCallForIncrement(int button)
+    {
+        ValuesIncrement incrementManager =GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
+        incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
+        if (hasAuthority)
+        {
+
+           TargetIncrement(NetworkClient.connection.identity, button,incrementManager);
+        }
+       
+            incrementManager.netIdentity.RemoveClientAuthority();
+        
+    }
     // RPCS //
     //[ClientRpc]
     /*public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity, string newCharacter)
@@ -220,8 +231,12 @@ public class NetworkPlayer : NetworkBehaviour
     }*/
 
     // RPCS //
+    [TargetRpc]
+    private void TargetIncrement(NetworkIdentity identity, int button, ValuesIncrement valuesIncrement)
+    {
+        valuesIncrement.CmdIncrementValues(button, identity);
+    }
 
-  
 
     //Hooks
     public void HookName(string currentName, string newName)

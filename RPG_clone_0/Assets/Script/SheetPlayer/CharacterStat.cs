@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Mirror;
 
 [Serializable]
 public class CharacterStat
 {
-    public float BaseValue;
+    [SyncVar] public float BaseValue;
 
     //Valor do status, verifica se houve alterações
     public virtual float Value

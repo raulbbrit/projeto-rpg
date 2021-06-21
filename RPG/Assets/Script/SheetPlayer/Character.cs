@@ -29,28 +29,149 @@ public class Character : NetworkBehaviour
  
 
     public CharacterStat Agility;
-   // [SyncVar(hook = nameof(HookName))] float Sync;
+    [SyncVar(hook = nameof(HookAgility))] float Sync;
     public CharacterStat Intelligence;
-   // [SyncVar(hook = nameof(HookName))] float Sync;
+    [SyncVar(hook = nameof(HookIntelligence))] float SyncIntelligence;
     public CharacterStat Vitality;
+    [SyncVar(hook = nameof(HookVitality))]
+    float SyncVitality;
 
-    [Space]
+     [Space]
     [Header("Charecter Skills")]
     public CharacterSkill Fight;
+    [SyncVar(hook = nameof(HookFight))]
+    float SyncFight;
+
+    private static object HookFight()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Shoot;
+    [SyncVar(hook = nameof(HookShoot))]
+    float SyncShoot;
+
+    private static object HookShoot()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Brawl;
+    [SyncVar(hook = nameof(HookBrawl))]
+    float SyncBrawl;
+
+    private static object HookBrawl()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Dodge;
+    [SyncVar(hook = nameof(HookDodge))]
+    float SyncDodge;
+
+    private static object HookDodge()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Block;
+    [SyncVar(hook = nameof(HookBlock))]
+    float SyncBlock;
+
+    private static object HookBlock()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Athletics;
+    [SyncVar(hook = nameof(HookAthletics))]
+    float SyncAthletics;
+
+    private static object HookAthletics()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Physique;
+    [SyncVar(hook = nameof(HookPhysique))]
+    float SyncPhysique;
+
+    private static object HookPhysique()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Sneak;
+    [SyncVar(hook = nameof(HookSneak))]
+    float SyncSneak;
+
+    private static object HookSneak()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Investigate;
+    [SyncVar(hook = nameof(HookInvestigate))]
+    float SyncInvestigate;
+
+    private static object HookInvestigate()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Perception;
+    [SyncVar(hook = nameof(HookPerception))]
+    float SyncPerception;
+
+    private static object HookPerception()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Language;
+    [SyncVar(hook = nameof(HookLanguage))]
+    float SyncLanguage;
+
+    private static object HookLanguage()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Knowledge;
+    [SyncVar(hook = nameof(HookKnowledge))]
+    float SyncKnowledge;
+
+    private static object HookKnowledge()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Resources;
+    [SyncVar(hook = nameof(HookResources))]
+    float SyncResources;
+
+    private static object HookResources()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Intimidation;
+    [SyncVar(hook = nameof(HookIntimidation))]
+    float SyncIntimidation;
+
+    private static object HookIntimidation()
+    {
+        throw new NotImplementedException();
+    }
+
     public CharacterSkill Deceive;
+    [SyncVar(hook = nameof(HookDeceive))]
+    float SyncDeceive;
+
+    private static object HookDeceive()
+    {
+        throw new NotImplementedException();
+    }
 
     [Space]
     [Header("Character Information")]
@@ -148,16 +269,28 @@ public class Character : NetworkBehaviour
         FieldsCheck++;
     }
 
-    public void HookStrenght(float oldValue, float newValue)
-    {
-        Strenght.BaseValue = newValue;
-    }
-
     public void HookObjectName(string currentObjectName, string newObjectName)
     {
         transform.name = newObjectName;
         Debug.Log("HookObjectName" + transform.name);
     }
+    public void HookStrenght(float oldValue, float newValue)
+    {
+        Strenght.BaseValue = newValue;
+    }
+    public void HookAgility(float oldValue, float newValue)
+    {
+        Strenght.BaseValue = newValue;
+    }
+    public void HookIntelligence(float oldValue, float newValue)
+    {
+        Strenght.BaseValue = newValue;
+    }
+    public void HookVitality(float oldValue, float newValue)
+    {
+        Strenght.BaseValue = newValue;
+    }
+   
 
     public void SetFieldsAndUI()
     {

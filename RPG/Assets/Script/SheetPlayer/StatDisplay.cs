@@ -57,6 +57,7 @@ public class StatDisplay : MonoBehaviour//, IPointerEnterHandler, IPointerExitHa
     {
         Debug.Log("UPDATE STATS VALUE"+Stat.BaseValue);
         valueText.text = Stat.Value.ToString();
+        Debug.Log("Value " + _stat.Value.ToString());
 
     }
 

@@ -33764,8 +33764,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1844939681}
   m_HandleRect: {fileID: 1844939680}
   m_Direction: 2
-  m_Value: 0.99999994
-  m_Size: 0.17647055
+  m_Value: 1
+  m_Size: 0.17647058
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -38316,7 +38316,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1792591834}
   - component: {fileID: 1792591833}
-  - component: {fileID: 1792591835}
   m_Layer: 0
   m_Name: IncrementManager
   m_TagString: Untagged
@@ -38336,9 +38335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705e00e5924f28f4587dc73ccc544a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  characterPreFab: {fileID: 0}
+  characterPreFab: {fileID: 8753799165790703496, guid: e0a63c96edb9fbb49b3e3f0f8b0b91aa,
+    type: 3}
   statScript: {fileID: 1820635537}
   skillScript: {fileID: 260677652}
   infoScript: {fileID: 1847984892}
@@ -38348,6 +38346,7 @@ MonoBehaviour:
   skillPanel: {fileID: 145486183}
   infoPanel: {fileID: 1847984894}
   namePanel: {fileID: 285971100}
+  CharacterScript: {fileID: 0}
 --- !u!4 &1792591834
 Transform:
   m_ObjectHideFlags: 0
@@ -38362,23 +38361,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1792591835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792591832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 1444269651
-  serverOnly: 0
-  visible: 0
-  m_AssetId: 
-  hasSpawned: 0
 --- !u!1 &1794171134
 GameObject:
   m_ObjectHideFlags: 0
@@ -42248,8 +42230,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248567244}
   m_HandleRect: {fileID: 1248567243}
   m_Direction: 2
-  m_Value: 0.99999994
-  m_Size: 0.17647055
+  m_Value: 1
+  m_Size: 0.17647058
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

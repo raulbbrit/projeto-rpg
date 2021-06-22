@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 
-public class ValuesIncrement : NetworkBehaviour
+public class ValuesIncrement : MonoBehaviour
 {
     public GameObject characterPreFab;
     public GameObject statScript;
@@ -18,12 +18,20 @@ public class ValuesIncrement : NetworkBehaviour
     [SerializeField] NamePanel namePanel;
     private Character characterScript;
     private NetworkPlayer networkPlayer;
-    public Character CharacterScript { get => characterScript; set => characterScript = value; }
+    [SerializeField] Character CharacterScript;
 
 
     private void Awake()
     {
-    
+        Instantiate(characterPreFab).GetComponent<Character>();
+        CharacterScript = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
+        CharacterScript.Inventory = inventory;
+        CharacterScript.EquipmentPanel = equipmentPanel;
+        CharacterScript.StatPanel = statPanel;
+        CharacterScript.SkillPanel = skillPanel;
+        CharacterScript.InfoPanel = infoPanel;
+        CharacterScript.NamePanel = namePanel;
+        CharacterScript.SetFieldsAndUI();
     }
     public  Character CreateCharacter(GameObject netCharacterPrefab)
     {

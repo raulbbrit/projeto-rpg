@@ -76,7 +76,7 @@ public class NetworkPlayer : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
         GameNetwork.PlayersList.Add(this);
         characterSpawn.Spawn(connectionToClient);
-        saveManager.GetComponent<SaveManager>().FindSaveCharcter();
+       //saveManager.GetComponent<SaveManager>().FindSaveCharcter();
     }
 
     public override void OnStopClient()

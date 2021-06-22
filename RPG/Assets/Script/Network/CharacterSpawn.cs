@@ -37,6 +37,7 @@ public class CharacterSpawn : NetworkBehaviour
     public void RpcAssignCharacterToPlayer(NetworkIdentity characterNetworkIdentity,NetworkIdentity playerNetworkIdentity)
     {
         playerNetworkIdentity.gameObject.GetComponent<NetworkPlayer>().AssignCharacterToPlayer(characterNetworkIdentity);
+
      //  playerNetworkIdentity.gameObject.GetComponent<NetworkPlayer>().Playercharacter = character.GetComponent<Character>();
 
     }

@@ -417,9 +417,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1284,9 +1284,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2612,9 +2612,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2885,9 +2885,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4329,9 +4329,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4915,9 +4915,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5147,9 +5147,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7578,8 +7578,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652699866}
   m_HandleRect: {fileID: 1652699865}
   m_Direction: 0
-  m_Value: 0.00000053539594
-  m_Size: 0.77935475
+  m_Value: 0.00000089232685
+  m_Size: 0.7793548
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9241,9 +9241,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10062,9 +10062,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10327,9 +10327,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11349,9 +11349,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11481,9 +11481,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13143,9 +13143,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14007,9 +14007,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14643,9 +14643,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17051,9 +17051,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17438,9 +17438,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17570,8 +17570,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1834973324}
   m_HandleRect: {fileID: 1834973323}
   m_Direction: 0
-  m_Value: 0.00000062707323
-  m_Size: 0.80533326
+  m_Value: 0.0000010451225
+  m_Size: 0.8053333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18297,9 +18297,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18569,9 +18569,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19458,9 +19458,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20724,9 +20724,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22147,9 +22147,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22759,9 +22759,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24234,9 +24234,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24944,9 +24944,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25750,9 +25750,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28239,9 +28239,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29310,9 +29310,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29766,9 +29766,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30904,9 +30904,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31036,9 +31036,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -32992,9 +32992,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34736,9 +34736,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35027,9 +35027,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35313,9 +35313,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35466,9 +35466,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37059,9 +37059,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37501,9 +37501,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37633,9 +37633,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39383,9 +39383,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792591833}
-        m_TargetAssemblyTypeName: ValuesIncrement, Assembly-CSharp
-        m_MethodName: CallForIncrement
+      - m_Target: {fileID: 1355150654}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LocalIncrementRequest
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

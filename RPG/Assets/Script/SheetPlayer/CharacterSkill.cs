@@ -7,7 +7,7 @@ using Mirror;
 [Serializable]
 public class CharacterSkill
 {
-   [SyncVar] public int skillValue;
+    public int skillValue;
 
     public virtual int Value
     {

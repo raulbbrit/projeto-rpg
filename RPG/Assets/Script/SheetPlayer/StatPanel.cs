@@ -2,7 +2,7 @@
 
 public class StatPanel : MonoBehaviour
 {
-    [SerializeField] StatDisplay[] statDisplays;
+    public StatDisplay[] statDisplays;
 
     private CharacterStat[] stats;
     [SerializeField] string[] statName;

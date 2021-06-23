@@ -191,7 +191,7 @@ public class NetworkPlayer : NetworkBehaviour
         ValuesIncrement incrementManager = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         incrementManager.netIdentity.RemoveClientAuthority();
         incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
-        if (hasAuthority)
+        if (incrementManager.hasAuthority)
         {
            RpcIncrement(connectionToClient.identity, button,incrementManager);
         }

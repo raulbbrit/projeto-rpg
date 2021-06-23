@@ -129,7 +129,7 @@ public class SerializationManager
     
 
     public static BinaryFormatter GetBinaryFormatter()
-    {
+    { 
         BinaryFormatter formater = new BinaryFormatter();
 
         return formater;

@@ -197,6 +197,11 @@ public class NetworkPlayer : NetworkBehaviour
         }
           
     }
+    [Command]
+    public void CmdRemoveAuthorityFromIncrement(ValuesIncrement valuesIncrement)
+    {
+        valuesIncrement.netIdentity.RemoveClientAuthority();
+    }
  
 
     // RPCS //
@@ -208,6 +213,7 @@ public class NetworkPlayer : NetworkBehaviour
             Debug.Log("ENTROU NO IF");
             valuesIncrement.CmdIncrementValues(button, identity);
             valuesIncrement.netIdentity.RemoveClientAuthority();
+            CmdRemoveAuthorityFromIncrement(valuesIncrement);
         }
        
     }

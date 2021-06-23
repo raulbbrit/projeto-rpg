@@ -79,7 +79,7 @@ public class ValuesIncrement:NetworkBehaviour
 
             switch (button)
             {
-                case 1: playerCharacter.SyncStrenght += 1; playerCharacter.StatPanel.statDisplays[0].Stat.BaseValue += 1; break;
+                case 1: playerCharacter.SyncStrenght += 1; break;
                 // case 1: networkPlayer.Character.GetComponent<Character>().Strenght.BaseValue += 1; break;
                 case -1: if (playerCharacter.SyncStrenght > 0) { playerCharacter.SyncStrenght -= 1; } else { } break;
 

@@ -20,6 +20,7 @@ public class CharacterSpawn : NetworkBehaviour
     [Command]
     public void CmdSpawn()
     {
+        
         NetworkIdentity CallingPlayer = connectionToClient.identity;
         Debug.Log("Entrou no método spawn");
         var valueIncrement = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();

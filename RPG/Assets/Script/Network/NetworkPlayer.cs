@@ -188,11 +188,10 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     public void CmdCallForIncrement(int button)
     {
-        ValuesIncrement incrementManager =GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
+        ValuesIncrement incrementManager = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
         if (hasAuthority)
         {
-         
            TargetIncrement(NetworkClient.connection.identity, button,incrementManager);
         }
           
@@ -213,9 +212,13 @@ public class NetworkPlayer : NetworkBehaviour
             Debug.Log("ENTROU NO IF");
             valuesIncrement.CmdIncrementValues(button, identity);
             valuesIncrement.netIdentity.RemoveClientAuthority();
-            CmdRemoveAuthorityFromIncrement(valuesIncrement);
         }
-       
+        else
+        {
+            CmdRemoveAuthorityFromIncrement(valuesIncrement);
+            Debug.Log("REMOVEU A AUTORIDADE");
+            CmdCallForIncrement(button);
+        }
     }
 
 

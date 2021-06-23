@@ -193,7 +193,7 @@ public class NetworkPlayer : NetworkBehaviour
         incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
         if (hasAuthority)
         {
-           TargetIncrement(NetworkClient.connection.identity, button,incrementManager);
+           TargetIncrement(connectionToClient.identity, button,incrementManager);
         }
           
     }

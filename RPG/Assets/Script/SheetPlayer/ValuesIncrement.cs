@@ -178,8 +178,16 @@ public class ValuesIncrement:NetworkBehaviour
     [ClientRpc]
     public void RpcDebugMessage(NetworkIdentity playerid)
     {
-        Character playerCharacter = playerid.gameObject.GetComponent<NetworkPlayer>().CharacterIdentity.gameObject.GetComponent<Character>();
-        Debug.Log("Personagem = "+ playerCharacter.gameObject.name);
+        try
+        {
+            Character playerCharacter = playerid.gameObject.GetComponent<NetworkPlayer>().CharacterIdentity.gameObject.GetComponent<Character>();
+            Debug.Log("Personagem = " + playerCharacter.gameObject.name);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
+     
     }
 
 }

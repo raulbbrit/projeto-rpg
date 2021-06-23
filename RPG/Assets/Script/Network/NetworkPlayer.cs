@@ -189,6 +189,7 @@ public class NetworkPlayer : NetworkBehaviour
     public void CmdCallForIncrement(int button)
     {
         ValuesIncrement incrementManager = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
+        netIdentity.RemoveClientAuthority();
         incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
         if (hasAuthority)
         {

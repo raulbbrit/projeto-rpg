@@ -169,7 +169,7 @@ public class ValuesIncrement:NetworkBehaviour
 
                 }
               }
-              netIdentity.RemoveClientAuthority();
+             
         }
 
 

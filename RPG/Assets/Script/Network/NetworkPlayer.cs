@@ -164,7 +164,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (hasAuthority)
         {
             CharacterIdentity = characterID;
-            saveManager.FindSaveCharcter(characterID);
+
         }
     }
 

@@ -197,9 +197,11 @@ public class NetworkPlayer : NetworkBehaviour
           
     }
     [Command]
-    public void CmdRemoveAuthorityFromIncrement(ValuesIncrement valuesIncrement)
+    public void CmdRemoveAuthorityFromIncrement(NetworkIdentity identity, ValuesIncrement valuesIncrement, int button)
     {
         valuesIncrement.netIdentity.RemoveClientAuthority();
+        Debug.Log("REMOVEU A AUTORIDADE");
+        TargetIncrement(identity, button, valuesIncrement);
     }
  
 
@@ -215,9 +217,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         else
         {
-            CmdRemoveAuthorityFromIncrement(valuesIncrement);
-            Debug.Log("REMOVEU A AUTORIDADE");
-            CmdCallForIncrement(button);
+            CmdRemoveAuthorityFromIncrement(identity,valuesIncrement, button);
         }
     }
 

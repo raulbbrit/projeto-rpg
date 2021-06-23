@@ -166,8 +166,10 @@ public class ValuesIncrement:NetworkBehaviour
                 foreach (InfoDisplay infos in info)
                 {
                     infos.UpdateStatValue();
+
                 }
               }
+              netIdentity.RemoveClientAuthority();
         }
 
 

@@ -196,14 +196,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
           
     }
-    [Command]
-    public void CmdRemoveAuthorityFromIncrement(NetworkIdentity identity, ValuesIncrement valuesIncrement, int button)
-    {
-        valuesIncrement.netIdentity.RemoveClientAuthority();
-        Debug.Log("REMOVEU A AUTORIDADE");
-        TargetIncrement(identity, button, valuesIncrement);
-    }
- 
+  
 
     // RPCS //
     [TargetRpc]
@@ -213,11 +206,10 @@ public class NetworkPlayer : NetworkBehaviour
         {
             Debug.Log("ENTROU NO IF");
             valuesIncrement.CmdIncrementValues(button, identity);
-            valuesIncrement.netIdentity.RemoveClientAuthority();
         }
         else
         {
-            CmdRemoveAuthorityFromIncrement(identity,valuesIncrement, button);
+            Debug.LogError("SEM AUTORIDADE SOBRE INCREMENT");
         }
     }
 

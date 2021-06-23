@@ -6,6 +6,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<Item> items;
+    [SerializeField] Character charin;
     [SerializeField] GameObject prefab;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
@@ -13,17 +14,56 @@ public class Inventory : MonoBehaviour
     public event Action<Item> OnItemLeftClickedEvent;
     public event Action<Item> OnItemRightClickedEvent;
 
-    private void Start()
+   /* private void Start()
     {
+       
         for (int i = 0; i < itemSlots.Length; i++)
         {
+            Debug.Log("Passou no inventory " + i + " vezes " + " Evento " + OnItemLeftClickedEvent);
+
+            itemSlots[i].OnRightClickEvent += DeleteFromInventory;
+            itemSlots[i].OnLeftClickEvent += EquipFromInventory;
+
+        }
+        OnLoadInventory();
+        RefreshUI();
+        charin = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
+    }*/
+
+    public void StartInventory()
+    {
+        charin = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            Debug.Log("Passou no inventory " + i + " vezes " + " Evento " + OnItemLeftClickedEvent);
+
             itemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
             itemSlots[i].OnLeftClickEvent += OnItemLeftClickedEvent;
 
         }
         OnLoadInventory();
         RefreshUI();
+        
     }
+
+    /*private void EquipFromInventory(Item item)
+    {
+        Debug.Log("Equipfrom entrou");
+        if (item is EquippableItem)
+        {
+            Debug.Log("passou do if");
+            charin.Equip((EquippableItem)item);
+        }
+    }
+
+    public void DeleteFromInventory(Item item)
+    {
+        if (item is EquippableItem)
+        {
+            charin.Delete((EquippableItem)item);
+        }
+    }*/
+
 
     private void RefreshUI()
     {
@@ -109,6 +149,7 @@ public class Inventory : MonoBehaviour
                 equipItem.IntelligenceBonus = currentEquip.intelligence;
                 equipItem.VitalityBonus = currentEquip.vitality;
                 equipItem.AgilityBonus = currentEquip.agility;
+                Debug.Log("EquipType " + currentEquip.equipType);
                 equipItem.EquipamentType = currentEquip.equipType;
                 items.Add(equipItem);
 

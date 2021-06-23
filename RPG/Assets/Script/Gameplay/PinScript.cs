@@ -20,7 +20,7 @@ public class PinScript : MonoBehaviour
     private void prefabCall()
     {
 
-        if (NetworkClient.localPlayer.isClientOnly)
+        if (NetworkClient.localPlayer == null)
         {
             if (!PlayerPrefs.GetString("path").Equals("") && PlayerPrefs.GetString("path") != null) {
             bg.color = Color.white;
@@ -91,6 +91,12 @@ public class PinScript : MonoBehaviour
             sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.53f), 150);
         }
         else if (sprite.width > 300 || sprite.height > 300)
+        {
+            Rect rec = new Rect(0, 0, sprite.width, sprite.height);
+            //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);
+            sprites = Sprite.Create(sprite, rec, new Vector2(0.52f, 0.53f), 90);
+        }
+        else if (sprite.width < 300 || sprite.height < 300)
         {
             Rect rec = new Rect(0, 0, sprite.width, sprite.height);
             //Sprite.Create(sprite, rec, new Vector2(0, 0), 1);

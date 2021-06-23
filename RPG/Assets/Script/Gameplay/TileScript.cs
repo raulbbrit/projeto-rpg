@@ -49,7 +49,7 @@ public class TileScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
                 {
-                    if (NetworkClient.localPlayer.isClientOnly)
+                    if (NetworkClient.localPlayer == null)
                     {
                         if (Hover.indexPlayer > 0)
                         {

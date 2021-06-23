@@ -3,7 +3,6 @@ using System.IO;
 
 public class Character : MonoBehaviour
 {
-    public Character charin;
     [Header("Character Stats")]
     public CharacterStat Strenght;
     public CharacterStat Agility;
@@ -81,12 +80,14 @@ public class Character : MonoBehaviour
 
     }*/
 
+
     public void SetFieldsAndUI()
     {
         string path = Application.persistentDataPath + "/character.sheet";
         if (File.Exists(path)) {
             LoadCharacter();  
         }
+        Name.characterName =  PlayerPrefs.GetString("userName");
         statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
         statPanel.UpadeStatValues();
 
@@ -101,16 +102,20 @@ public class Character : MonoBehaviour
         namePanel.UpadeStatValues();
 
         inventory.OnItemLeftClickedEvent += EquipFromInventory;
+        Debug.Log("Passou no equipfrom");
         inventory.OnItemRightClickedEvent += DeleteFromInventory;
 
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+
     }
 
 
     private void EquipFromInventory(Item item)
     {
+        Debug.Log("Equipfrom entrou");
         if (item is EquippableItem)
         {
+            Debug.Log("passou do if");
             Equip((EquippableItem)item);
         }
     }
@@ -171,6 +176,7 @@ public class Character : MonoBehaviour
             equip.intelligence = item.IntelligenceBonus;
             equip.agility = item.AgilityBonus;
             equip.vitality = item.VitalityBonus;
+            equip.equipType = item.EquipamentType;
 
             SaveData.equipments.Add(equip);
         }
@@ -231,7 +237,7 @@ public class Character : MonoBehaviour
         Level.characterInfo = data.level;
         Mana.characterInfo = data.mana;
         Health.characterInfo = data.health;
-        Name.characterName = PlayerPrefs.GetString("userName");
+
 
         
 

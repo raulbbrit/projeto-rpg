@@ -8,7 +8,15 @@ public class EquipmentPanel : MonoBehaviour
 
     public event Action<Item> OnItemRightClickedEvent;
 
-    private void Start()
+    /*private void Start()
+    {
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
+            equipmentSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+        }
+    }*/
+
+    public void StartEquipmentPanel()
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {

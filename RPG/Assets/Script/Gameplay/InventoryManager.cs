@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
                     data.agility = int.Parse(agilityInput.text);
                     data.vitality = int.Parse(vitalityInput.text);
                     data.equipType = (EquipmentType)equipmentType.value;
-                    //Debug.Log(data.itemName);
+                    Debug.Log(data.equipType);
                     SaveData.equipments.Add(data);//lista principal
 
                     for (int i = 0; i < SaveData.equipments.Count; i++)

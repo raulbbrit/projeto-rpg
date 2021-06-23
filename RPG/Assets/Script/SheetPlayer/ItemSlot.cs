@@ -7,10 +7,12 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Text text;
-   // [SerializeField] ItemTooltip tooltip; 
+    // [SerializeField] ItemTooltip tooltip; 
 
+    
     public event Action<Item> OnRightClickEvent;
     public event Action<Item> OnLeftClickEvent;
+
 
     private Item _item;
     private EquippableItem equipItem;
@@ -39,9 +41,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("Entrou no click");
         if (eventData != null && eventData.button == PointerEventData.InputButton.Left)
         {
-
+            Debug.Log("Entrou dentro no click " + Item + " Evento " + OnLeftClickEvent);
+            
             if (Item != null && OnLeftClickEvent != null)
             {
                 OnLeftClickEvent(Item);
@@ -50,7 +54,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler//, IPointerEnterHand
 
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
-
+            Debug.Log("Entrou dentro no click " + Item.ItemName + " Evento " + OnRightClickEvent);
             if (Item != null && OnRightClickEvent != null)
             {
                 OnRightClickEvent(Item);

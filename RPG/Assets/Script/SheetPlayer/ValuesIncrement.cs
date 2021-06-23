@@ -21,7 +21,7 @@ public class ValuesIncrement : MonoBehaviour
     [SerializeField] Character CharacterScript;
 
 
-    private void Awake()
+    private void Start()
     {
         Instantiate(characterPreFab).GetComponent<Character>();
         CharacterScript = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
@@ -31,8 +31,13 @@ public class ValuesIncrement : MonoBehaviour
         CharacterScript.SkillPanel = skillPanel;
         CharacterScript.InfoPanel = infoPanel;
         CharacterScript.NamePanel = namePanel;
+        
         CharacterScript.SetFieldsAndUI();
+        inventory.StartInventory();
+        equipmentPanel.StartEquipmentPanel();
+
     }
+
     public  Character CreateCharacter(GameObject netCharacterPrefab)
     {
         CharacterScript = netCharacterPrefab.GetComponent<Character>();
@@ -50,8 +55,9 @@ public class ValuesIncrement : MonoBehaviour
     public void IncremetValues(int button)
     {
         //Character charac = script.GetComponent<Character>();
-        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-        networkPlayer = networkIdentity.GetComponent<NetworkPlayer>();
+
+        //NetworkIdentity networkIdentity = NetworkClient.connection.identity;
+        //networkPlayer = networkIdentity.GetComponent<NetworkPlayer>();
 
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();

@@ -23,18 +23,19 @@ public class Options : MonoBehaviour
 
     public void ExitGame()
     {
-        if (NetworkClient.localPlayer.isServer)
-        {
-            NetworkManager.singleton.StopHost();
-            SceneTransitionManager.Return();
-
-        } else if (NetworkClient.localPlayer.isClientOnly)
+        if (NetworkClient.localPlayer == null)
         {
 
             NetworkManager.singleton.StopClient();
             SceneTransitionManager.Return();
 
         }
+        else if (NetworkClient.localPlayer.isServer)
+        {
+            NetworkManager.singleton.StopHost();
+            SceneTransitionManager.Return();
+
+        } 
 
         SceneManager.LoadScene("PlayerMenu");
 

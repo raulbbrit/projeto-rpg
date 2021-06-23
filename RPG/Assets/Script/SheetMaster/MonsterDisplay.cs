@@ -48,6 +48,7 @@ public class MonsterDisplay : MonoBehaviour, IPointerClickHandler
     {
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
+            Debug.Log("OnRightClickEvent " + OnRightClickEvent);
             if (NPC != null && OnRightClickEvent != null)
             {
                 OnRightClickEvent(NPC);

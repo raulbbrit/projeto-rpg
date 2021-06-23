@@ -14,17 +14,24 @@ public class SaveManager : MonoBehaviour
       {
            saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
       }*/
-    private void Start()
+
+    /*private void Start()
     {
         saveCharacter = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
-    }
+        Debug.Log("Entrou Start SaveManager");
+    }*/
 
     public void FindSaveCharcter()
     {
-        saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
+        saveCharacter = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
+
+        //saveCharacter = GameObject.Find(NetworkClient.connection.identity.gameObject.name + " Character's").GetComponent<Character>();
     }
+
     public void SaveCharacter()
     {
+        saveCharacter = GameObject.Find("CharacterLocal(Clone)").GetComponent<Character>();
+
         SaveSystem.SaveCharacter(saveCharacter);
         SerializationManager.Save(SaveData.equipments);
         /*for (int i = 0; i < SaveData.equipments.Count; i++)

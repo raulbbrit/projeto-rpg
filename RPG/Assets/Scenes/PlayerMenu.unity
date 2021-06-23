@@ -5616,9 +5616,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 508864427}
-        m_TargetAssemblyTypeName: StartConnection, Assembly-CSharp
-        m_MethodName: ConnectFunction
+      - m_Target: {fileID: 697614554}
+        m_TargetAssemblyTypeName: PlayerMenuScripts, Assembly-CSharp
+        m_MethodName: HostGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

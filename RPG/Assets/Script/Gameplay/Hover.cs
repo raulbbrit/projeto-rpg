@@ -43,7 +43,7 @@ public class Hover : Singleton<Hover>
         else
         {
 
-            if (NetworkClient.localPlayer.isClientOnly)
+            if (NetworkClient.localPlayer == null)
             {
                 if (indexPlayer < 1)
                 {

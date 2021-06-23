@@ -25,14 +25,15 @@ public class DiceRolls : MonoBehaviour
             default : result = 0;  break;
         }
         
-        if(NetworkClient.localPlayer.isClientOnly)
+        if(NetworkClient.localPlayer == null)
         {
             textMessage += PlayerPrefs.GetString("userName");
         }
-        else if(NetworkClient.localPlayer.isServer)
+        else if (NetworkClient.localPlayer.isServer)
         {
             textMessage += "GameMaster";
         }
+        
 
         textMessage += $" rolled {nomeDado} and got a {result}\n\n";
         

@@ -22,7 +22,16 @@ public class GameManager : Singleton<GameManager>
     {
         int spaceTile = Singleton<Hover>.Instance.QtdTile();
 
-        if (NetworkClient.localPlayer.isServer)
+        if (NetworkClient.localPlayer == null)
+        {
+            if (Hover.indexPlayer <= 1)
+            {
+                Debug.Log(Hover.indexPlayer);
+                this.SelectedObject = pickObjectButton;
+            }
+        }
+
+        else if (NetworkClient.localPlayer.isServer)
         {
             
             if (Hover.indexMaster <= spaceTile)
@@ -33,14 +42,7 @@ public class GameManager : Singleton<GameManager>
 
         }
 
-        else if (NetworkClient.localPlayer.isClientOnly)
-            {
-                if (Hover.indexPlayer <= 1)
-                {
-                    Debug.Log(Hover.indexPlayer);
-                    this.SelectedObject = pickObjectButton;
-                }
-            }
+         
 
             
     }

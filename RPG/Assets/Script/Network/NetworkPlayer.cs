@@ -59,10 +59,22 @@ public class NetworkPlayer : NetworkBehaviour
     private void Awake()
     {
         Scene scene = SceneManager.GetActiveScene();
-      //  PlayerPanel = GameObject.Find("Character Panel");
+        PlayerPanel = GameObject.Find("Character Panel");
         //chamar o método de autoridade aqui.
-       // MasterPanel = GameObject.Find("Master Panel");
+        MasterPanel = GameObject.Find("Master Panel");
         SaveManager = GameObject.Find("SaveManager");
+        if (isHost)
+        {
+
+            PlayerPanel.SetActive(true);
+            MasterPanel.SetActive(false);
+
+        }
+        if (!isHost)
+        {
+            PlayerPanel.SetActive(false);
+            MasterPanel.SetActive(true);
+        }
     }
 
     /* private void GiveAuthorityInPanel(NetworkConnection conn)
@@ -75,8 +87,8 @@ public class NetworkPlayer : NetworkBehaviour
     {
         DontDestroyOnLoad(gameObject);
         GameNetwork.PlayersList.Add(this);
-        characterSpawn.Spawn(connectionToClient);
-       //saveManager.GetComponent<SaveManager>().FindSaveCharcter();
+        //characterSpawn.Spawn(connectionToClient);
+       saveManager.GetComponent<SaveManager>().FindSaveCharcter();
     }
 
     public override void OnStopClient()

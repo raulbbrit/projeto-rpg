@@ -69,7 +69,7 @@ public class ValuesIncrement:NetworkBehaviour
     {
              
        Character playerCharacter = playerIdentity.gameObject.GetComponent<NetworkPlayer>().CharacterIdentity.gameObject.GetComponent<Character>();
-
+       RpcDebugMessage(playerIdentity);
 
         StatDisplay[] stat = statScript.GetComponentsInChildren<StatDisplay>();
         SkillDisplay[] skill = skillScript.GetComponentsInChildren<SkillDisplay>();
@@ -173,6 +173,13 @@ public class ValuesIncrement:NetworkBehaviour
         }
 
 
+    }
+
+    [ClientRpc]
+    public void RpcDebugMessage(NetworkIdentity playerid)
+    {
+        Character playerCharacter = playerid.gameObject.GetComponent<NetworkPlayer>().CharacterIdentity.gameObject.GetComponent<Character>();
+        Debug.Log("Personagem = "+ playerCharacter.gameObject.name);
     }
 
 }

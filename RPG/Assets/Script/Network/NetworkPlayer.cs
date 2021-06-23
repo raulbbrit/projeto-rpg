@@ -193,15 +193,15 @@ public class NetworkPlayer : NetworkBehaviour
         incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
         if (hasAuthority)
         {
-           TargetIncrement(connectionToClient.identity, button,incrementManager);
+           RpcIncrement(connectionToClient.identity, button,incrementManager);
         }
           
     }
   
 
     // RPCS //
-    [TargetRpc]
-    private void TargetIncrement(NetworkIdentity identity, int button, ValuesIncrement valuesIncrement)
+    [ClientRpc]
+    private void RpcIncrement(NetworkIdentity identity, int button, ValuesIncrement valuesIncrement)
     {
         if (valuesIncrement.hasAuthority)
         {

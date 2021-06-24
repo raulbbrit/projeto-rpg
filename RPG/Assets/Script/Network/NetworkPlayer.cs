@@ -195,7 +195,6 @@ public class NetworkPlayer : NetworkBehaviour
         {
            RpcIncrement(connectionToClient.identity, button,incrementManager);
         }
-          
     }
   
 

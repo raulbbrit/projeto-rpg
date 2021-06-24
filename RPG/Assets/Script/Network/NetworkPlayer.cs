@@ -186,11 +186,11 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
     [Command]
-    public void CmdCallForIncrement(int button)
+    public void CmdCallForIncrement(int button, NetworkIdentity networkIdentity)
     {
         ValuesIncrement incrementManager = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
         incrementManager.netIdentity.RemoveClientAuthority();
-        incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
+        incrementManager.netIdentity.AssignClientAuthority(networkIdentity.connectionToClient);
         if (incrementManager.hasAuthority)
         {
            RpcIncrement(connectionToClient.identity, button,incrementManager);

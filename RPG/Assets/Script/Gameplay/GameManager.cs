@@ -58,6 +58,6 @@ public class GameManager : Singleton<GameManager>
     public void LocalIncrementRequest(int button)
     {
         NetworkPlayer networkPlayer = NetworkClient.connection.identity.gameObject.GetComponent<NetworkPlayer>();
-        networkPlayer.CmdCallForIncrement(button);
+        networkPlayer.CmdCallForIncrement(button, networkPlayer.netIdentity);
     }
 }

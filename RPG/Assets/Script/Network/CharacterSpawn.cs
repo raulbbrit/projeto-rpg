@@ -29,8 +29,7 @@ public class CharacterSpawn : NetworkBehaviour
         CharacterInstance.name = transform.name + " Character's";
         NetworkServer.Spawn(CharacterInstance, connectionToClient);
         CharacterInstance.GetComponent<Character>().Currentobjectname = transform.name + " Character's";
-        RpcAssignCharacterToPlayer(CharacterInstance.gameObject.GetComponent<Character>().netIdentity,CallingPlayer);
-
+        RpcAssignCharacterToPlayer(CharacterInstance.gameObject.GetComponent<Character>().netIdentity, CallingPlayer);
     }
     //RPC//
     [ClientRpc]

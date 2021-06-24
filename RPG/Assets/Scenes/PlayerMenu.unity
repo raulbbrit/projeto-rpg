@@ -4119,7 +4119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd36ebc0ae0b99047ba25556db870005, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e4a0e94a6faf614f839ccfd6edf52f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8376,10 +8376,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 130642694}
   m_HandleRect: {fileID: 671062294}
   m_Direction: 0
-  m_MinValue: -60
-  m_MaxValue: 20
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_MinValue: -45
+  m_MaxValue: 6
+  m_WholeNumbers: 1
+  m_Value: -15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9269,8 +9269,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 0726daca1fbcf7e45959a36bd8ae83f2,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: ce5d70baf1614334dbbaccd444a179ac, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: e43126bd2e96a6546addf509c7321863, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -129,6 +129,7 @@ public class Inventory : MonoBehaviour
         string path = Application.persistentDataPath + "/saves/inventory.sheet";
         if (File.Exists(path))
         {
+           // SaveData.equipments.Remove();
             SaveData.equipments = (List<EquipmentData>)SerializationManager.Load(Application.persistentDataPath + "/saves/inventory.sheet");
             //Debug.Log("Qunatidadede items no save: " + SaveData.equipments.Count);
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class MonsterList : MonoBehaviour
@@ -96,22 +97,26 @@ public class MonsterList : MonoBehaviour
 
     public void OnLoadMonster()
     {
-        SaveData.Monster = (List<MonsterData>)SerializationManager.Load(Application.persistentDataPath + "/saves/monster.sheet");
+        string path = Application.persistentDataPath + "/saves/monster.sheet";
+        if (File.Exists(path)) {
+            SaveData.Monster.Clear();
+            SaveData.Monster = (List<MonsterData>)SerializationManager.Load(Application.persistentDataPath + "/saves/monster.sheet");
 
-        for (int i = 0; i < SaveData.Monster.Count; i++)
-        {
-            MonsterData currentNpc = SaveData.Monster[i];
-            GameObject obj = Instantiate(monsterPrefab);
-            MonsterNpc npc = obj.GetComponent<MonsterNpc>();
-            npc.id = currentNpc.id;
-            npc.npcName = currentNpc.name;
-            npc.health = currentNpc.health;
-            npc.mana = currentNpc.mana;
-            npc.strength = currentNpc.strength;
-            npc.intelligence = currentNpc.intelligence;
-            npc.agility = currentNpc.agility;
-            npc.vitality = currentNpc.vitality;
-            npcs.Add(npc);
+            for (int i = 0; i < SaveData.Monster.Count; i++)
+            {
+                MonsterData currentNpc = SaveData.Monster[i];
+                GameObject obj = Instantiate(monsterPrefab);
+                MonsterNpc npc = obj.GetComponent<MonsterNpc>();
+                npc.id = currentNpc.id;
+                npc.npcName = currentNpc.name;
+                npc.health = currentNpc.health;
+                npc.mana = currentNpc.mana;
+                npc.strength = currentNpc.strength;
+                npc.intelligence = currentNpc.intelligence;
+                npc.agility = currentNpc.agility;
+                npc.vitality = currentNpc.vitality;
+                npcs.Add(npc);
+            }
         }
     }
 

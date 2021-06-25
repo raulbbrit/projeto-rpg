@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class NpcList : MonoBehaviour
@@ -99,18 +100,22 @@ public class NpcList : MonoBehaviour
 
     public void OnLoadNpc()
     {
-        SaveData.Npc = (List<NpcData>)SerializationManager.Load(Application.persistentDataPath + "/saves/npc.sheet");
+        string path = Application.persistentDataPath + "/saves/npc.sheet";
+        if (File.Exists(path)) {
+            SaveData.Npc.Clear();
+            SaveData.Npc = (List<NpcData>)SerializationManager.Load(Application.persistentDataPath + "/saves/npc.sheet");
 
-        for (int i = 0; i < SaveData.Npc.Count; i++)
-        {
-            NpcData currentNpc = SaveData.Npc[i];
-            GameObject obj = Instantiate(npcPrefab);
-            SimpleNpc npc = obj.GetComponent<SimpleNpc>();
-            npc.id = currentNpc.id;
-            npc.npcName = currentNpc.name;
-            npc.health = currentNpc.health;
-            npc.mana = currentNpc.mana;
-            npcs.Add(npc);
+            for (int i = 0; i < SaveData.Npc.Count; i++)
+            {
+                NpcData currentNpc = SaveData.Npc[i];
+                GameObject obj = Instantiate(npcPrefab);
+                SimpleNpc npc = obj.GetComponent<SimpleNpc>();
+                npc.id = currentNpc.id;
+                npc.npcName = currentNpc.name;
+                npc.health = currentNpc.health;
+                npc.mana = currentNpc.mana;
+                npcs.Add(npc);
+            }
         }
     }
 

@@ -12,12 +12,11 @@ public class GameNetworkManager : NetworkManager
       public static event Action OnclientDisconnected;
     [SerializeField] private NetworkPlayer networkPlayerPrefab;
     [SerializeField] private GameObject characterSpawn;
-    [SerializeField] private List<Character> characterList= new List<Character>();
-
+  
 
     
     public List<NetworkPlayer> PlayersList { get;} = new List<NetworkPlayer>();
-    public List<Character> CharacterList { get => characterList; set => characterList = value; }
+ 
 
     public override void OnStartServer()
     {
@@ -32,7 +31,7 @@ public class GameNetworkManager : NetworkManager
         
         foreach (var prefab in spawnablePrefabs)
         {
-            //ClientScene.RegisterPrefab(prefab); defasado!
+         
             NetworkClient.RegisterPrefab(prefab);
         }
       
@@ -51,11 +50,7 @@ public class GameNetworkManager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         NetworkPlayer networkPlayerInstance= Instantiate(networkPlayerPrefab);
-        bool isHost = PlayersList.Count==0; //verificando se é o host (primeiro a entrar)
-      /*  for (int i = 0; i < PlayersList.Count; i++)
-        {
-            Debug.Log("A lista possuí: " +PlayersList.Count+" ishost= " + isHost.ToString());
-        }*/
+        bool isHost = PlayersList.Count==0; 
         networkPlayerInstance.IsHost = isHost;
         NetworkServer.AddPlayerForConnection(conn,networkPlayerInstance.gameObject);
         

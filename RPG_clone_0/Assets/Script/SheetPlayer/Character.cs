@@ -20,41 +20,225 @@ public class Character : NetworkBehaviour
             }
         }
     }
-    [SyncVar (hook= nameof (HookObjectName))]
+   
+
+    [SyncVar(hook = nameof(HookObjectName))]
     string currentobjectname;
+    public void HookObjectName(string currentObjectName, string newObjectName)
+    {
+        transform.name = newObjectName;
+        Debug.Log("HookObjectName" + transform.name);
+    }
+
     [Header("Character Stats")]
+
     public CharacterStat Strenght;
-    public CharacterStat Agility;
-    public CharacterStat Intelligence;
+    [SyncVar(hook = nameof(HookStrenght))] public float SyncStrenght;
+    public void HookStrenght(float oldValue, float newValue)
+    {
+        Strenght.BaseValue = newValue;
+    }
+
     public CharacterStat Vitality;
+    [SyncVar(hook = nameof(HookVitality))]
+    public float SyncVitality;
+    public void HookVitality(float oldValue, float newValue)
+    {
+        Vitality.BaseValue = newValue;
+    }
+
+    public CharacterStat Agility;
+    [SyncVar(hook = nameof(HookAgility))]
+    public float SyncAgility;
+    public void HookAgility(float oldValue, float newValue)
+    {
+        Agility.BaseValue = newValue;
+    }
+
+    public CharacterStat Intelligence;
+    [SyncVar(hook = nameof(HookIntelligence))]
+    public float SyncIntelligence;
+    public void HookIntelligence(float oldValue, float newValue)
+    {
+        Intelligence.BaseValue = newValue;
+    }
+
+   
 
     [Space]
     [Header("Charecter Skills")]
     public CharacterSkill Fight;
+    [SyncVar(hook = nameof(HookFight))]
+    public int SyncFight;
+
+    public void HookFight(int oldValue, int newValue)
+    {
+        Fight.skillValue = newValue;
+    }
+
     public CharacterSkill Shoot;
+    [SyncVar(hook = nameof(HookShoot))]
+    public int SyncShoot;
+
+    public void HookShoot(int oldValue, int newValue)
+    {
+        Shoot.skillValue = newValue;
+    }
+
     public CharacterSkill Brawl;
+    [SyncVar(hook = nameof(HookBrawl))]
+    public int SyncBrawl;
+
+    public void HookBrawl(int oldValue, int newValue)
+    {
+        Brawl.skillValue = newValue;
+    }
+
     public CharacterSkill Dodge;
+    [SyncVar(hook = nameof(HookDodge))]
+    public int SyncDodge;
+    public void HookDodge(int oldValue, int newValue)
+    {
+        Dodge.skillValue = newValue;
+    }
+
     public CharacterSkill Block;
+    [SyncVar(hook = nameof(HookBlock))]
+    public int SyncBlock;
+
+    public void HookBlock(int oldValue, int newValue)
+    {
+        Block.skillValue = newValue;
+    }
+
     public CharacterSkill Athletics;
+    [SyncVar(hook = nameof(HookAthletics))]
+    public int SyncAthletics;
+
+    public void HookAthletics(int oldValue, int newValue)
+    {
+        Athletics.skillValue = newValue;
+    }
+
     public CharacterSkill Physique;
+    [SyncVar(hook = nameof(HookPhysique))]
+    public int SyncPhysique;
+
+    public void HookPhysique(int oldValue, int newValue)
+    {
+        Physique.skillValue = newValue;
+    }
+
     public CharacterSkill Sneak;
+    [SyncVar(hook = nameof(HookSneak))]
+    public int SyncSneak;
+
+    public void HookSneak(int oldValue, int newValue)
+    {
+        Sneak.skillValue = newValue;
+    }
+
     public CharacterSkill Investigate;
+    [SyncVar(hook = nameof(HookInvestigate))]
+    public int SyncInvestigate;
+
+    public void HookInvestigate(int oldValue, int newValue)
+    {
+        Investigate.skillValue = newValue;
+    }
+
     public CharacterSkill Perception;
+    [SyncVar(hook = nameof(HookPerception))]
+    public int SyncPerception;
+
+    public void HookPerception(int oldValue, int newValue)
+    {
+        Perception.skillValue = newValue;
+    }
+
     public CharacterSkill Language;
+    [SyncVar(hook = nameof(HookLanguage))]
+    public int SyncLanguage;
+
+    public void HookLanguage(int oldValue, int newValue)
+    {
+        Language.skillValue = newValue;
+    }
+
     public CharacterSkill Knowledge;
+    [SyncVar(hook = nameof(HookKnowledge))]
+    public int SyncKnowledge;
+
+    public void HookKnowledge(int oldValue, int newValue)
+    {
+        Knowledge.skillValue = newValue;
+    }
+
     public CharacterSkill Resources;
+    [SyncVar(hook = nameof(HookResources))]
+    public int SyncResources;
+
+    public void HookResources(int oldValue, int newValue)
+    {
+        Resources.skillValue = newValue;
+    }
+
     public CharacterSkill Intimidation;
+    [SyncVar(hook = nameof(HookIntimidation))]
+    public int SyncIntimidation;
+
+    public void HookIntimidation(int oldValue, int newValue)
+    {
+        Intimidation.skillValue = newValue;
+    }
+
     public CharacterSkill Deceive;
+    [SyncVar(hook = nameof(HookDeceive))]
+    public int SyncDeceive;
+
+    public void HookDeceive(int oldValue, int newValue)
+    {
+        Deceive.skillValue = newValue;
+    }
 
     [Space]
     [Header("Character Information")]
     public CharacterInfos Level;
+    [SyncVar(hook = nameof(HookLevel))]
+    public int SyncLevel;
+
+    public void HookLevel(int oldValue, int newValue)
+    {
+        Level.characterInfo = newValue;
+    }
+
     public CharacterInfos Health;
+    [SyncVar(hook = nameof(HookHealth))]
+    public int SyncHealth;
+
+    public void HookHealth(int oldValue, int newValue)
+    {
+        Health.characterInfo = newValue;
+    }
+
     public CharacterInfos Mana;
+    [SyncVar(hook = nameof(HookMana))]
+    public int SyncMana;
+
+    public void HookMana(int oldValue, int newValue)
+    {
+        Mana.characterInfo = newValue;
+    }
 
     [Space]
     [Header("Character Name")]
     public CharacterName Name;
+    [SyncVar(hook = nameof(HookCharacterName))]
+    public string SyncName;
+    public void HookCharacterName(string oldValue, string newValue)
+    {
+        Name.characterName = newValue;
+    }
 
     [Space]
     [Header("Panels to start the UI")]
@@ -89,7 +273,7 @@ public class Character : NetworkBehaviour
     public string NamePanelSyncString { get => namePanelSyncString; set => namePanelSyncString = value; }
 
   
-    //Hooks
+    //PanelHooks
 
     public void HookInventorySyncString(string oldstring, string stringReference)
     {
@@ -142,34 +326,8 @@ public class Character : NetworkBehaviour
         FieldsCheck++;
     }
 
-    /*
-    private Inventory inventory;
-    private EquipmentPanel equipmentPanel;
-    private StatPanel statPanel;
-    private SkillPanel skillPanel;
-    */
-
-
-  
-
-    /*private void Awake()
-    {
-        statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
-        statPanel.UpadeStatValues();
-
-        skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
-            Knowledge, Resources, Intimidation, Deceive);
-        skillPanel.UpadeStatValues();
-        
-        inventory.OnItemRightClickedEvent += EquipFromInventory;
-        equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
-    }*/
-
-    /*private void Start()
-    {
-        charin =  GetComponent<Character>();
-
-    }*/
+   
+   
 
     public void SetFieldsAndUI()
     {
@@ -182,7 +340,7 @@ public class Character : NetworkBehaviour
         try
         {
             statPanel.SetStats(Strenght, Agility, Intelligence, Vitality);
-            statPanel.UpadeStatValues();
+            statPanel.UpdateStatValues();
 
             skillPanel.SetSkills(Fight, Shoot, Brawl, Dodge, Block, Athletics, Physique, Sneak, Investigate, Perception, Language,
                 Knowledge, Resources, Intimidation, Deceive);
@@ -234,10 +392,10 @@ public class Character : NetworkBehaviour
                 {
                     inventory.AddItem(previousItem);
                     previousItem.Unequip(this);
-                    statPanel.UpadeStatValues();
+                    statPanel.UpdateStatValues();
                 }
                 item.Equip(this);
-                statPanel.UpadeStatValues();
+                statPanel.UpdateStatValues();
             }
             else
             {
@@ -251,7 +409,7 @@ public class Character : NetworkBehaviour
         if (!inventory.IsFull() && equipmentPanel.RemoveItem(item))
         {
             item.Unequip(this);
-            statPanel.UpadeStatValues();
+            statPanel.UpdateStatValues();
             inventory.AddItem(item);
         }
     }
@@ -317,12 +475,6 @@ public class Character : NetworkBehaviour
 
         
     }
-    // Hooks //
 
-    public void HookObjectName(string currentObjectName, string newObjectName)
-    {
-        transform.name = newObjectName;
-        Debug.Log("HookObjectName" + transform.name);
-    }
 
 }

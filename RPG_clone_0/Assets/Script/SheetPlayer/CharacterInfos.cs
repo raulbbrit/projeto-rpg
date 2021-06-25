@@ -6,7 +6,7 @@ using Mirror;
 [Serializable]
 public class CharacterInfos
 {
-    [SyncVar] public int characterInfo;
+    public int characterInfo;
 
     public virtual int Value
     {

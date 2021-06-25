@@ -72,7 +72,6 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
-    public NetworkIdentity CharacterIdentity1 { get => characterIdentity; set => characterIdentity = value; }
 
     public override void OnStartClient()
     {
@@ -165,7 +164,6 @@ public class NetworkPlayer : NetworkBehaviour
         if (hasAuthority)
         {
             CharacterIdentity = characterID;
-            //CmdAssingCharacterToPlayer(characterID);
 
         }
     }
@@ -182,59 +180,37 @@ public class NetworkPlayer : NetworkBehaviour
     [Command]
     private void CmdAssingCharacterToPlayer(NetworkIdentity characterID)
     {
-        CharacterIdentity = CharacterIdentity1;
+        CharacterIdentity = CharacterIdentity;
        // SyncCharacterIdentity = characterIdentity.netId.ToString();
        
     }
 
     [Command]
-    public void CmdCallForIncrement(int button)
+    public void CmdCallForIncrement(int button, NetworkIdentity networkIdentity)
     {
-        ValuesIncrement incrementManager =GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
-        incrementManager.netIdentity.AssignClientAuthority(connectionToClient);
-        if (hasAuthority)
+        ValuesIncrement incrementManager = GameObject.Find("IncrementManager").GetComponent<ValuesIncrement>();
+        incrementManager.netIdentity.RemoveClientAuthority();
+        incrementManager.netIdentity.AssignClientAuthority(networkIdentity.connectionToClient);
+        if (incrementManager.hasAuthority)
         {
-
-           TargetIncrement(NetworkClient.connection.identity, button,incrementManager);
+           RpcIncrement(connectionToClient.identity, button,incrementManager);
         }
-       
-            incrementManager.netIdentity.RemoveClientAuthority();
-        
     }
-    // RPCS //
-    //[ClientRpc]
-    /*public void RpcAssignCharacterToPlayer(NetworkIdentity networkIdentity, string newCharacter)
-    {
-
-       /* try
-        { 
-            var assignedCharacter = GameObject.Find(newCharacter).GetComponent<Character>();
-
-            if (assignedCharacter == null)
-            {
-                Debug.LogError("GameObject.Find(newCharacter).GetComponent<Character>() == null");
-            }
-            else
-            {
-                networkIdentity.gameObject.GetComponent<NetworkPlayer>().playercharacter = assignedCharacter;
-                Debug.Log("Sucesso em: RpcAssignCharacterToPlayer");
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log("MY EXCEPTION: " + e.Message);
-        }
-
-
-    }
-        this.currentCharacterName = transform.name + " Character's";
-    }*/
+  
 
     // RPCS //
-    [TargetRpc]
-    private void TargetIncrement(NetworkIdentity identity, int button, ValuesIncrement valuesIncrement)
+    [ClientRpc]
+    private void RpcIncrement(NetworkIdentity identity, int button, ValuesIncrement valuesIncrement)
     {
-        valuesIncrement.CmdIncrementValues(button, identity);
+        if (valuesIncrement.hasAuthority)
+        {
+            Debug.Log("ENTROU NO IF");
+            valuesIncrement.CmdIncrementValues(button, identity);
+        }
+        else
+        {
+            Debug.LogError("SEM AUTORIDADE SOBRE INCREMENT");
+        }
     }
 
 
